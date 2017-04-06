@@ -1,0 +1,17 @@
+Changes in IBus 1.5.14
+
+Don't warn if DISPLAY is not set (Matthias Clasen) 0432aa6
+Install a DBus service file (Rui Matos) 84c18f1
+configure: don't hardcode pkg-config (Marc-Antoine Perennou) b210c0d
+conf/gconf: Fix SEGV in ibus_config_gconf_get_values (fujiwarat) a186059
+client/gtk2: Fix SEGV with Wayland display (fujiwarat) 3ef21fe
+ui/gtk3: Fix panel CSS format for GTK 3.20 (fujiwarat) a598ae2
+engine: Implement Emoji typing with XKB engines (fujiwarat) 160d3c9
+engine: Add emoji-list.html (fujiwarat) 0ed644c
+engine: Use annotations/en.xml from unocode.org but not emoji-list.html (fujiwarat) 0ee1896
+Fix typo in configure.ac (fujiwarat) f88c487
+tests/ibus-engine-switch: Don't try to remove non-existing GSource (fujiwarat) 20068d9
+Fix make dist (fujiwarat) eee7a13
+Fix Croatian language code in simple.xml (fujiwarat) 028624f
+Replace deprecated GSimpleAsyncResult with GTask since GLib 2.46 (fujiwarat) 239d363
+Release 1.5.14 (fujiwarat) c3ceed4

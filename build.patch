@@ -1,0 +1,11 @@
+--- ibus-1.5.15/tools/main.c~	2017-03-06 16:09:57.000000000 +0000
++++ ibus-1.5.15/tools/main.c	2017-04-06 13:56:04.909119824 +0000
+@@ -33,7 +33,7 @@
+ #include <stdio.h>
+ #include <glib/gi18n-lib.h>
+ #include <gio/gio.h>
+-#include <ibusemojidialog.h>
++//#include <ibusemojidialog.h>
+ #include <gdk/gdk.h>
+ #include <gtk/gtk.h>
+ #include <locale.h>
