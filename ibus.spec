@@ -4,7 +4,7 @@
 #
 Name     : ibus
 Version  : 1.5.14
-Release  : 1
+Release  : 2
 URL      : https://github.com/ibus/ibus/releases/download/1.5.14/ibus-1.5.14.tar.gz
 Source0  : https://github.com/ibus/ibus/releases/download/1.5.14/ibus-1.5.14.tar.gz
 Summary  : IBus Library
@@ -108,8 +108,12 @@ locales components for the ibus package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1491489756
+export SOURCE_DATE_EPOCH=1491776039
 unset LD_AS_NEEDED
+export CFLAGS="$CFLAGS -Os -ffunction-sections "
+export FCFLAGS="$CFLAGS -Os -ffunction-sections "
+export FFLAGS="$CFLAGS -Os -ffunction-sections "
+export CXXFLAGS="$CXXFLAGS -Os -ffunction-sections "
 %configure --disable-static --disable-python-library --disable-emoji-dict --disable-tests
 make V=1  %{?_smp_mflags}
 
@@ -121,7 +125,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1491489756
+export SOURCE_DATE_EPOCH=1491776039
 rm -rf %{buildroot}
 %make_install
 %find_lang ibus10
