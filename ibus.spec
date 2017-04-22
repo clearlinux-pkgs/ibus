@@ -4,7 +4,7 @@
 #
 Name     : ibus
 Version  : 1.5.14
-Release  : 2
+Release  : 3
 URL      : https://github.com/ibus/ibus/releases/download/1.5.14/ibus-1.5.14.tar.gz
 Source0  : https://github.com/ibus/ibus/releases/download/1.5.14/ibus-1.5.14.tar.gz
 Summary  : IBus Library
@@ -107,13 +107,19 @@ locales components for the ibus package.
 %setup -q -n ibus-1.5.14
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1491776039
+export SOURCE_DATE_EPOCH=1492878885
 unset LD_AS_NEEDED
-export CFLAGS="$CFLAGS -Os -ffunction-sections "
-export FCFLAGS="$CFLAGS -Os -ffunction-sections "
-export FFLAGS="$CFLAGS -Os -ffunction-sections "
-export CXXFLAGS="$CXXFLAGS -Os -ffunction-sections "
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
 %configure --disable-static --disable-python-library --disable-emoji-dict --disable-tests
 make V=1  %{?_smp_mflags}
 
@@ -121,11 +127,11 @@ make V=1  %{?_smp_mflags}
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1491776039
+export SOURCE_DATE_EPOCH=1492878885
 rm -rf %{buildroot}
 %make_install
 %find_lang ibus10
