@@ -1,1 +1,1 @@
---disable-python-library --disable-emoji-dict --disable-tests --sysconfdir=/usr/share/defaults/ibus/
+--disable-python-library --disable-emoji-dict --disable-tests --sysconfdir=/usr/share/defaults
