@@ -4,7 +4,7 @@
 #
 Name     : ibus
 Version  : 1.5.14
-Release  : 3
+Release  : 4
 URL      : https://github.com/ibus/ibus/releases/download/1.5.14/ibus-1.5.14.tar.gz
 Source0  : https://github.com/ibus/ibus/releases/download/1.5.14/ibus-1.5.14.tar.gz
 Summary  : IBus Library
@@ -111,7 +111,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1492878885
+export SOURCE_DATE_EPOCH=1493234439
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -120,7 +120,7 @@ export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sect
 export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
-%configure --disable-static --disable-python-library --disable-emoji-dict --disable-tests
+%configure --disable-static --disable-python-library --disable-emoji-dict --disable-tests --sysconfdir=/usr/share/defaults/ibus/
 make V=1  %{?_smp_mflags}
 
 %check
@@ -131,7 +131,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1492878885
+export SOURCE_DATE_EPOCH=1493234439
 rm -rf %{buildroot}
 %make_install
 %find_lang ibus10
@@ -156,6 +156,8 @@ rm -rf %{buildroot}
 /usr/share/applications/ibus-setup.desktop
 /usr/share/bash-completion/completions/ibus.bash
 /usr/share/dbus-1/services/org.freedesktop.IBus.service
+/usr/share/defaults/ibus/dconf/db/ibus.d/00-upstream-settings
+/usr/share/defaults/ibus/dconf/profile/ibus
 /usr/share/gir-1.0/*.gir
 /usr/share/glib-2.0/schemas/org.freedesktop.ibus.gschema.xml
 /usr/share/ibus/component/dconf.xml
