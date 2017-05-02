@@ -4,7 +4,7 @@
 #
 Name     : ibus
 Version  : 1.5.14
-Release  : 5
+Release  : 6
 URL      : https://github.com/ibus/ibus/releases/download/1.5.14/ibus-1.5.14.tar.gz
 Source0  : https://github.com/ibus/ibus/releases/download/1.5.14/ibus-1.5.14.tar.gz
 Summary  : IBus Library
