@@ -1,17 +1,34 @@
-Changes in IBus 1.5.14
+Changes in IBus 1.5.16
 
-Don't warn if DISPLAY is not set (Matthias Clasen) 0432aa6
-Install a DBus service file (Rui Matos) 84c18f1
-configure: don't hardcode pkg-config (Marc-Antoine Perennou) b210c0d
-conf/gconf: Fix SEGV in ibus_config_gconf_get_values (fujiwarat) a186059
-client/gtk2: Fix SEGV with Wayland display (fujiwarat) 3ef21fe
-ui/gtk3: Fix panel CSS format for GTK 3.20 (fujiwarat) a598ae2
-engine: Implement Emoji typing with XKB engines (fujiwarat) 160d3c9
-engine: Add emoji-list.html (fujiwarat) 0ed644c
-engine: Use annotations/en.xml from unocode.org but not emoji-list.html (fujiwarat) 0ee1896
-Fix typo in configure.ac (fujiwarat) f88c487
-tests/ibus-engine-switch: Don't try to remove non-existing GSource (fujiwarat) 20068d9
-Fix make dist (fujiwarat) eee7a13
-Fix Croatian language code in simple.xml (fujiwarat) 028624f
-Replace deprecated GSimpleAsyncResult with GTask since GLib 2.46 (fujiwarat) 239d363
-Release 1.5.14 (fujiwarat) c3ceed4
+bus: Add error messages for g_dbus_server_new_sync (fujiwarat) 4e02857c
+tools: Fix `ibus emoji` SEGV when language is changed. (fujiwarat) 7e477d5e
+ui/gtk3: Get emoji colors from the theme (fujiwarat) 9dbea347
+src: Fix ibus_emoji_dict_load() (fujiwarat) 31ed31e5
+ui/gtk3: Fix emoji text entry cusor position (fujiwarat) c5808451
+src: Update emoji-parser to treat tts as emoji description (fujiwarat) fbe3de17
+client/x11: Add XSetIOErrorHandler() for GNOME3 desktop (fujiwarat) ab6c38c1
+ui/gtk3: Implement shortcut keys on emoji dialog (fujiwarat) 58f6140f
+ui/gtk3: Enable strcasecmp to match emoji annotation (fujiwarat) 50e344af
+Make more readable error messages if emoji xml files are missed (fujiwarat) bd7e0ba2
+Move language setting from IBusEmojier to ibus-setup (fujiwarat) 0efb1c50
+data: Fix a typo (fujiwarat) 16430075
+Fix IBusEmojiDialog_1_0_gir_LIBS for --as-needed LDFLAGS (fujiwarat) c3168d47
+ui/gtk3: Enable to type multiple code points on Emojier (fujiwarat) 8b6f9fa5
+src: Enable unicode_alt in EmojiOne json file (fujiwarat) cb0a36c2
+Make ibus emojier dialog as an unique application (Peng Wu) 648f58a3
+Make ibus emojier dialog as an unique application (Peng Wu) 2f8982a0
+tools: spawn the process of ibus-ui-emojier (Peng Wu) da33672b
+ui/gtk3: Fix build failures (fujiwarat) 290f786b
+ui/gtk3: Mark LANG and FONT as translatable strings (fujiwarat) 4b8d7baf
+ui/gtk3: Change modal dialog to focused dialog (fujiwarat) c6cdf21c
+ui/gtk3: Fix build failures (fujiwarat) aba81ace
+ui/gtk3: Get emoji font size from gsettings (fujiwarat) 61fa8eab
+Change to use Unicode Emoji files instead of EmojiOne files (fujiwarat) 2f73064d
+Support to match emoji annotations with partial string (fujiwarat) 0836c3ff
+ui/gtk3: Hide emoji variants by default (fujiwarat) edcb4a02
+ui/gtk3: Add ibus-emoji man mapge (fujiwarat) 5f653d31
+Update favorites category automatically by selecting emoji (fujiwarat) 1159093d
+ui/gtk3: Rename ibus-emoji.1.in to ibus-emoji.7.in (fujiwarat) f6c2e2dd
+ui/gtk3: Fix to focus Emojier when type Control-Shift-e twice (fujiwarat) 086fc542
+Update translations (fujiwarat) 21e6c003
+Release 1.5.16 (fujiwarat) ccc602d6

@@ -1,3 +1,976 @@
+commit ccc602d626b29fae805fae2d0995126afac6d9e6
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-05-15 16:03:34 +0900
+
+    Release 1.5.16
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/320550043
+
+M	configure.ac
+A	po/fi.po
+A	po/sq.po
+A	po/sv.po
+
+commit 21e6c003e0d4b8d50b266c02495ad9d62f30e7b4
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-05-15 13:47:39 +0900
+
+    Update translations
+    
+    Update po/ca.po po/cs.po po/de.po po/es.po po/fi.po po/fr.po po/hu.po
+           po/it.po po/ja.po po/nl.po po/pl.po po/pt_BR.po po/ru.po
+           po/sq.po po/sv.po po/uk.po po/zh_CN.po po/zh_TW.po
+    
+    Review URL: https://codereview.appspot.com/320300043
+
+M	po/LINGUAS
+M	po/ca.po
+M	po/cs.po
+M	po/de.po
+M	po/es.po
+M	po/fr.po
+M	po/hu.po
+M	po/it.po
+M	po/ja.po
+M	po/nl.po
+M	po/pl.po
+M	po/pt_BR.po
+M	po/ru.po
+M	po/ta.po
+M	po/uk.po
+M	po/zh_CN.po
+M	po/zh_TW.po
+
+commit 086fc542a7a9b1313198ae60355e711da05f5ed8
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-05-15 13:32:08 +0900
+
+    ui/gtk3: Fix to focus Emojier when type Control-Shift-e twice
+    
+    Some window managers, e.g. MATE, GNOME, Plasma desktops,
+    does not give the keyboard focus when Emojier is lauched
+    twice with Ctrl-Shift-e via XIEvent, if present_with_time()
+    is not applied.
+    
+    Also fix to type some of ASCII emoji annotations likes :D
+    Also update ibus-emoji.7.in to describe Control-f,b,n,p
+    
+    BUG=https://mail.gnome.org/archives/gtk-devel-list/2017-May/msg00026.html
+    
+    Review URL: https://codereview.appspot.com/325750043
+
+M	ui/gtk3/emojier.vala
+M	ui/gtk3/emojierapp.vala
+M	ui/gtk3/ibus-emoji.7.in
+M	ui/gtk3/ibusemojidialog.h
+M	ui/gtk3/panel.vala
+
+commit f6c2e2dd6f42a43fe973cf40701ee7d61f637287
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-05-10 11:50:08 +0900
+
+    ui/gtk3: Rename ibus-emoji.1.in to ibus-emoji.7.in
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/321900043
+
+M	tools/ibus.1.in
+M	ui/gtk3/Makefile.am
+R100	ui/gtk3/ibus-emoji.1.in	ui/gtk3/ibus-emoji.7.in
+
+commit 1159093dea3fdb8ceb62157f06b3560f8fc28378
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-05-09 13:58:02 +0900
+
+    Update favorites category automatically by selecting emoji
+    
+    When you commit an emoji with Emojier, Favorite category
+    will be shown on GUI.
+    Now a custom annotation also can be assigned to a favorite emoji
+    by gsetting command.
+    
+    R=penghuang@google.com
+    
+    Review URL: https://codereview.appspot.com/312660043
+
+M	data/ibus.schemas.in
+M	src/ibusemoji.h
+M	ui/gtk3/emojier.vala
+M	ui/gtk3/emojierapp.vala
+M	ui/gtk3/ibusemojidialog.h
+M	ui/gtk3/panel.vala
+
+commit 5f653d3102ada9139a2bc7504d6beaee1bc9984b
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-05-09 13:54:01 +0900
+
+    ui/gtk3: Add ibus-emoji man mapge
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/323810043
+
+M	setup/ibus-setup.1.in
+M	tools/ibus.1.in
+M	ui/gtk3/Makefile.am
+A	ui/gtk3/ibus-emoji.1.in
+
+commit edcb4a0259d2833904e7d1aac7c74e1aa49cea5b
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-05-08 12:25:54 +0900
+
+    ui/gtk3: Hide emoji variants by default
+    
+    The emoji variants, i.e. skin colors and additional items, would not
+    be used in most cases and it is nice to hide it by default.
+    Now added GtkMenu and changed GtkWindow to GtkApplicationWindow
+    for the menu.
+    
+    R=penghuang@google.com
+    
+    Review URL: https://codereview.appspot.com/322970043
+
+M	ui/gtk3/emojier.vala
+
+commit 0836c3ffd6764969dfaa9953f52a24c1cbf2c983
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-05-06 00:22:50 +0900
+
+    Support to match emoji annotations with partial string
+    
+    Now ibus-setup has a new tab of "Emoji" and it provides
+    the options to choose a condtion and length to match
+    emoji annotations partically.
+    
+    R=alexepico@gmail.com, penghuang@google.com
+    
+    Review URL: https://codereview.appspot.com/319700043
+
+M	data/ibus.schemas.in
+M	setup/main.py
+M	setup/setup.ui
+M	ui/gtk3/emojier.vala
+M	ui/gtk3/emojierapp.vala
+M	ui/gtk3/panel.vala
+
+commit 2f73064d03481c9f34d278dd19d1a4427d6ecb27
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-04-28 13:10:03 +0900
+
+    Change to use Unicode Emoji files instead of EmojiOne files
+    
+    EmojiOne Json file have changed the file format since 3.0 [1]
+    Now IBus migrated to use Unicode Emoji files since the EmojiOne file
+    had been used for the emoji categories but it can be done with
+    Unicode emoji-test.txt [2]
+    Use Unicode Emoji 4.0 until 5.0 will be released officially.
+    Unicode Emoji 5.0 is available but fonts does not support it yet.
+    
+    [1] https://github.com/Ranks/emojione/releases/tag/v3.0.0
+    [2] http://www.unicode.org/Public/emoji/4.0/
+    
+    Review URL: https://codereview.appspot.com/321860043
+
+M	bindings/vala/Makefile.am
+M	configure.ac
+M	data/annotations/Makefile.am
+A	data/annotations/en_ascii.xml
+M	po/POTFILES.in
+M	po/POTFILES.skip
+M	src/Makefile.am
+M	src/emoji-parser.c
+M	src/ibusemoji.c
+M	src/ibusemoji.h
+A	src/ibusemojigen.h
+M	ui/gtk3/Makefile.am
+M	ui/gtk3/emojier.vala
+
+commit 61fa8eabd812a75b3cadd883ad4a4e92cf6877d3
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-04-25 12:10:00 +0900
+
+    ui/gtk3: Get emoji font size from gsettings
+    
+    If Emojier CLI does not specify the font size likes
+    --font 'Noto Emoji Color Regular', get the default size from GSettings.
+    
+    R=Shawn.P.Huang@gmail.com, alexepico@gmail.com
+    
+    Review URL: https://codereview.appspot.com/317540043
+
+M	setup/setup.ui
+M	ui/gtk3/emojier.vala
+M	ui/gtk3/emojierapp.vala
+M	ui/gtk3/panel.vala
+
+commit aba81ace1487bea57e80406413ae31cbb37ac7d2
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-04-20 12:10:47 +0900
+
+    ui/gtk3: Fix build failures
+    
+    Add-on fix to 290f786
+    if /usr/share/vala*/vapi/ibus-emoji-dialog*.vapi does not exist.
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/323780043
+
+M	ui/gtk3/Makefile.am
+
+commit c6cdf21c7364cbb1e848e44cab0bff270e432e82
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-04-19 12:16:37 +0900
+
+    ui/gtk3: Change modal dialog to focused dialog
+    
+    There are several problems with the current emoji modal dialog.
+    If keyboard is grabbed on the popup window, the focus out/in events
+    cannot be detected so the dialog cannot be closed by the focus changes.
+    
+    If mouse operation is supported on the popup window, need a custom
+    GtkHeaderBar with extended handle.vala but the behavior is unclear. [1]
+    
+    Also current popup window has several extensions for the keyboard grab.
+    
+    If the closed button is needed on the popup window since the focus events
+    cannot be detected, I think there is no merit to use the popup window.
+    Now IBusEmojier simply uses the focused window.
+    
+    [1] https://mail.gnome.org/archives/gtk-app-devel-list/2017-April/msg00017.html
+    
+    R=Shawn.P.Huang@gmail.com, alexepico@gmail.com
+    
+    Review URL: https://codereview.appspot.com/316510043
+
+M	ui/gtk3/emojier.vala
+M	ui/gtk3/emojierapp.vala
+M	ui/gtk3/ibusemojidialog.h
+M	ui/gtk3/panel.vala
+
+commit 4b8d7baf627fb3fc9e4dde74ba33a867091f95b7
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-04-18 11:44:52 +0900
+
+    ui/gtk3: Mark LANG and FONT as translatable strings
+    
+    BUG=https://github.com/ibus/ibus/issues/1920
+    
+    Review URL: https://codereview.appspot.com/322880043
+
+M	ui/gtk3/emojierapp.vala
+
+commit 290f786b82158e7c087b81946727606cd3424e94
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-04-17 16:00:26 +0900
+
+    ui/gtk3: Fix build failures
+    
+    ibus-ui-emoijer needs to be built at last in ui/gtk3
+    Also fixed po/POTFILES.in for `make dist`
+    Now I moved libibusemojidialog.so and IBusEmojiDialog-1.0.[gir|typelib]
+    and ibus-emoji-dialog-1.0.vapi to noinst because now
+    ibus-ui-emojier is available and they are private libraries.
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/312610043
+
+M	po/POTFILES.in
+M	tools/Makefile.am
+M	ui/gtk3/Makefile.am
+M	ui/gtk3/emojierapp.vala
+
+commit da33672bc738889dcd4ebbec51cb3aa67567f70c
+Author: Peng Wu <alexepico@gmail.com>
+Date:   2017-04-13 12:40:22 +0900
+
+    tools: spawn the process of ibus-ui-emojier
+    
+    BUG=
+    R=Shawn.P.Huang@gmail.com, takao.fujiwara1@gmail.com
+    
+    Review URL: https://codereview.appspot.com/324770043
+    
+    Patch from Peng Wu <alexepico@gmail.com>.
+
+M	bindings/vala/config.vapi
+M	tools/Makefile.am
+M	tools/main.vala
+
+commit 2f8982a0a4b25f98c969c09b81724e44efc41c27
+Author: Peng Wu <alexepico@gmail.com>
+Date:   2017-04-10 15:57:48 +0900
+
+    Make ibus emojier dialog as an unique application
+    
+    Forgot to commit ui/gtk3/emojierapp.vala from the previous commit.
+    
+    BUG=
+    R=takao.fujiwara1@gmail.com
+    
+    Review URL: https://codereview.appspot.com/319650043
+    
+    Patch from Peng Wu <alexepico@gmail.com>.
+
+A	ui/gtk3/emojierapp.vala
+
+commit 648f58a361ea1407f229ed1682486240cc2e5026
+Author: Peng Wu <alexepico@gmail.com>
+Date:   2017-04-10 14:54:08 +0900
+
+    Make ibus emojier dialog as an unique application
+    
+    Because wayland doesn't support clipboard persistence, just hide the dialog; will show the emojier dialog again, when run it again.
+    
+    In next patches, ibus emoji command will just spawn the process of ibus-ui-emojier.
+    
+    BUG=
+    R=takao.fujiwara1@gmail.com
+    
+    Review URL: https://codereview.appspot.com/320450043
+    
+    Patch from Peng Wu <alexepico@gmail.com>.
+
+M	po/POTFILES.in
+M	po/POTFILES.skip
+M	ui/gtk3/Makefile.am
+
+commit cb0a36c254dc7a96b2a984e715f96cc2ec32e2d5
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-04-03 12:24:27 +0900
+
+    src: Enable unicode_alt in EmojiOne json file
+    
+    EmojiOne json file has unicode_alt property which includes
+    emoji modifer characters.
+    
+    Review URL: https://codereview.appspot.com/316420043
+
+M	src/emoji-parser.c
+M	src/ibusemoji.c
+M	src/ibusemoji.h
+M	ui/gtk3/emojier.vala
+
+commit 8b6f9fa531aa9d9b5d6c0184b2294d071f920d7f
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-30 12:08:39 +0900
+
+    ui/gtk3: Enable to type multiple code points on Emojier
+    
+    - Can type multiple Unicode characters with digits and Shift-space
+      keys.  E.g. "1f468 1f468 1f466"
+    - Always show Unicode points of the selected emoji
+    - Removed a function to commit an emoji by typing a digit char since
+      it conflicts with digit annotations, code points but it had enabled
+      with single digits only so not so useful.
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/321820043
+
+M	ui/gtk3/emojier.vala
+
+commit c3168d4701eb4e89094249abaa4f0f83ab24149b
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-29 13:01:28 +0900
+
+    Fix IBusEmojiDialog_1_0_gir_LIBS for --as-needed LDFLAGS
+    
+    The order gets omitted libibus-1.0.la
+    
+    BUG=https://github.com/ibus/ibus/issues/1917
+    
+    Review URL: https://codereview.appspot.com/324720043
+
+M	ui/gtk3/Makefile.am
+
+commit 164300758c70fd3a590788e038de31b6c53d458a
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-28 12:15:26 +0900
+
+    data: Fix a typo
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/321800043
+
+M	data/ibus.schemas.in
+
+commit 0efb1c503d5901bbddcdb6fa73007b364ba4368d
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-27 15:12:42 +0900
+
+    Move language setting from IBusEmojier to ibus-setup
+    
+    The language setting of emoji annotations now can be saved
+    with ibus-setup.
+    Implement `ibus emoji [--font|--lang|--help]`
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/323720043
+
+M	data/ibus.schemas.in
+M	setup/Makefile.am
+A	setup/emojilang.py
+M	setup/main.py
+M	setup/setup.ui
+M	tools/main.vala
+M	ui/gtk3/emojier.vala
+M	ui/gtk3/ibusemojidialog.h
+M	ui/gtk3/panel.vala
+
+commit bd7e0ba297f72ae1e2989743f2426c44df29f3ec
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-21 12:56:23 +0900
+
+    Make more readable error messages if emoji xml files are missed
+    
+    Also Fix CONFIG_CLEAN_FILES for autoreconf
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/320750043
+
+M	configure.ac
+M	src/Makefile.am
+M	src/emoji-parser.c
+M	ui/gtk3/Makefile.am
+
+commit 50e344afaffc29e626dbc27747a1aeee6cccafdf
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-17 12:08:50 +0900
+
+    ui/gtk3: Enable strcasecmp to match emoji annotation
+    
+    Users can type capital annotations.
+    Also shows emoji annotations in the status bar if the
+    typing unicode point matches a emoji character.
+    
+    Review URL: https://codereview.appspot.com/314640043
+
+M	ui/gtk3/emojier.vala
+
+commit 58f6140f427815adc947a5bb5c7dea4f3e315ae8
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-15 11:52:39 +0900
+
+    ui/gtk3: Implement shortcut keys on emoji dialog
+    
+    - Implement Ctrl-f, Ctrl-b, Ctrl-n, Ctrl-p, Ctrl-h, Ctrh-e for
+      cursor movements; forward, back, next, previous, head, end
+      on emoji grid.
+    - Implement Ctrl-a and Shift+arrow for text selection on emoji annotation.
+    - Implement Ctrl-u to delete text on emoji annotation.
+    - Implement to delete a selected text on emoji annotation.
+    - Change to show page indices to candidate indices on emoji.
+    - Sorted emoji categories.
+    - Added timeout of m_enter_notify_enable = false to bring back mouse.
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/315700043
+
+M	ui/gtk3/emojier.vala
+
+commit ab6c38c192cdf22356cbf254b98fb5b3d9d9a680
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-15 11:48:24 +0900
+
+    client/x11: Add XSetIOErrorHandler() for GNOME3 desktop
+    
+    When log into GNOME3 desktop immediately after the system is booted,
+    ibus-daemon is sometimes alive but ibus-x11 is dead after log out
+    the session. Because gdk_x_io_error() is called as the callback of
+    XSetIOErrorHandler() in gtk/gdk/x11/gdkmain-x11.c in ibus-x11.
+    Now I assume the callback is called in logout.
+    
+    BUG=https://github.com/ibus/ibus/issues/1907
+    
+    Review URL: https://codereview.appspot.com/319490043
+
+M	client/x11/main.c
+
+commit fbe3de1789c73a8a175a451b2a6b967f5d3c6514
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-13 12:08:21 +0900
+
+    src: Update emoji-parser to treat tts as emoji description
+    
+    unicode annotation xml files have a 'tts' attribute and seem
+    it is used as the emoji descriptions instead of emoji annotations.
+    This can show the translated descriptions.
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/319480043
+
+M	src/emoji-parser.c
+M	src/ibusemoji.c
+M	src/ibusemoji.h
+M	ui/gtk3/emojier.vala
+
+commit c580845167b54ccab76d8b72bdc797ef8d64d554
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-13 11:58:06 +0900
+
+    ui/gtk3: Fix emoji text entry cusor position
+    
+    Focus on emoji text entry by default
+    Remove internal text buffer and use Gtk.Entry buffer instead.
+    Implement cusor left, right, home, end on emoji annotation preedit.
+    
+    Review URL: https://codereview.appspot.com/313710043
+
+M	ui/gtk3/emojier.vala
+
+commit 31ed31e5303c3946f53b035a63d76f5c1e3cd84a
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-13 11:43:09 +0900
+
+    src: Fix ibus_emoji_dict_load()
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/320350043
+
+M	configure.ac
+M	src/emoji-parser.c
+M	src/ibusemoji.c
+
+commit 9dbea347050ae2ad79d1b53f2ad62a7a2cafadc6
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-09 12:45:20 +0900
+
+    ui/gtk3: Get emoji colors from the theme
+    
+    Get selected and normal text color from the theme.
+    Implement to activate an emoji with mouse motion.
+    Create back button on emoji language chooser dialog.
+    Set row_homogeneous on emoji table.
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/319470043
+
+M	ui/gtk3/Makefile.am
+M	ui/gtk3/candidatearea.vala
+M	ui/gtk3/emojier.vala
+
+commit 7e477d5e0ffe19b6c52558c5b37fdd9cb82c097a
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-09 11:31:21 +0900
+
+    tools: Fix `ibus emoji` SEGV when language is changed.
+    
+    BUG=rhbz#1430290
+    
+    Review URL: https://codereview.appspot.com/317410043
+
+M	tools/main.vala
+
+commit 4e02857ccb41e8e42310e2b1372cdc9248da667c
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-08 11:57:27 +0900
+
+    bus: Add error messages for g_dbus_server_new_sync
+    
+    BUG=https://github.com/ibus/ibus/issues/1901
+    
+    Review URL: https://codereview.appspot.com/319460043
+
+M	bus/server.c
+
+commit 641c3cb5dac87fef392e926b35e1b660c0d34c15
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-07 00:56:19 +0900
+
+    Fix a build failure with --disable-emoji-dict
+    
+    BUG=https://github.com/ibus/ibus/issues/1908
+    
+    Review URL: https://codereview.appspot.com/313690043
+
+M	tools/Makefile.am
+M	tools/main.vala
+
+commit f7f3bc82e480b0bd03ac42ac63baa8748053a819
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-06 18:31:08 +0900
+
+    Release 1.5.15
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/319420043
+
+M	configure.ac
+
+commit c37989acffed8dc66a95deb8b113ac7a1d84e6ee
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-06 18:14:26 +0900
+
+    Add 'ibus emoji' command for no ibus panel desktops
+    
+    This utility can be used on GNOME desktop which shows
+    a gnome-shell icon instead of running ibus-ui-gtk3.
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/318640043
+
+M	Makefile.am
+M	tools/Makefile.am
+M	tools/main.vala
+A	ui/gtk3/IBusEmojiDialog-1.0.metadata
+M	ui/gtk3/Makefile.am
+M	ui/gtk3/emojier.vala
+A	ui/gtk3/ibus-emoji-dialog-1.0.deps
+A	ui/gtk3/ibusemojidialog.h
+M	ui/gtk3/panel.vala
+
+commit 13bf5037c43c6762c29de2038b6abe28d27c5103
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-06 14:05:24 +0900
+
+    setup: Set emoji preview text on font setting
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/317400043
+
+M	setup/main.py
+
+commit 02d99aa00cb4a26a2cfb6098ea27e763e9bb2daa
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-03-05 18:11:28 +0900
+
+    Move emoji implementation from IBusEngineSimple to IBusPanel
+    
+    Currently emoji shortcut key is not customizable and there is
+    no menu item to access emoji typing without shortcut key.
+    Once implementation is moved to IBusPanel, the emoji typing is
+    now avaible for every engine without modifying its codes.
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/317370043
+
+M	bus/inputcontext.c
+M	bus/inputcontext.h
+M	bus/panelproxy.c
+M	configure.ac
+M	data/ibus.schemas.in
+M	po/POTFILES.in
+M	po/POTFILES.skip
+M	setup/main.py
+M	setup/setup.ui
+M	src/Makefile.am
+M	src/emoji-parser.c
+M	src/ibus.h
+A	src/ibusemoji.c
+A	src/ibusemoji.h
+M	src/ibusenginesimple.c
+M	src/ibuspanelservice.c
+M	src/ibuspanelservice.h
+M	src/ibusutil.c
+M	src/ibusutil.h
+M	ui/gtk3/Makefile.am
+A	ui/gtk3/emojier.vala
+M	ui/gtk3/keybindingmanager.vala
+M	ui/gtk3/panel.vala
+
+commit 0a244817338c943ffe03cd5b6ecf094ffd156f80
+Author: Eric R. Schulz <eric@ers35.com>
+Date:   2017-03-01 13:25:56 +0900
+
+    Fix memory leak in IBus.Bus.get_global_engine()
+    
+    Fix the memory leak by setting the transfer mode annotation to full.
+    
+    BUG=https://github.com/ibus/ibus/pull/1899
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/312520043
+    
+    Patch from Eric R. Schulz <eric@ers35.com>.
+
+M	src/ibusbus.h
+
+commit 993289f4667bed50e8d552870df6f05f1eaf5e35
+Author: Marc-Antoine Perennou <Marc-Antoine@Perennou.com>
+Date:   2017-02-27 14:29:48 +0900
+
+    bus: fix service file when --disable-xim is specified
+    
+    BUG=https://github.com/ibus/ibus/pull/1897
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/319390043
+    
+    Patch from Marc-Antoine Perennou <Marc-Antoine@Perennou.com>.
+
+M	bus/Makefile.am
+M	bus/org.freedesktop.IBus.service.in
+M	configure.ac
+
+commit fcb90f7a96d7b1b6be5b7e274a0ebe3058207b50
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-02-20 12:00:14 +0900
+
+    ui/gtk3: Fix typo in switcher.get_input_context_path()
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/318590043
+
+M	ui/gtk3/panel.vala
+M	ui/gtk3/switcher.vala
+
+commit b498ff571049bec2b3f3bf6f1747f0af18ff4764
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-02-13 12:19:45 +0900
+
+    ui/gtk3: Refactor to set panel icon
+    
+    Fix panel icon with icon_prop_key when use_global_engine is false.
+    Also enhance to set engines when type Super+space quickly.
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/314450043
+
+M	ui/gtk3/panel.vala
+M	ui/gtk3/switcher.vala
+
+commit b8f55532704e256832b50e96efa5821b960a20a1
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-02-06 13:36:50 +0900
+
+    ui/gtk3: Free normal_color in CandidateArea
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/314410043
+
+M	ui/gtk3/candidatearea.vala
+
+commit bdc83bcbe3c9f07a267499c297db12c68af82fa2
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-01-27 14:42:33 +0900
+
+    ui/gtk3: Refactor color of a selected candidate on lookup window
+    
+    Recenly 'background-color' CSS property does not indicate the actual
+    background color in GTK 3.22 and IBus uses '-gtk-secondary-caret-color'
+    CSS property instead.
+    But I found every themes do not have '-gtk-secondary-caret-color'
+    CSS property even if the latest GTK is used. Some themes, e.g.
+    distro themes or third party themes,  uses 'background-color' CSS
+    property for the background color of the selected text.
+    
+    This patch compares the colors of the normal 'background-color' and
+    the selected 'background-color' and in case they are different,
+    uses the selected 'background-color', otherwise the selected
+    '-gtk-secondary-caret-color'.
+    Also now IBus checks the colors of a dummy GtkTextView rather than
+    ones of GtkLabel on the lookup window because some themes
+    do not configure the selected bacground color in GtkLabel.
+    
+    BUG=https://github.com/ibus/ibus/issues/1871
+    
+    Review URL: https://codereview.appspot.com/314280043
+
+M	ui/gtk3/candidatearea.vala
+
+commit 371535b981e5f99deeab9437e49eb7209b1a561a
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-01-20 18:51:42 +0900
+
+    util/IMdkit: Fix the range of memset() in i18nIc.c
+    
+    BUG=https://github.com/ibus/ibus/issues/1891
+    
+    Review URL: https://codereview.appspot.com/320010043
+
+M	util/IMdkit/i18nIc.c
+
+commit aacf5adbba9b9b34a1ec07005e670d209513fb5b
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-01-11 12:16:59 +0900
+
+    ui/gtk3: Fix panel CSS format for GTK 3.22
+    
+    GtkCssProvider no longer works with the Pango format in GTK 3.22 and
+    need to use the CSS format.
+    
+    BUG=https://github.com/ibus/ibus/issues/1879
+    
+    Review URL: https://codereview.appspot.com/319960043
+
+M	ui/gtk3/panel.vala
+
+commit f80dcc978fdc9a3d7853434e86f4ee02c2a92b33
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-01-11 12:11:22 +0900
+
+    src: Avoid emoji typing during Unicode typing
+    
+    If 'sk' layout is used, digit keys need Shift key and
+    Unicode typing of U+1AE requires Shift key after Ctrl-Shift-u.
+    This patch does not enable the emoji typing with Ctrl-Shift-e
+    during Unicode typing.
+    
+    BUG=rhbz#1403985
+    
+    Review URL: https://codereview.appspot.com/311510043
+
+M	src/ibusenginesimple.c
+
+commit 52b7272d97a881a8a6c872e28c1970ec47cb4337
+Author: Peng Wu <alexepico@gmail.com>
+Date:   2016-10-12 15:17:24 +0900
+
+    ui/gtk3: support scroll event in candidates panel
+    
+    When press scroll button of mouse on candidates,
+    automatically cursor up/cursor down.
+    
+    BUG=
+    R=takao.fujiwara1@gmail.com
+    
+    Review URL: https://codereview.appspot.com/302700043
+    
+    Patch from Peng Wu <alexepico@gmail.com>.
+
+M	ui/gtk3/candidatearea.vala
+M	ui/gtk3/panel.vala
+
+commit faf5e3c56d746d2f171618d552cff9149bb1d952
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2016-10-06 15:37:25 +0900
+
+    src: Enable PageUp, PageDown, CandidateClick buttons with emoji lookup
+    
+    BUG=rhbz#1380691
+    
+    Review URL: https://codereview.appspot.com/312760043
+
+M	src/ibusenginesimple.c
+
+commit 4d86e59d0245df6d3a6aa1a32cdf7702b6dc7f0d
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2016-10-06 15:35:03 +0900
+
+    src: Enable to type digit to commit emoji on lookup window
+    
+    Enables to commit an emoji on the lookup window by a digit key.
+    Before this patch, Ctrl-Shift-U, "11" shows emojis of 11 clock.
+    After this patch, Ctrl-Shift-U, "11" commits an emoji of 1 clock.
+    Probably Ctrl-Shift-U, "clock" can be a workaround.
+    
+    BUG=rhbz#1380690
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/309640043
+
+M	src/ibusenginesimple.c
+
+commit e795eda1a3b054e6fdc921bfe04c83733761905f
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2016-10-06 15:28:24 +0900
+
+    src: Hide lookup table if emoji annotation does not hit
+    
+    If emoji annotation hits "aaa" but not "aaab", hide the lookup
+    window with "aaab".
+    Also hide the lookup window with Escape key.
+    
+    BUG=rhbz#1380675
+    
+    Review URL: https://codereview.appspot.com/307400043
+
+M	src/ibusenginesimple.c
+
+commit af66ace771fc16a23e7a5841d2f0bd79789e009d
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2016-09-14 13:34:44 +0900
+
+    Fix warning messages during panel resizes
+    
+    Move gtk_window_resize().
+    Seems calling gtk_window_resize() is not good during
+    gtk_widget_get_preferred_width/height() is called.
+    
+    Review URL: https://codereview.appspot.com/308320043
+
+M	ui/gtk3/candidatepanel.vala
+M	ui/gtk3/propertypanel.vala
+
+commit 708e5e51da696f42f34d2921c83455f1824ea40f
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2016-09-09 17:48:20 +0900
+
+    Update translations
+    
+    Update po/LINGUAS po/de.po po/es.po po/fr.po po/mn.po po/pl.po
+           po/zh_HK.po po/zh_TW.po
+    
+    R=shawn.p.huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/302610043
+
+M	po/LINGUAS
+A	po/cs.po
+M	po/de.po
+M	po/es.po
+M	po/fr.po
+A	po/mn.po
+M	po/pl.po
+M	po/pt_BR.po
+M	po/zh_HK.po
+M	po/zh_TW.po
+
+commit ceb6a9b47deaa898d8151606831669a7446ad382
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2016-09-06 13:05:35 +0900
+
+    ui/gtk3: Fix radio buttons on Property Panel
+    
+    Use gtk_container_remove() instead g_object_unref() because
+    if an widget has a parent, it's not destroyed and the signal is not
+    sent to the parent since the parent was destroyed.
+    
+    R=shawn.p.huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/302650043
+
+M	ui/gtk3/propertypanel.vala
+
+commit 997e5cb1b100c6af267b8121445db1db7e580d5f
+Author: Eric R. Schulz <eric@ers35.com>
+Date:   2016-08-18 11:17:11 +0900
+
+    Fix GVariant leaks
+    
+    The expectation is that g_dbus_message_set_body() takes ownership of the
+    GVariant, but this does not happen if the BusInputContext connection is NULL.
+    Call g_variant_unref() in that case to free the memory. Alternatively, a
+    GVariantBuilder could be used.
+    
+    BUG=https://github.com/ibus/ibus/pull/1872
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/307050043
+    
+    Patch from Eric R. Schulz <eric@ers35.com>.
+
+M	bus/inputcontext.c
+
 commit c3ceed40f644f9fb0517a27592b6fd022d518e34
 Author: fujiwarat <takao.fujiwara1@gmail.com>
 Date:   2016-08-05 12:36:16 +0900
@@ -994,8 +1967,7 @@ M	engine/Makefile.am
 M	engine/main.vala
 D	engine/test-compose.vala
 M	src/Makefile.am
-D	src/gencomposetable.c
-A	src/ibuscomposetable.c
+R051	src/gencomposetable.c	src/ibuscomposetable.c
 M	src/ibuscomposetable.h
 M	src/ibusenginesimple.c
 M	src/ibusenginesimple.h
@@ -4324,7 +5296,7 @@ M	configure.ac
 M	ibus.spec.in
 
 commit 928351ee88778cf97136d1a7dbc940390c23ddfc
-Merge: 175df22 4d7f4ad
+Merge: 175df226 4d7f4ad5
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2013-03-25 07:29:41 -0700
 
@@ -4382,25 +5354,19 @@ Date:   2013-03-10 14:55:42 +0900
     Review URL: https://codereview.appspot.com/7445048
 
 M	conf/dconf/Makefile.am
-A	conf/dconf/dconf.xml.in
-D	conf/dconf/dconf.xml.in.in
+R080	conf/dconf/dconf.xml.in.in	conf/dconf/dconf.xml.in
 M	conf/gconf/Makefile.am
-A	conf/gconf/gconf.xml.in
-D	conf/gconf/gconf.xml.in.in
+R080	conf/gconf/gconf.xml.in.in	conf/gconf/gconf.xml.in
 M	conf/memconf/Makefile.am
-A	conf/memconf/memconf.xml.in
-D	conf/memconf/memconf.xml.in.in
+R080	conf/memconf/memconf.xml.in.in	conf/memconf/memconf.xml.in
 M	configure.ac
 M	engine/Makefile.am
 M	engine/gensimple.py
-A	engine/simple.xml.in
-D	engine/simple.xml.in.in
+R099	engine/simple.xml.in.in	engine/simple.xml.in
 M	ui/gtk2/Makefile.am
-A	ui/gtk2/gtkpanel.xml.in
-D	ui/gtk2/gtkpanel.xml.in.in
+R090	ui/gtk2/gtkpanel.xml.in.in	ui/gtk2/gtkpanel.xml.in
 M	ui/gtk3/Makefile.am
-A	ui/gtk3/gtkpanel.xml.in
-D	ui/gtk3/gtkpanel.xml.in.in
+R080	ui/gtk3/gtkpanel.xml.in.in	ui/gtk3/gtkpanel.xml.in
 
 commit cff35929a9330081db25a86a8258489a27d4bdd5
 Author: fujiwarat <takao.fujiwara1@gmail.com>
@@ -5450,9 +6416,8 @@ Date:   2012-07-19 09:57:01 +0900
     Review URL: https://codereview.appspot.com/6426044
 
 M	conf/dconf/Makefile.am
-A	conf/dconf/config-private.h
+R091	conf/dconf/config.h	conf/dconf/config-private.h
 M	conf/dconf/config.c
-D	conf/dconf/config.h
 M	conf/dconf/main.c
 M	configure.ac
 
@@ -6353,7 +7318,7 @@ Date:   2012-02-27 13:34:15 +0900
 M	ui/gtk3/switcher.vala
 
 commit 99e4d9d7af0bdeaf396bbd26cac949eca7cdfe1d
-Merge: 1b5b406 7975fa0
+Merge: 1b5b4067 7975fa01
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2012-02-26 16:28:40 -0500
 
@@ -6532,8 +7497,7 @@ Date:   2012-01-11 22:18:10 -0500
 
 M	Makefile.am
 M	configure.ac
-A	xinput-ibus
-D	xinput-ibus.in
+R073	xinput-ibus.in	xinput-ibus
 
 commit ab6b68c2d273336ead3492954844ce244e15480a
 Author: Peng Huang <shawn.p.huang@gmail.com>
@@ -6791,37 +7755,22 @@ Date:   2011-12-17 15:20:29 -0500
 
 M	Makefile.am
 A	conf/Makefile.am
-A	conf/dconf/Makefile.am
-A	conf/dconf/config.c
-A	conf/dconf/config.h
-A	conf/dconf/dconf.xml.in.in
-A	conf/dconf/main.c
-A	conf/gconf/Makefile.am
-A	conf/gconf/config.c
-A	conf/gconf/config.h
-A	conf/gconf/gconf.xml.in.in
-A	conf/gconf/main.c
-A	conf/memconf/Makefile.am
-A	conf/memconf/config.c
-A	conf/memconf/config.h
-A	conf/memconf/main.c
-A	conf/memconf/memconf.xml.in.in
+R100	dconf/Makefile.am	conf/dconf/Makefile.am
+R100	dconf/config.c	conf/dconf/config.c
+R100	dconf/config.h	conf/dconf/config.h
+R100	dconf/dconf.xml.in.in	conf/dconf/dconf.xml.in.in
+R100	dconf/main.c	conf/dconf/main.c
+R100	gconf/Makefile.am	conf/gconf/Makefile.am
+R100	gconf/config.c	conf/gconf/config.c
+R100	gconf/config.h	conf/gconf/config.h
+R100	gconf/gconf.xml.in.in	conf/gconf/gconf.xml.in.in
+R100	gconf/main.c	conf/gconf/main.c
+R100	memconf/Makefile.am	conf/memconf/Makefile.am
+R100	memconf/config.c	conf/memconf/config.c
+R100	memconf/config.h	conf/memconf/config.h
+R100	memconf/main.c	conf/memconf/main.c
+R100	memconf/memconf.xml.in.in	conf/memconf/memconf.xml.in.in
 M	configure.ac
-D	dconf/Makefile.am
-D	dconf/config.c
-D	dconf/config.h
-D	dconf/dconf.xml.in.in
-D	dconf/main.c
-D	gconf/Makefile.am
-D	gconf/config.c
-D	gconf/config.h
-D	gconf/gconf.xml.in.in
-D	gconf/main.c
-D	memconf/Makefile.am
-D	memconf/config.c
-D	memconf/config.h
-D	memconf/main.c
-D	memconf/memconf.xml.in.in
 
 commit 07c3d35786349db0f0b561e4ccb5051b71c8b0ed
 Author: Peng Huang <shawn.p.huang@gmail.com>
@@ -6972,36 +7921,21 @@ Date:   2011-12-14 15:21:49 -0500
 
 M	configure.ac
 M	ui/Makefile.am
-D	ui/gtk/Makefile.am
-D	ui/gtk/candidatepanel.py
-D	ui/gtk/engineabout.py
-D	ui/gtk/gtkpanel.xml.in.in
-D	ui/gtk/handle.py
-D	ui/gtk/i18n.py
-D	ui/gtk/ibus-ui-gtk.in
-D	ui/gtk/icon.py
-D	ui/gtk/languagebar.py
-D	ui/gtk/main.py
-D	ui/gtk/menu.py
-D	ui/gtk/notifications.py
-D	ui/gtk/panel.py
-D	ui/gtk/propitem.py
-D	ui/gtk/toolitem.py
-A	ui/gtk2/Makefile.am
-A	ui/gtk2/candidatepanel.py
-A	ui/gtk2/engineabout.py
-A	ui/gtk2/gtkpanel.xml.in.in
-A	ui/gtk2/handle.py
-A	ui/gtk2/i18n.py
-A	ui/gtk2/ibus-ui-gtk.in
-A	ui/gtk2/icon.py
-A	ui/gtk2/languagebar.py
-A	ui/gtk2/main.py
-A	ui/gtk2/menu.py
-A	ui/gtk2/notifications.py
-A	ui/gtk2/panel.py
-A	ui/gtk2/propitem.py
-A	ui/gtk2/toolitem.py
+R100	ui/gtk/Makefile.am	ui/gtk2/Makefile.am
+R100	ui/gtk/candidatepanel.py	ui/gtk2/candidatepanel.py
+R100	ui/gtk/engineabout.py	ui/gtk2/engineabout.py
+R100	ui/gtk/gtkpanel.xml.in.in	ui/gtk2/gtkpanel.xml.in.in
+R100	ui/gtk/handle.py	ui/gtk2/handle.py
+R100	ui/gtk/i18n.py	ui/gtk2/i18n.py
+R100	ui/gtk/ibus-ui-gtk.in	ui/gtk2/ibus-ui-gtk.in
+R100	ui/gtk/icon.py	ui/gtk2/icon.py
+R100	ui/gtk/languagebar.py	ui/gtk2/languagebar.py
+R100	ui/gtk/main.py	ui/gtk2/main.py
+R100	ui/gtk/menu.py	ui/gtk2/menu.py
+R100	ui/gtk/notifications.py	ui/gtk2/notifications.py
+R100	ui/gtk/panel.py	ui/gtk2/panel.py
+R100	ui/gtk/propitem.py	ui/gtk2/propitem.py
+R100	ui/gtk/toolitem.py	ui/gtk2/toolitem.py
 
 commit ca0d5c22eb78e4cdce79f573374ef3d339740d6d
 Author: Peng Huang <shawn.p.huang@gmail.com>
@@ -8420,7 +9354,7 @@ M	src/tests/Makefile.am
 A	src/tests/ibus-config.c
 
 commit cdcf5c74d348432415326ab42696e8b23f06c3b4
-Merge: 52425da d059132
+Merge: 52425daa d0591328
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2011-06-08 07:21:50 -0700
 
@@ -8540,8 +9474,7 @@ Date:   2011-05-03 09:55:39 -0400
 
 M	Makefile.am
 M	debian/control
-D	debian/ibus-gtk.install
-A	debian/ibus-gtk2.install
+R100	debian/ibus-gtk.install	debian/ibus-gtk2.install
 M	debian/libibus-1.0-0.symbols
 M	debian/rules
 M	debian/xinput/ibus
@@ -11157,10 +12090,8 @@ Date:   2010-10-29 17:08:38 +0900
     Fix some problems in debian packages.
 
 M	debian/control
-A	debian/libibus-1.0-0.install
-A	debian/libibus-1.0-0.symbols
-D	debian/libibus1.install
-D	debian/libibus1.symbols
+R100	debian/libibus1.install	debian/libibus-1.0-0.install
+R099	debian/libibus1.symbols	debian/libibus-1.0-0.symbols
 M	debian/rules
 
 commit d00fb1d1ce308f4848ede89ca4ff3cd3994923d6
@@ -11193,8 +12124,7 @@ M	memconf/Makefile.am
 A	memconf/config.c
 D	memconf/config.cc
 M	memconf/config.h
-A	memconf/main.c
-D	memconf/main.cc
+R050	memconf/main.cc	memconf/main.c
 M	src/Makefile.am
 
 commit a9b24316d5deb7a1358885ea37f76cd1dc68ef13
@@ -11270,8 +12200,7 @@ Date:   2010-10-20 17:15:56 +0900
     wip.
 
 M	bindings/vala/test/Makefile
-A	bindings/vala/test/enchant.vala
-D	bindings/vala/test/test.vala
+R097	bindings/vala/test/test.vala	bindings/vala/test/enchant.vala
 
 commit 3b2bf6f4a389fb2a10d9da9a9a55430ebfca882d
 Author: Peng Huang <shawn.p.huang@gmail.com>
@@ -11317,20 +12246,13 @@ Date:   2010-10-19 18:23:19 +0900
 
 M	Makefile.am
 M	bindings/vala/Makefile.am
-A	bindings/vala/ibus-1.0.vapi
-A	bindings/vala/ibus-1.0/ibus-1.0-custom.vala
-A	bindings/vala/ibus-1.0/ibus-1.0.excludes
-A	bindings/vala/ibus-1.0/ibus-1.0.files
-A	bindings/vala/ibus-1.0/ibus-1.0.gi
-A	bindings/vala/ibus-1.0/ibus-1.0.metadata
-A	bindings/vala/ibus-1.0/ibus-1.0.namespace
-D	bindings/vala/ibus-2.0.vapi
-D	bindings/vala/ibus-2.0/ibus-2.0-custom.vala
-D	bindings/vala/ibus-2.0/ibus-2.0.excludes
-D	bindings/vala/ibus-2.0/ibus-2.0.files
-D	bindings/vala/ibus-2.0/ibus-2.0.gi
-D	bindings/vala/ibus-2.0/ibus-2.0.metadata
-D	bindings/vala/ibus-2.0/ibus-2.0.namespace
+R100	bindings/vala/ibus-2.0.vapi	bindings/vala/ibus-1.0.vapi
+R100	bindings/vala/ibus-2.0/ibus-2.0-custom.vala	bindings/vala/ibus-1.0/ibus-1.0-custom.vala
+R100	bindings/vala/ibus-2.0/ibus-2.0.excludes	bindings/vala/ibus-1.0/ibus-1.0.excludes
+R100	bindings/vala/ibus-2.0/ibus-2.0.files	bindings/vala/ibus-1.0/ibus-1.0.files
+R100	bindings/vala/ibus-2.0/ibus-2.0.gi	bindings/vala/ibus-1.0/ibus-1.0.gi
+R098	bindings/vala/ibus-2.0/ibus-2.0.metadata	bindings/vala/ibus-1.0/ibus-1.0.metadata
+R100	bindings/vala/ibus-2.0/ibus-2.0.namespace	bindings/vala/ibus-1.0/ibus-1.0.namespace
 M	bindings/vala/test/Makefile
 M	bus/Makefile.am
 M	client/gtk2/Makefile.am
@@ -11338,15 +12260,13 @@ M	client/x11/Makefile.am
 M	configure.ac
 M	debian/clean
 M	debian/control
-A	debian/libibus1.install
+R100	debian/libibus2.install	debian/libibus1.install
 A	debian/libibus1.symbols
-D	debian/libibus2.install
 D	debian/libibus2.symbols
 M	debian/rules
 M	docs/reference/ibus/Makefile.am
 M	gconf/Makefile.am
-A	ibus-1.0.pc.in
-D	ibus-2.0.pc.in
+R064	ibus-2.0.pc.in	ibus-1.0.pc.in
 M	ibus/_config.py.in
 M	ibus/common.py
 M	memconf/Makefile.am
@@ -11401,13 +12321,13 @@ Date:   2010-10-19 10:26:08 +0900
     
     Conflicts:
     
-    	bus/engineproxy.c
-    	bus/factoryproxy.c
-    	bus/ibusimpl.c
-    	src/ibuscomponent.c
-    	src/ibusenginedesc.c
-    	src/test-bus.c
-    	src/tests/ibus-global-engine.c
+            bus/engineproxy.c
+            bus/factoryproxy.c
+            bus/ibusimpl.c
+            src/ibuscomponent.c
+            src/ibusenginedesc.c
+            src/test-bus.c
+            src/tests/ibus-global-engine.c
 
 M	bus/engineproxy.c
 M	bus/factoryproxy.c
@@ -11430,20 +12350,14 @@ Date:   2010-06-16 23:47:09 +0800
 M	Makefile.am
 M	autogen.sh
 M	bindings/vala/Makefile.am
-D	bindings/vala/ibus-1.0.vapi
 D	bindings/vala/ibus-1.0/ibus-1.0-custom.vala
-D	bindings/vala/ibus-1.0/ibus-1.0.excludes
-D	bindings/vala/ibus-1.0/ibus-1.0.files
-D	bindings/vala/ibus-1.0/ibus-1.0.gi
-D	bindings/vala/ibus-1.0/ibus-1.0.metadata
-D	bindings/vala/ibus-1.0/ibus-1.0.namespace
-A	bindings/vala/ibus-2.0.vapi
+R100	bindings/vala/ibus-1.0.vapi	bindings/vala/ibus-2.0.vapi
 A	bindings/vala/ibus-2.0/ibus-2.0-custom.vala
-A	bindings/vala/ibus-2.0/ibus-2.0.excludes
-A	bindings/vala/ibus-2.0/ibus-2.0.files
-A	bindings/vala/ibus-2.0/ibus-2.0.gi
-A	bindings/vala/ibus-2.0/ibus-2.0.metadata
-A	bindings/vala/ibus-2.0/ibus-2.0.namespace
+R100	bindings/vala/ibus-1.0/ibus-1.0.excludes	bindings/vala/ibus-2.0/ibus-2.0.excludes
+R100	bindings/vala/ibus-1.0/ibus-1.0.files	bindings/vala/ibus-2.0/ibus-2.0.files
+R100	bindings/vala/ibus-1.0/ibus-1.0.gi	bindings/vala/ibus-2.0/ibus-2.0.gi
+R100	bindings/vala/ibus-1.0/ibus-1.0.metadata	bindings/vala/ibus-2.0/ibus-2.0.metadata
+R100	bindings/vala/ibus-1.0/ibus-1.0.namespace	bindings/vala/ibus-2.0/ibus-2.0.namespace
 M	bindings/vala/test/Makefile
 M	bus/Makefile.am
 M	bus/connection.c
@@ -11488,8 +12402,7 @@ M	gconf/Makefile.am
 M	gconf/config.c
 M	gconf/config.h
 M	gconf/main.c
-D	ibus-1.0.pc.in
-A	ibus-2.0.pc.in
+R060	ibus-1.0.pc.in	ibus-2.0.pc.in
 M	ibus.spec.in
 M	ibus/common.py
 A	m4/introspection.m4
@@ -11596,25 +12509,20 @@ M	src/ibustypes.h
 M	src/ibusxml.h
 D	src/test-attribute.c
 D	src/test-bus.c
-D	src/test-engine.c
-D	src/test-global-engine.c
-D	src/test-keymap.c
 D	src/test-keynames.c
 D	src/test-lookuptable.c
-D	src/test-proxy.c
-D	src/test-server.c
 D	src/test-text.c
 A	src/tests/Makefile.am
 A	src/tests/ibus-bus.c
 A	src/tests/ibus-configservice.c
-A	src/tests/ibus-engine.c
+R100	src/test-engine.c	src/tests/ibus-engine.c
 A	src/tests/ibus-factory.c
-A	src/tests/ibus-global-engine.c
-A	src/tests/ibus-keymap.c
+R098	src/test-global-engine.c	src/tests/ibus-global-engine.c
+R100	src/test-keymap.c	src/tests/ibus-keymap.c
 A	src/tests/ibus-keynames.c
-A	src/tests/ibus-proxy.c
+R100	src/test-proxy.c	src/tests/ibus-proxy.c
 A	src/tests/ibus-serializable.c
-A	src/tests/ibus-server.c
+R100	src/test-server.c	src/tests/ibus-server.c
 A	src/tests/ibus-share.c
 
 commit 0f6fd61b6ee06e070a739e5315318e6af2b72ddd
@@ -12998,14 +13906,14 @@ Date:   2010-06-05 20:44:32 +0800
 M	client/gtk2/ibusimcontext.h
 
 commit 190074f40707c0a2aa8ba7156217121a3d5023bd
-Merge: 2d6eeb6 683f8d0
+Merge: 2d6eeb67 683f8d03
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2010-06-05 09:41:30 +0800
 
     Merge branch 'async_process_key_event'
 
 commit 2d6eeb67267c65a9bc7c537d80a6970121af714a
-Merge: 3f64078 9dabf25
+Merge: 3f640787 9dabf25c
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2010-06-05 09:41:10 +0800
 
@@ -13036,7 +13944,7 @@ Date:   2010-06-04 12:01:15 +0200
 M	po/fr.po
 
 commit 72b07456b95198201fae43c222a8aaecad453ab9
-Merge: 42b31b8 978325d
+Merge: 42b31b80 978325de
 Author: Julien Humbert <julroy67@gmail.com>
 Date:   2010-06-04 11:26:07 +0200
 
@@ -13448,9 +14356,8 @@ M	debian/changelog
 A	debian/changelog.in
 M	debian/clean
 M	debian/control
-D	debian/libibus1.install
 D	debian/libibus1.symbols
-A	debian/libibus2.install
+R100	debian/libibus1.install	debian/libibus2.install
 A	debian/libibus2.symbols
 A	debian/patches/00list
 A	debian/patches/01_ubuntu_desktop.dpatch
@@ -13572,8 +14479,7 @@ Date:   2010-05-10 09:09:42 +0800
     Make version in ibus-docs configurable.
 
 M	configure.ac
-D	docs/reference/ibus/ibus-docs.sgml
-A	docs/reference/ibus/ibus-docs.sgml.in
+R098	docs/reference/ibus/ibus-docs.sgml	docs/reference/ibus/ibus-docs.sgml.in
 
 commit facc441f48a9f6ed385578106daa1eef7e1cd8c5
 Author: Peng Huang <shawn.p.huang@gmail.com>
@@ -13703,7 +14609,7 @@ Date:   2010-05-04 11:16:31 +0800
 M	ibus-1.0.pc.in
 
 commit d8d386f6bd2823e96e0380e065ccc0b522b7e9e6
-Merge: 1a60516 80c35b5
+Merge: 1a60516d 80c35b5f
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2010-05-04 07:29:45 +0800
 
@@ -14294,7 +15200,7 @@ Date:   2010-03-30 12:55:27 +0800
 M	configure.ac
 
 commit 06b8aeabdbd347396ea5526abca70229cb2a47e9
-Merge: 39782a6 2b25925
+Merge: 39782a6a 2b25925d
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2010-03-30 12:49:27 +0800
 
@@ -14426,7 +15332,7 @@ Date:   2010-03-22 21:21:36 +0800
 M	configure.ac
 
 commit a0988fc77bf1ba472c7b75b0321f1550f3e824c7
-Merge: 6af061d 1d01af4
+Merge: 6af061df 1d01af4b
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2010-03-22 16:12:00 +0800
 
@@ -14578,7 +15484,7 @@ Date:   2010-02-24 09:57:41 +0800
 M	src/ibusproxy.h
 
 commit 12d98ba000f29027b2d33cdef719906bbcb0e0b8
-Merge: 80077fe 5454785
+Merge: 80077fe1 54547855
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2010-02-23 13:27:29 +0800
 
@@ -14986,7 +15892,7 @@ M	debian/changelog
 M	debian/libibus1.symbols
 
 commit 90a9b33c336dcd067b9289de11f5f33c5bde2c19
-Merge: b873dec 80f5d32
+Merge: b873dec8 80f5d321
 Author: Peng Huang <phuang@phuang-laptop.(none)>
 Date:   2010-01-29 21:15:20 +0800
 
@@ -15114,7 +16020,7 @@ M	bus/inputcontext.c
 M	bus/panelproxy.c
 
 commit 90553c93bb21387b257ce3e36ff8f6bfed521146
-Merge: 7c842d9 59b2900
+Merge: 7c842d9a 59b2900f
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2010-01-27 14:26:02 +0800
 
@@ -15946,8 +16852,7 @@ Date:   2009-12-20 18:37:21 +0800
     Fix build rpm errors.
 
 M	configure.ac
-D	xinput-ibus
-A	xinput-ibus.in
+R070	xinput-ibus	xinput-ibus.in
 
 commit 8b0d36cf4202b79d965095817c04354e069e25eb
 Author: Peng Huang <shawn.p.huang@gmail.com>
@@ -16010,7 +16915,7 @@ Date:   2009-12-14 17:13:37 +0800
 M	data/keymaps/kr
 
 commit f20212a9c7444aa5835f542620352d04f44beaac
-Merge: 7645a2f abac005
+Merge: 7645a2f4 abac005c
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2009-12-14 16:41:37 +0800
 
@@ -16062,8 +16967,7 @@ Date:   2009-12-14 15:14:51 +0800
 
     Move specification from doc to docs
 
-D	doc/specification
-A	docs/specification
+R100	doc/specification	docs/specification
 
 commit 49524f3ee29c0560656ada984e49b0a9643c75d7
 Author: Peng Huang <shawn.p.huang@gmail.com>
@@ -16553,7 +17457,7 @@ Date:   2009-12-05 12:21:28 +0800
 M	configure.ac
 
 commit 89521b240ca3ff519488fbcb0c4f04c7d3ea83c1
-Merge: 7a9f000 c57f7dd
+Merge: 7a9f000a c57f7dd9
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2009-12-05 12:15:00 +0800
 
@@ -16808,7 +17712,7 @@ Date:   2009-11-12 14:31:09 +1000
 M	src/ibusbus.c
 
 commit 0058d0f6a91b78845b3a9831b74a7fd2050a5ccf
-Merge: 4b2c6ed d494b47
+Merge: 4b2c6ed7 d494b47e
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2009-11-12 08:38:08 +1000
 
@@ -17466,26 +18370,17 @@ Date:   2009-10-13 10:22:06 +0800
 
     Update some icons.
 
-A	data/icons/16/ibus-keyboard.png
-D	data/icons/16/ibus-off.png
-A	data/icons/22/ibus-keyboard.png
-D	data/icons/22/ibus-off.png
-A	data/icons/24/ibus-keyboard.png
-D	data/icons/24/ibus-off.png
-A	data/icons/32/ibus-keyboard.png
-D	data/icons/32/ibus-off.png
-A	data/icons/48/ibus-keyboard.png
-D	data/icons/48/ibus-off.png
+R100	data/icons/16/ibus-off.png	data/icons/16/ibus-keyboard.png
+R100	data/icons/22/ibus-off.png	data/icons/22/ibus-keyboard.png
+R100	data/icons/24/ibus-off.png	data/icons/24/ibus-keyboard.png
+R100	data/icons/32/ibus-off.png	data/icons/32/ibus-keyboard.png
+R100	data/icons/48/ibus-off.png	data/icons/48/ibus-keyboard.png
 M	data/icons/Makefile.am
-D	data/icons/ibus-engine.svg
 D	data/icons/ibus-off.svg
-D	data/icons/ibus-setup.svg
-D	data/icons/ibus.svg
-A	data/icons/scalable/ibus-engine.svg
-A	data/icons/scalable/ibus-keyboard.svg
-D	data/icons/scalable/ibus-off.svg
-A	data/icons/scalable/ibus-setup.svg
-A	data/icons/scalable/ibus.svg
+R100	data/icons/ibus-engine.svg	data/icons/scalable/ibus-engine.svg
+R100	data/icons/scalable/ibus-off.svg	data/icons/scalable/ibus-keyboard.svg
+R100	data/icons/ibus-setup.svg	data/icons/scalable/ibus-setup.svg
+R100	data/icons/ibus.svg	data/icons/scalable/ibus.svg
 M	ibus.spec.in
 M	setup/setup.ui
 M	ui/gtk/panel.py
@@ -18367,8 +19262,7 @@ Date:   2009-08-26 16:57:40 +0800
     Rename icon ibus-keyboard to ibus-off
 
 M	data/icons/Makefile.am
-D	data/icons/ibus-keyboard.svg
-A	data/icons/ibus-off.svg
+R100	data/icons/ibus-keyboard.svg	data/icons/ibus-off.svg
 M	ui/gtk/panel.py
 
 commit e10aff2bd97dee1cdbc738500936ef2e39132702
@@ -18378,8 +19272,7 @@ Date:   2009-08-26 15:53:29 +0800
     Use icon name instead of the icon path in source code.
 
 M	data/icons/Makefile.am
-D	data/icons/engine-default.svg
-A	data/icons/ibus-engine.svg
+R100	data/icons/engine-default.svg	data/icons/ibus-engine.svg
 M	ui/gtk/panel.py
 
 commit a2e981a07dde4a7a36a88df452d43ccb31cbfeef
@@ -18449,7 +19342,7 @@ Date:   2009-08-24 21:24:52 +0800
 M	src/test-keymap.c
 
 commit 7444c329d719687059280259b12d7bce95150c3d
-Merge: c06938c cca94cf
+Merge: c06938c8 cca94cfa
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2009-08-24 16:11:07 +0800
 
@@ -18893,7 +19786,7 @@ Date:   2009-07-21 10:43:58 +0800
 M	bus/ibusimpl.c
 
 commit 01b3391e99f63762e3498f901d65d70c65d72352
-Merge: 306f615 708737a
+Merge: 306f615f 708737a8
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2009-07-21 10:42:39 +0800
 
@@ -18908,7 +19801,7 @@ Date:   2009-07-19 12:50:22 +0800
 M	src/ibusshare.c
 
 commit e35f363a366d5fc78d7f0851348f8cc86924cce5
-Merge: cf56e57 2ec3479
+Merge: cf56e576 2ec3479e
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2009-07-19 09:40:42 +0800
 
@@ -20122,7 +21015,7 @@ M	po/LINGUAS
 M	po/zh_TW.po
 
 commit b666ce4f9dfedffbfc16561948cf550f5e356764
-Merge: 3b3f6ac 8825754
+Merge: 3b3f6ac8 88257549
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2009-04-28 15:40:24 +0800
 
@@ -20337,7 +21230,7 @@ Date:   2009-04-17 14:26:54 +0800
 M	src/ibusengine.h
 
 commit a52bf160d5545c54537ce6fd15e1595b5852a7f0
-Merge: a4f5ccb 912f742
+Merge: a4f5ccb5 912f742d
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2009-04-17 14:19:05 +0800
 
@@ -20550,7 +21443,7 @@ Date:   2009-04-13 15:23:55 +0800
 M	client/gtk2/ibusimcontext.c
 
 commit 9a69d238ff4ef62cbaeed2627a82e234b7cb5ad8
-Merge: 9149a03 584c5c2
+Merge: 9149a03e 584c5c27
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2009-04-13 12:34:14 +0800
 
@@ -20603,7 +21496,7 @@ M	po/LINGUAS
 A	po/ta.po
 
 commit dab4cf2ae4c17a5de7603de88d57446b0b7ce6e4
-Merge: 34db2e0 88e85a7
+Merge: 34db2e09 88e85a79
 Author: Peng Huang <shawn.p.huang@gmail.com>
 Date:   2009-04-08 17:15:51 +0800
 
@@ -20617,8 +21510,7 @@ Date:   2009-04-08 17:13:37 +0800
 
 M	AUTHORS
 M	po/LINGUAS
-A	po/te.po
-D	po/te_IN.po
+R100	po/te_IN.po	po/te.po
 
 commit 88e85a79259c463ec40536b3c9a962fd44a751a0
 Author: Peng Huang <shawn.p.huang@gmail.com>
@@ -20706,8 +21598,7 @@ Date:   2009-04-07 10:45:42 +0800
 
 M	AUTHORS
 M	po/LINGUAS
-A	po/gu.po
-D	po/gu_IN.po
+R100	po/gu_IN.po	po/gu.po
 
 commit 9e3211bb4773c604c6b2b2f69732731df47f85f0
 Author: Peng Huang <shawn.p.huang@gmail.com>
@@ -21093,15 +21984,12 @@ Date:   2009-03-30 17:41:35 +0800
 
 M	autogen.sh
 M	bus/Makefile.am
-D	bus/ibus.desktop
-A	bus/ibus.desktop.in
+R100	bus/ibus.desktop	bus/ibus.desktop.in
 M	configure.ac
 M	data/Makefile.am
-D	data/ibus.schemas
-A	data/ibus.schemas.in
+R066	data/ibus.schemas	data/ibus.schemas.in
 M	setup/Makefile.am
-D	setup/ibus-setup.desktop
-A	setup/ibus-setup.desktop.in
+R100	setup/ibus-setup.desktop	setup/ibus-setup.desktop.in
 
 commit 2456d5b4d3a3d2dc97411551b871e6de1fd3e506
 Author: Peng Huang <shawn.p.huang@gmail.com>
@@ -21580,24 +22468,15 @@ Date:   2009-02-27 09:07:18 +0800
 
 M	Makefile.am
 M	configure.ac
-A	data/ibus.schemas
-A	data/icons/Makefile.am
-A	data/icons/engine-default.svg
-A	data/icons/ibus-help.png
-A	data/icons/ibus-keyboard.svg
-A	data/icons/ibus-locale.svg
-A	data/icons/ibus-setup.svg
-A	data/icons/ibus-zh.svg
-A	data/icons/ibus.svg
-D	icons/Makefile.am
-D	icons/engine-default.svg
-D	icons/ibus-help.png
-D	icons/ibus-keyboard.svg
-D	icons/ibus-locale.svg
-D	icons/ibus-setup.svg
-D	icons/ibus-zh.svg
-D	icons/ibus.svg
-D	setup/ibus.schemas
+R100	setup/ibus.schemas	data/ibus.schemas
+R100	icons/Makefile.am	data/icons/Makefile.am
+R100	icons/engine-default.svg	data/icons/engine-default.svg
+R100	icons/ibus-help.png	data/icons/ibus-help.png
+R100	icons/ibus-keyboard.svg	data/icons/ibus-keyboard.svg
+R100	icons/ibus-locale.svg	data/icons/ibus-locale.svg
+R100	icons/ibus-setup.svg	data/icons/ibus-setup.svg
+R100	icons/ibus-zh.svg	data/icons/ibus-zh.svg
+R100	icons/ibus.svg	data/icons/ibus.svg
 
 commit fc9e5a5b087f68dc1239ad7629a1575fb83510ac
 Author: Huang Peng <shawn.p.huang@gmail.com>
@@ -22411,8 +23290,7 @@ M	bus/Makefile.am
 A	bus/ibus.desktop
 M	configure.ac
 M	setup/Makefile.am
-A	setup/ibus-setup.desktop
-D	setup/ibus-setup.desktop.in
+R062	setup/ibus-setup.desktop.in	setup/ibus-setup.desktop
 
 commit 566270731276e9028350dd90b6982c865490f243
 Author: Huang Peng <shawn.p.huang@gmail.com>
@@ -22495,11 +23373,9 @@ Date:   2009-02-06 09:32:50 +0800
 
 M	configure.ac
 M	gconf/Makefile.am
-D	gconf/gconf.xml.in
-A	gconf/gconf.xml.in.in
+R090	gconf/gconf.xml.in	gconf/gconf.xml.in.in
 M	ui/gtk/Makefile.am
-D	ui/gtk/gtkpanel.xml.in
-A	ui/gtk/gtkpanel.xml.in.in
+R089	ui/gtk/gtkpanel.xml.in	ui/gtk/gtkpanel.xml.in.in
 
 commit 0bcd2dd9d08f2ac57121c283a63180f92a735338
 Author: Huang Peng <shawn.p.huang@gmail.com>
@@ -22510,16 +23386,16 @@ Date:   2009-02-06 08:10:19 +0800
 M	setup/main.py
 
 commit 33aa241841500c0b59204d905e05d55fb273486c
-Merge: aaa9a8c a07a51f
+Merge: aaa9a8ce a07a51ff
 Author: Huang Peng <shawn.p.huang@gmail.com>
 Date:   2009-02-05 11:03:39 +0800
 
     Merge branch 'master' into c_impl
     
     Conflicts:
-    	po/ja.po
-    	po/pa.po
-    	po/zh_CN.po
+            po/ja.po
+            po/pa.po
+            po/zh_CN.po
 
 commit aaa9a8cea3a23bca6444221192ffc52ccbff3cb8
 Author: Huang Peng <shawn.p.huang@gmail.com>
@@ -22538,7 +23414,7 @@ Date:   2009-02-05 10:39:56 +0800
 M	.gitignore
 M	Makefile.am
 M	autogen.sh
-A	bindings/Makefile.am
+R098	lib/Makefile.am	bindings/Makefile.am
 A	bindings/python/Makefile.am
 A	bindings/python/common.h
 A	bindings/python/gendefs.sh
@@ -22590,15 +23466,14 @@ D	daemon/contextmanager.py
 D	daemon/engine.py
 D	daemon/enginefactory.py
 D	daemon/factorymanager.py
-D	daemon/ibus-daemon.in
 D	daemon/ibusdaemon.py
 D	daemon/inputcontext.py
 D	daemon/lookuptable.py
 D	daemon/notifications.py
 D	daemon/panel.py
 D	daemon/register.py
-A	docs/Makefile.am
-A	docs/reference/Makefile.am
+R090	gconf/ibus-gconf.in	docs/Makefile.am
+R086	daemon/ibus-daemon.in	docs/reference/Makefile.am
 A	docs/reference/ibus/.gitignore
 A	docs/reference/ibus/Makefile.am
 A	docs/reference/ibus/ibus.types
@@ -22607,7 +23482,6 @@ M	gconf/Makefile.am
 A	gconf/config.c
 D	gconf/config.py
 A	gconf/gconf.xml.in
-D	gconf/ibus-gconf.in
 A	gconf/main.c
 D	gconf/main.py
 A	ibus-1.0.pc.in
@@ -22615,7 +23489,7 @@ M	ibus.spec.in
 A	ibus/.gitignore
 M	ibus/Makefile.am
 M	ibus/__init__.py
-A	ibus/_gtk.py
+R095	ibus/gtk.py	ibus/_gtk.py
 M	ibus/attribute.py
 M	ibus/bus.py
 M	ibus/common.py
@@ -22624,7 +23498,6 @@ M	ibus/config.py
 M	ibus/engine.py
 A	ibus/enginedesc.py
 M	ibus/factory.py
-D	ibus/gtk.py
 A	ibus/inputcontext.py
 M	ibus/interface/Makefile.am
 M	ibus/interface/__init__.py
@@ -22646,7 +23519,6 @@ A	ibus/text.py
 D	launcher/Makefile.am
 D	launcher/ibus.desktop.in
 D	launcher/ibus.in
-D	lib/Makefile.am
 D	lib/gtk2/Makefile.am
 D	lib/gtk2/ibusattribute.c
 D	lib/gtk2/ibusattribute.h
@@ -22886,7 +23758,7 @@ M	util/IMdkit/Xi18n.h
 M	util/IMdkit/i18nX.c
 
 commit feb1d8f1ca5befeb66e57af86366920f0f538426
-Merge: 998cdda 3439d61
+Merge: 998cdda7 3439d61d
 Author: Huang Peng <shawn.p.huang@gmail.com>
 Date:   2008-10-16 09:59:56 +0800
 
@@ -23238,8 +24110,7 @@ Date:   2008-10-05 22:23:42 +0800
     Move notify from daemon to ui/gtk
 
 M	daemon/Makefile.am
-D	daemon/notify.py
-A	ui/gtk/notify.py
+R100	daemon/notify.py	ui/gtk/notify.py
 
 commit 3d36b0eb76eafcda76082baecf34a48d6cbb0319
 Author: Huang Peng <shawn.p.huang@gmail.com>
@@ -23250,31 +24121,19 @@ Date:   2008-10-05 22:16:30 +0800
 M	Makefile.am
 M	configure.ac
 M	launcher/ibus.in
-D	panel/.gitignore
-D	panel/Makefile.am
-D	panel/candidatepanel.py
-D	panel/handle.py
-D	panel/ibus-panel.in
-D	panel/icon.py
-D	panel/languagebar.py
-D	panel/main.py
-D	panel/menu.py
-D	panel/panel.py
-D	panel/propitem.py
-D	panel/toolitem.py
 A	ui/Makefile.am
-A	ui/gtk/.gitignore
-A	ui/gtk/Makefile.am
-A	ui/gtk/candidatepanel.py
-A	ui/gtk/handle.py
-A	ui/gtk/ibus-ui-gtk.in
-A	ui/gtk/icon.py
-A	ui/gtk/languagebar.py
-A	ui/gtk/main.py
-A	ui/gtk/menu.py
-A	ui/gtk/panel.py
-A	ui/gtk/propitem.py
-A	ui/gtk/toolitem.py
+R100	panel/.gitignore	ui/gtk/.gitignore
+R092	panel/Makefile.am	ui/gtk/Makefile.am
+R100	panel/candidatepanel.py	ui/gtk/candidatepanel.py
+R100	panel/handle.py	ui/gtk/handle.py
+R094	panel/ibus-panel.in	ui/gtk/ibus-ui-gtk.in
+R100	panel/icon.py	ui/gtk/icon.py
+R100	panel/languagebar.py	ui/gtk/languagebar.py
+R100	panel/main.py	ui/gtk/main.py
+R100	panel/menu.py	ui/gtk/menu.py
+R100	panel/panel.py	ui/gtk/panel.py
+R100	panel/propitem.py	ui/gtk/propitem.py
+R100	panel/toolitem.py	ui/gtk/toolitem.py
 
 commit 249722e4aa36837b6ff5fd1436387bc66b482228
 Author: Huang Peng <shawn.p.huang@gmail.com>
@@ -23436,7 +24295,7 @@ M	ibus/__init__.py
 A	ibus/_config.py.in
 
 commit ecb3f104ef07e1d08b1562396a1d57cb89945d4f
-Merge: 368ff21 221f2c6
+Merge: 368ff211 221f2c6b
 Author: Huang Peng <shawn.p.huang@gmail.com>
 Date:   2008-10-03 17:53:41 +0800
 
@@ -23731,7 +24590,7 @@ M	daemon/_dbus.py
 M	daemon/connection.py
 
 commit 4b20a204d7ce986f2ef407374320c8a3617ce582
-Merge: 593ad43 7f04c70
+Merge: 593ad430 7f04c700
 Author: Huang Peng <shawn.p.huang@gmail.com>
 Date:   2008-09-27 11:40:03 +0800
 
@@ -23755,7 +24614,7 @@ Date:   2008-09-27 11:38:58 +0800
 M	daemon/connection.py
 
 commit 76840784c9ccb4c5e6cabc37d67ae3d1acbfdab9
-Merge: 8414a12 9b48126
+Merge: 8414a128 9b481260
 Author: Huang Peng <shawn.p.huang@gmail.com>
 Date:   2008-09-27 10:57:13 +0800
 
@@ -23789,7 +24648,7 @@ Date:   2008-09-25 17:09:02 +0800
 M	daemon/_dbus.py
 
 commit 2408a45e9b58da644df9a893df1b4b9ca5d8b957
-Merge: d59183c 659e44f
+Merge: d59183cb 659e44fb
 Author: Huang Peng <shawn.p.huang@gmail.com>
 Date:   2008-09-25 16:04:03 +0800
 
@@ -23805,7 +24664,7 @@ M	po/ja.po
 M	po/zh_CN.po
 
 commit d59183cbe87fe4eb5d9d014efc254a8163b97fb3
-Merge: 7e77e8d 9b8c9a8
+Merge: 7e77e8d4 9b8c9a85
 Author: Huang Peng <shawn.p.huang@gmail.com>
 Date:   2008-09-25 13:48:50 +0800
 
@@ -23830,7 +24689,7 @@ Date:   2008-09-25 10:53:16 +0800
 M	ibus/lang.py
 
 commit 7e77e8d4528f7516a50fbf5b41576d06f84d526e
-Merge: b2c95f2 70ba17b
+Merge: b2c95f23 70ba17bd
 Author: Huang Peng <shawn.p.huang@gmail.com>
 Date:   2008-09-24 18:51:16 +0800
 
@@ -23861,7 +24720,7 @@ Date:   2008-09-24 17:58:59 +0800
 M	daemon/Makefile.am
 
 commit 743c41803aa27d5a9f2dee257f9831fe7239ab59
-Merge: f011322 025371d
+Merge: f0113220 025371da
 Author: Huang Peng <shawn.p.huang@gmail.com>
 Date:   2008-09-24 17:51:02 +0800
 
@@ -24385,7 +25244,7 @@ Date:   2008-09-14 15:56:49 +0800
 M	lib/gtk2/ibusimclient.c
 
 commit 2798e96ae5c31f0328c31b7640097b1e36f08e22
-Merge: ad00c89 1aecce0
+Merge: ad00c89c 1aecce03
 Author: Huang Peng <shawn.p.huang@gmail.com>
 Date:   2008-09-12 09:59:16 +0800
 
@@ -25699,49 +26558,29 @@ Date:   2008-08-16 15:46:21 +0800
     ibus-x11 can work now.
 
 M	Makefile.am
-D	client/x11/IMdkit/FrameMgr.c
-D	client/x11/IMdkit/FrameMgr.h
-D	client/x11/IMdkit/IMConn.c
-D	client/x11/IMdkit/IMMethod.c
-D	client/x11/IMdkit/IMValues.c
-D	client/x11/IMdkit/IMdkit.h
-D	client/x11/IMdkit/Makefile.am
-D	client/x11/IMdkit/Xi18n.h
-D	client/x11/IMdkit/Xi18nX.h
-D	client/x11/IMdkit/XimFunc.h
-D	client/x11/IMdkit/XimProto.h
-D	client/x11/IMdkit/Xtrans.h
-D	client/x11/IMdkit/i18nAttr.c
-D	client/x11/IMdkit/i18nClbk.c
-D	client/x11/IMdkit/i18nIMProto.c
-D	client/x11/IMdkit/i18nIc.c
-D	client/x11/IMdkit/i18nMethod.c
-D	client/x11/IMdkit/i18nPtHdr.c
-D	client/x11/IMdkit/i18nUtil.c
-D	client/x11/IMdkit/i18nX.c
 M	client/x11/Makefile.am
 M	client/x11/main.c
 M	configure.ac
-A	util/IMdkit/FrameMgr.c
-A	util/IMdkit/FrameMgr.h
-A	util/IMdkit/IMConn.c
-A	util/IMdkit/IMMethod.c
-A	util/IMdkit/IMValues.c
-A	util/IMdkit/IMdkit.h
-A	util/IMdkit/Makefile.am
-A	util/IMdkit/Xi18n.h
-A	util/IMdkit/Xi18nX.h
-A	util/IMdkit/XimFunc.h
-A	util/IMdkit/XimProto.h
-A	util/IMdkit/Xtrans.h
-A	util/IMdkit/i18nAttr.c
-A	util/IMdkit/i18nClbk.c
-A	util/IMdkit/i18nIMProto.c
-A	util/IMdkit/i18nIc.c
-A	util/IMdkit/i18nMethod.c
-A	util/IMdkit/i18nPtHdr.c
-A	util/IMdkit/i18nUtil.c
-A	util/IMdkit/i18nX.c
+R100	client/x11/IMdkit/FrameMgr.c	util/IMdkit/FrameMgr.c
+R100	client/x11/IMdkit/FrameMgr.h	util/IMdkit/FrameMgr.h
+R100	client/x11/IMdkit/IMConn.c	util/IMdkit/IMConn.c
+R100	client/x11/IMdkit/IMMethod.c	util/IMdkit/IMMethod.c
+R100	client/x11/IMdkit/IMValues.c	util/IMdkit/IMValues.c
+R100	client/x11/IMdkit/IMdkit.h	util/IMdkit/IMdkit.h
+R100	client/x11/IMdkit/Makefile.am	util/IMdkit/Makefile.am
+R100	client/x11/IMdkit/Xi18n.h	util/IMdkit/Xi18n.h
+R100	client/x11/IMdkit/Xi18nX.h	util/IMdkit/Xi18nX.h
+R100	client/x11/IMdkit/XimFunc.h	util/IMdkit/XimFunc.h
+R100	client/x11/IMdkit/XimProto.h	util/IMdkit/XimProto.h
+R100	client/x11/IMdkit/Xtrans.h	util/IMdkit/Xtrans.h
+R100	client/x11/IMdkit/i18nAttr.c	util/IMdkit/i18nAttr.c
+R100	client/x11/IMdkit/i18nClbk.c	util/IMdkit/i18nClbk.c
+R100	client/x11/IMdkit/i18nIMProto.c	util/IMdkit/i18nIMProto.c
+R100	client/x11/IMdkit/i18nIc.c	util/IMdkit/i18nIc.c
+R100	client/x11/IMdkit/i18nMethod.c	util/IMdkit/i18nMethod.c
+R100	client/x11/IMdkit/i18nPtHdr.c	util/IMdkit/i18nPtHdr.c
+R100	client/x11/IMdkit/i18nUtil.c	util/IMdkit/i18nUtil.c
+R100	client/x11/IMdkit/i18nX.c	util/IMdkit/i18nX.c
 A	util/Makefile.am
 
 commit 4f6dd0f14758d8002cb32751c5e2aeb23ed3062f
@@ -25833,89 +26672,50 @@ Date:   2008-08-16 12:51:47 +0800
 M	Makefile.am
 A	client/Makefile.am
 A	client/gtk2/Makefile.am
-A	client/gtk2/ibusim.c
-A	client/gtk2/ibusimclient.c
-A	client/gtk2/ibusimclient.h
-A	client/gtk2/ibusimcontext.c
-A	client/gtk2/ibusimcontext.h
-A	client/gtk2/ibusmarshalers.list
-A	client/qt4/.gitignore
-A	client/qt4/Makefile.am
-A	client/qt4/ibus-client.cpp
-A	client/qt4/ibus-client.h
-A	client/qt4/ibus-input-context.cpp
-A	client/qt4/ibus-input-context.h
-A	client/qt4/ibus.pro
-A	client/qt4/im-ibus-qt.cpp
-A	client/x11/IMdkit/FrameMgr.c
-A	client/x11/IMdkit/FrameMgr.h
-A	client/x11/IMdkit/IMConn.c
-A	client/x11/IMdkit/IMMethod.c
-A	client/x11/IMdkit/IMValues.c
-A	client/x11/IMdkit/IMdkit.h
-A	client/x11/IMdkit/Makefile.am
-A	client/x11/IMdkit/Xi18n.h
-A	client/x11/IMdkit/Xi18nX.h
-A	client/x11/IMdkit/XimFunc.h
-A	client/x11/IMdkit/XimProto.h
-A	client/x11/IMdkit/Xtrans.h
-A	client/x11/IMdkit/i18nAttr.c
-A	client/x11/IMdkit/i18nClbk.c
-A	client/x11/IMdkit/i18nIMProto.c
-A	client/x11/IMdkit/i18nIc.c
-A	client/x11/IMdkit/i18nMethod.c
-A	client/x11/IMdkit/i18nPtHdr.c
-A	client/x11/IMdkit/i18nUtil.c
-A	client/x11/IMdkit/i18nX.c
-A	client/x11/Makefile.am
-A	client/x11/gdk-private.c
-A	client/x11/gdk-private.h
-A	client/x11/main.c
+R095	gtk2/ibusim.c	client/gtk2/ibusim.c
+R098	gtk2/ibusimclient.c	client/gtk2/ibusimclient.c
+R095	gtk2/ibusimclient.h	client/gtk2/ibusimclient.h
+R100	gtk2/ibusimcontext.c	client/gtk2/ibusimcontext.c
+R100	gtk2/ibusimcontext.h	client/gtk2/ibusimcontext.h
+R100	gtk2/ibusmarshalers.list	client/gtk2/ibusmarshalers.list
+R100	qt4/.gitignore	client/qt4/.gitignore
+R100	qt4/Makefile.am	client/qt4/Makefile.am
+R100	qt4/ibus-client.cpp	client/qt4/ibus-client.cpp
+R100	qt4/ibus-client.h	client/qt4/ibus-client.h
+R100	qt4/ibus-input-context.cpp	client/qt4/ibus-input-context.cpp
+R100	qt4/ibus-input-context.h	client/qt4/ibus-input-context.h
+R100	qt4/ibus.pro	client/qt4/ibus.pro
+R100	qt4/im-ibus-qt.cpp	client/qt4/im-ibus-qt.cpp
+R100	x11/IMdkit/FrameMgr.c	client/x11/IMdkit/FrameMgr.c
+R100	x11/IMdkit/FrameMgr.h	client/x11/IMdkit/FrameMgr.h
+R100	x11/IMdkit/IMConn.c	client/x11/IMdkit/IMConn.c
+R100	x11/IMdkit/IMMethod.c	client/x11/IMdkit/IMMethod.c
+R100	x11/IMdkit/IMValues.c	client/x11/IMdkit/IMValues.c
+R100	x11/IMdkit/IMdkit.h	client/x11/IMdkit/IMdkit.h
+R100	x11/IMdkit/Makefile.am	client/x11/IMdkit/Makefile.am
+R100	x11/IMdkit/Xi18n.h	client/x11/IMdkit/Xi18n.h
+R100	x11/IMdkit/Xi18nX.h	client/x11/IMdkit/Xi18nX.h
+R100	x11/IMdkit/XimFunc.h	client/x11/IMdkit/XimFunc.h
+R100	x11/IMdkit/XimProto.h	client/x11/IMdkit/XimProto.h
+R100	x11/IMdkit/Xtrans.h	client/x11/IMdkit/Xtrans.h
+R100	x11/IMdkit/i18nAttr.c	client/x11/IMdkit/i18nAttr.c
+R100	x11/IMdkit/i18nClbk.c	client/x11/IMdkit/i18nClbk.c
+R100	x11/IMdkit/i18nIMProto.c	client/x11/IMdkit/i18nIMProto.c
+R100	x11/IMdkit/i18nIc.c	client/x11/IMdkit/i18nIc.c
+R100	x11/IMdkit/i18nMethod.c	client/x11/IMdkit/i18nMethod.c
+R100	x11/IMdkit/i18nPtHdr.c	client/x11/IMdkit/i18nPtHdr.c
+R100	x11/IMdkit/i18nUtil.c	client/x11/IMdkit/i18nUtil.c
+R100	x11/IMdkit/i18nX.c	client/x11/IMdkit/i18nX.c
+R100	x11/Makefile.am	client/x11/Makefile.am
+R100	x11/gdk-private.c	client/x11/gdk-private.c
+R100	x11/gdk-private.h	client/x11/gdk-private.h
+R100	x11/main.c	client/x11/main.c
 M	configure.ac
-D	gtk2/Makefile.am
-D	gtk2/ibusim.c
-D	gtk2/ibusimclient.c
-D	gtk2/ibusimclient.h
-D	gtk2/ibusimcontext.c
-D	gtk2/ibusimcontext.h
-D	gtk2/ibusmarshalers.list
 A	lib/Makefile.am
-A	lib/gtk2/Makefile.am
+R079	gtk2/Makefile.am	lib/gtk2/Makefile.am
 A	lib/gtk2/ibusimclient.c
 A	lib/gtk2/ibusimclient.h
 A	lib/gtk2/ibusmarshalers.list
-D	qt4/.gitignore
-D	qt4/Makefile.am
-D	qt4/ibus-client.cpp
-D	qt4/ibus-client.h
-D	qt4/ibus-input-context.cpp
-D	qt4/ibus-input-context.h
-D	qt4/ibus.pro
-D	qt4/im-ibus-qt.cpp
-D	x11/IMdkit/FrameMgr.c
-D	x11/IMdkit/FrameMgr.h
-D	x11/IMdkit/IMConn.c
-D	x11/IMdkit/IMMethod.c
-D	x11/IMdkit/IMValues.c
-D	x11/IMdkit/IMdkit.h
-D	x11/IMdkit/Makefile.am
-D	x11/IMdkit/Xi18n.h
-D	x11/IMdkit/Xi18nX.h
-D	x11/IMdkit/XimFunc.h
-D	x11/IMdkit/XimProto.h
-D	x11/IMdkit/Xtrans.h
-D	x11/IMdkit/i18nAttr.c
-D	x11/IMdkit/i18nClbk.c
-D	x11/IMdkit/i18nIMProto.c
-D	x11/IMdkit/i18nIc.c
-D	x11/IMdkit/i18nMethod.c
-D	x11/IMdkit/i18nPtHdr.c
-D	x11/IMdkit/i18nUtil.c
-D	x11/IMdkit/i18nX.c
-D	x11/Makefile.am
-D	x11/gdk-private.c
-D	x11/gdk-private.h
-D	x11/main.c
 
 commit 6a820938ed75a8c87ba223e248cba0d552bcb8b1
 Author: Huang Peng <shawn.p.huang@gmail.com>
@@ -27421,8 +28221,7 @@ Date:   2008-07-28 13:44:09 +0800
 
 M	ibus/Makefile.am
 M	ibus/__init__.py
-A	ibus/bus.py
-D	ibus/connection.py
+R100	ibus/connection.py	ibus/bus.py
 
 commit be431e9dbd8846d9620eb12e540eb1d772768337
 Author: Huang Peng <shawn.p.huang@gmail.com>
@@ -27673,8 +28472,7 @@ Date:   2008-07-22 23:15:01 +0800
     Rename image.py to icon.py. Use set_icon_widget to replace set_icon_name.
 
 M	panel/Makefile.am
-A	panel/icon.py
-D	panel/image.py
+R052	panel/image.py	panel/icon.py
 M	panel/toolitem.py
 
 commit e0eca135a0e541e2097075c548fadf01d4fbd8c0
@@ -28422,9 +29220,8 @@ M	ibus/Makefile.am
 M	ibus/__init__.py
 M	ibus/connection.py
 M	ibus/interface/iibus.py
-A	ibus/lang.py
+R099	panel/lang.py	ibus/lang.py
 M	panel/Makefile.am
-D	panel/lang.py
 M	panel/main.py
 M	panel/panel.py
 A	setup/.gitignore
@@ -28953,33 +29750,20 @@ Date:   2008-06-25 10:41:59 +0800
 
 M	Makefile.am
 M	configure.ac
-A	daemon/.gitignore
-A	daemon/Makefile.am
-A	daemon/bus.py
-A	daemon/connection.py
-A	daemon/contextmanager.py
-A	daemon/engine.py
-A	daemon/enginefactory.py
-A	daemon/factorymanager.py
-A	daemon/ibus-daemon.in
-A	daemon/ibusdaemon.py
-A	daemon/inputcontext.py
-A	daemon/lookuptable.py
-A	daemon/panel.py
+R100	ibusdaemon/.gitignore	daemon/.gitignore
+R096	ibusdaemon/Makefile.am	daemon/Makefile.am
+R100	ibusdaemon/bus.py	daemon/bus.py
+R100	ibusdaemon/connection.py	daemon/connection.py
+R100	ibusdaemon/contextmanager.py	daemon/contextmanager.py
+R100	ibusdaemon/engine.py	daemon/engine.py
+R100	ibusdaemon/enginefactory.py	daemon/enginefactory.py
+R100	ibusdaemon/factorymanager.py	daemon/factorymanager.py
+R093	ibusdaemon/ibus-daemon.in	daemon/ibus-daemon.in
+R100	ibusdaemon/ibusdaemon.py	daemon/ibusdaemon.py
+R100	ibusdaemon/inputcontext.py	daemon/inputcontext.py
+R100	ibusdaemon/lookuptable.py	daemon/lookuptable.py
+R100	ibusdaemon/panel.py	daemon/panel.py
 M	ibus.spec.in
-D	ibusdaemon/.gitignore
-D	ibusdaemon/Makefile.am
-D	ibusdaemon/bus.py
-D	ibusdaemon/connection.py
-D	ibusdaemon/contextmanager.py
-D	ibusdaemon/engine.py
-D	ibusdaemon/enginefactory.py
-D	ibusdaemon/factorymanager.py
-D	ibusdaemon/ibus-daemon.in
-D	ibusdaemon/ibusdaemon.py
-D	ibusdaemon/inputcontext.py
-D	ibusdaemon/lookuptable.py
-D	ibusdaemon/panel.py
 
 commit 3a89b79bb898eb1c6a5fc52c3e16ff6cd4bcde87
 Author: Huang Peng <shawn.p.huang@gmail.com>
@@ -29422,22 +30206,14 @@ Date:   2008-06-19 22:49:36 +0800
 
 M	Makefile.am
 M	configure.ac
-D	qt/.gitignore
-D	qt/Makefile.am
-D	qt/ibus-client.cpp
-D	qt/ibus-client.h
-D	qt/ibus-input-context.cpp
-D	qt/ibus-input-context.h
-D	qt/ibus.pro
-D	qt/im-ibus-qt.cpp
-A	qt4/.gitignore
-A	qt4/Makefile.am
-A	qt4/ibus-client.cpp
-A	qt4/ibus-client.h
-A	qt4/ibus-input-context.cpp
-A	qt4/ibus-input-context.h
-A	qt4/ibus.pro
-A	qt4/im-ibus-qt.cpp
+R100	qt/.gitignore	qt4/.gitignore
+R100	qt/Makefile.am	qt4/Makefile.am
+R100	qt/ibus-client.cpp	qt4/ibus-client.cpp
+R100	qt/ibus-client.h	qt4/ibus-client.h
+R100	qt/ibus-input-context.cpp	qt4/ibus-input-context.cpp
+R100	qt/ibus-input-context.h	qt4/ibus-input-context.h
+R100	qt/ibus.pro	qt4/ibus.pro
+R100	qt/im-ibus-qt.cpp	qt4/im-ibus-qt.cpp
 
 commit 819860b4b071d07820ac311ff155029e48efbbc7
 Author: Huang Peng <shawn.p.huang@gmail.com>
@@ -29612,16 +30388,13 @@ Date:   2008-06-19 15:48:09 +0800
     Rename gik to ibus.
 
 M	gtk2/Makefile.am
-D	gtk2/gikim.c
-D	gtk2/gikimclient.c
 D	gtk2/gikimclient.h
 D	gtk2/gikimcontext.c
-D	gtk2/gikimcontext.h
-A	gtk2/ibusim.c
-A	gtk2/ibusimclient.c
+R073	gtk2/gikim.c	gtk2/ibusim.c
+R082	gtk2/gikimclient.c	gtk2/ibusimclient.c
 A	gtk2/ibusimclient.h
 A	gtk2/ibusimcontext.c
-A	gtk2/ibusimcontext.h
+R064	gtk2/gikimcontext.h	gtk2/ibusimcontext.h
 
 commit afb1e11faa1a0a93cc8b0d2a52dffb1ee4c8af57
 Author: Huang Peng <shawn.p.huang@gmail.com>
@@ -30044,10 +30817,9 @@ Date:   2008-06-14 09:48:40 +0800
 M	gtk2/gikimclient.c
 M	ibus/interface/iibus.py
 M	ibusdaemon/bus.py
-D	ibusdaemon/client.py
 D	ibusdaemon/clientmanager.py
 A	ibusdaemon/contextmanager.py
-A	ibusdaemon/inputcontext.py
+R091	ibusdaemon/client.py	ibusdaemon/inputcontext.py
 M	panel/panel.py
 
 commit d60756e7cd6bfb3b3db892114ba9c77b66d07f8b
@@ -30168,14 +30940,10 @@ Date:   2008-06-13 09:35:21 +0800
 
     Rename demo engine to enchant.
 
-D	engine/demo/Makefile
-D	engine/demo/engine.py
-D	engine/demo/factory.py
-D	engine/demo/main.py
-A	engine/enchant/Makefile
-A	engine/enchant/engine.py
-A	engine/enchant/factory.py
-A	engine/enchant/main.py
+R100	engine/demo/Makefile	engine/enchant/Makefile
+R100	engine/demo/engine.py	engine/enchant/engine.py
+R100	engine/demo/factory.py	engine/enchant/factory.py
+R100	engine/demo/main.py	engine/enchant/main.py
 
 commit 50acf73936343cc32fc20c97dcfb3193faf5bc37
 Author: Huang Peng <shawn.p.huang@gmail.com>
@@ -30585,8 +31353,7 @@ Date:   2008-06-03 13:49:31 +0800
 
     Rename keyboard icon.
 
-A	icons/ibus-keyboard.svg
-D	icons/keyboard.svg
+R100	icons/keyboard.svg	icons/ibus-keyboard.svg
 
 commit 7da7fb8cce0ec32f54da58b1cc3b64d69faef617
 Author: Huang Peng <shawn.p.huang@gmail.com>
@@ -31280,8 +32047,7 @@ Date:   2008-05-13 11:28:23 +0800
     Move demo engine to engine/demo. Add Makefile in ibusdaemon.
 
 A	engine/demo/Makefile
-A	engine/demo/eng_demo.py
-D	ibus/eng_demo.py
+R098	ibus/eng_demo.py	engine/demo/eng_demo.py
 A	ibusdaemon/Makefile
 
 commit 14a08bc34acab200f891c880b3f3f31751d5800f
@@ -31291,21 +32057,14 @@ Date:   2008-05-13 10:51:18 +0800
     Split ibusdaemon from ibus.
 
 M	ibus/__init__.py
-D	ibus/bus.py
-D	ibus/client.py
-D	ibus/clientmanager.py
-D	ibus/connection.py
-D	ibus/engine.py
-D	ibus/factorymanager.py
-D	ibus/ibusdaemon.py
 D	ibus/server.py
-A	ibusdaemon/bus.py
-A	ibusdaemon/client.py
-A	ibusdaemon/clientmanager.py
-A	ibusdaemon/connection.py
-A	ibusdaemon/engine.py
-A	ibusdaemon/factorymanager.py
-A	ibusdaemon/ibusdaemon.py
+R095	ibus/bus.py	ibusdaemon/bus.py
+R100	ibus/client.py	ibusdaemon/client.py
+R088	ibus/clientmanager.py	ibusdaemon/clientmanager.py
+R100	ibus/connection.py	ibusdaemon/connection.py
+R100	ibus/engine.py	ibusdaemon/engine.py
+R096	ibus/factorymanager.py	ibusdaemon/factorymanager.py
+R096	ibus/ibusdaemon.py	ibusdaemon/ibusdaemon.py
 
 commit 4d313651ea8de6a554ae1f5009687e66803b99c4
 Author: Huang Peng <shawn.p.huang@gmail.com>
