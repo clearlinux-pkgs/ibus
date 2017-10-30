@@ -4,7 +4,7 @@
 #
 Name     : ibus
 Version  : 1.5.16
-Release  : 7
+Release  : 8
 URL      : https://github.com/ibus/ibus/releases/download/1.5.16/ibus-1.5.16.tar.gz
 Source0  : https://github.com/ibus/ibus/releases/download/1.5.16/ibus-1.5.16.tar.gz
 Summary  : IBus Library
@@ -39,6 +39,7 @@ BuildRequires : pkgconfig(libnotify)
 BuildRequires : pkgconfig(pygobject-3.0)
 BuildRequires : pkgconfig(wayland-client)
 BuildRequires : pkgconfig(x11)
+BuildRequires : pkgconfig(xkbcommon)
 
 %description
 IBus - Input Bus
@@ -110,15 +111,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1495717369
+export SOURCE_DATE_EPOCH=1509380877
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
+export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
 %configure --disable-static --disable-python-library --disable-emoji-dict --disable-tests --sysconfdir=/usr/share/defaults
 make V=1  %{?_smp_mflags}
 
@@ -130,7 +131,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1495717369
+export SOURCE_DATE_EPOCH=1509380877
 rm -rf %{buildroot}
 %make_install
 %find_lang ibus10
@@ -170,31 +171,22 @@ rm -rf %{buildroot}
 /usr/share/ibus/keymaps/us
 /usr/share/ibus/setup/emojilang.py
 /usr/share/ibus/setup/emojilang.pyc
-/usr/share/ibus/setup/emojilang.pyo
 /usr/share/ibus/setup/engineabout.py
 /usr/share/ibus/setup/engineabout.pyc
-/usr/share/ibus/setup/engineabout.pyo
 /usr/share/ibus/setup/enginecombobox.py
 /usr/share/ibus/setup/enginecombobox.pyc
-/usr/share/ibus/setup/enginecombobox.pyo
 /usr/share/ibus/setup/enginedialog.py
 /usr/share/ibus/setup/enginedialog.pyc
-/usr/share/ibus/setup/enginedialog.pyo
 /usr/share/ibus/setup/enginetreeview.py
 /usr/share/ibus/setup/enginetreeview.pyc
-/usr/share/ibus/setup/enginetreeview.pyo
 /usr/share/ibus/setup/i18n.py
 /usr/share/ibus/setup/i18n.pyc
-/usr/share/ibus/setup/i18n.pyo
 /usr/share/ibus/setup/icon.py
 /usr/share/ibus/setup/icon.pyc
-/usr/share/ibus/setup/icon.pyo
 /usr/share/ibus/setup/keyboardshortcut.py
 /usr/share/ibus/setup/keyboardshortcut.pyc
-/usr/share/ibus/setup/keyboardshortcut.pyo
 /usr/share/ibus/setup/main.py
 /usr/share/ibus/setup/main.pyc
-/usr/share/ibus/setup/main.pyo
 /usr/share/ibus/setup/setup.ui
 /usr/share/icons/hicolor/16x16/apps/ibus-keyboard.png
 /usr/share/icons/hicolor/22x22/apps/ibus-keyboard.png
