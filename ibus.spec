@@ -4,7 +4,7 @@
 #
 Name     : ibus
 Version  : 1.5.16
-Release  : 12
+Release  : 13
 URL      : https://github.com/ibus/ibus/releases/download/1.5.16/ibus-1.5.16.tar.gz
 Source0  : https://github.com/ibus/ibus/releases/download/1.5.16/ibus-1.5.16.tar.gz
 Summary  : IBus Library
@@ -13,8 +13,11 @@ License  : ICU LGPL-2.1
 Requires: ibus-bin
 Requires: ibus-data
 Requires: ibus-lib
-Requires: ibus-doc
+Requires: ibus-license
 Requires: ibus-locales
+Requires: ibus-man
+Requires: ibus-python3
+Requires: ibus-python
 BuildRequires : docbook-xml
 BuildRequires : gettext
 BuildRequires : gobject-introspection
@@ -40,6 +43,8 @@ BuildRequires : pkgconfig(pygobject-3.0)
 BuildRequires : pkgconfig(wayland-client)
 BuildRequires : pkgconfig(x11)
 BuildRequires : pkgconfig(xkbcommon)
+BuildRequires : pygobject-python
+BuildRequires : python-core
 
 %description
 IBus - Input Bus
@@ -53,6 +58,8 @@ It also may help developers to develop input method easily.
 Summary: bin components for the ibus package.
 Group: Binaries
 Requires: ibus-data
+Requires: ibus-license
+Requires: ibus-man
 
 %description bin
 bin components for the ibus package.
@@ -81,6 +88,7 @@ dev components for the ibus package.
 %package doc
 Summary: doc components for the ibus package.
 Group: Documentation
+Requires: ibus-man
 
 %description doc
 doc components for the ibus package.
@@ -90,9 +98,18 @@ doc components for the ibus package.
 Summary: lib components for the ibus package.
 Group: Libraries
 Requires: ibus-data
+Requires: ibus-license
 
 %description lib
 lib components for the ibus package.
+
+
+%package license
+Summary: license components for the ibus package.
+Group: Default
+
+%description license
+license components for the ibus package.
 
 
 %package locales
@@ -103,6 +120,32 @@ Group: Default
 locales components for the ibus package.
 
 
+%package man
+Summary: man components for the ibus package.
+Group: Default
+
+%description man
+man components for the ibus package.
+
+
+%package python
+Summary: python components for the ibus package.
+Group: Default
+Requires: ibus-python3
+
+%description python
+python components for the ibus package.
+
+
+%package python3
+Summary: python3 components for the ibus package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the ibus package.
+
+
 %prep
 %setup -q -n ibus-1.5.16
 
@@ -111,7 +154,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1517697368
+export SOURCE_DATE_EPOCH=1535065575
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -131,8 +174,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1517697368
+export SOURCE_DATE_EPOCH=1535065575
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/ibus
+cp COPYING %{buildroot}/usr/share/doc/ibus/COPYING
+cp COPYING.unicode %{buildroot}/usr/share/doc/ibus/COPYING.unicode
 %make_install
 %find_lang ibus10
 
@@ -169,15 +215,6 @@ rm -rf %{buildroot}
 /usr/share/ibus/keymaps/kr
 /usr/share/ibus/keymaps/modifiers
 /usr/share/ibus/keymaps/us
-/usr/share/ibus/setup/__pycache__/emojilang.cpython-36.pyc
-/usr/share/ibus/setup/__pycache__/engineabout.cpython-36.pyc
-/usr/share/ibus/setup/__pycache__/enginecombobox.cpython-36.pyc
-/usr/share/ibus/setup/__pycache__/enginedialog.cpython-36.pyc
-/usr/share/ibus/setup/__pycache__/enginetreeview.cpython-36.pyc
-/usr/share/ibus/setup/__pycache__/i18n.cpython-36.pyc
-/usr/share/ibus/setup/__pycache__/icon.cpython-36.pyc
-/usr/share/ibus/setup/__pycache__/keyboardshortcut.cpython-36.pyc
-/usr/share/ibus/setup/__pycache__/main.cpython-36.pyc
 /usr/share/ibus/setup/emojilang.py
 /usr/share/ibus/setup/engineabout.py
 /usr/share/ibus/setup/enginecombobox.py
@@ -241,8 +278,7 @@ rm -rf %{buildroot}
 /usr/lib64/pkgconfig/ibus-1.0.pc
 
 %files doc
-%defattr(-,root,root,-)
-%doc /usr/share/man/man1/*
+%defattr(0644,root,root,0755)
 /usr/share/gtk-doc/html/ibus/IBusAttrList.html
 /usr/share/gtk-doc/html/ibus/IBusAttribute.html
 /usr/share/gtk-doc/html/ibus/IBusBus.html
@@ -302,6 +338,24 @@ rm -rf %{buildroot}
 /usr/lib64/gtk-3.0/3.0.0/immodules/im-ibus.so
 /usr/lib64/libibus-1.0.so.5
 /usr/lib64/libibus-1.0.so.5.0.516
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/ibus/COPYING
+/usr/share/doc/ibus/COPYING.unicode
+
+%files man
+%defattr(-,root,root,-)
+/usr/share/man/man1/ibus-daemon.1.gz
+/usr/share/man/man1/ibus-setup.1.gz
+/usr/share/man/man1/ibus.1.gz
+
+%files python
+%defattr(-,root,root,-)
+
+%files python3
+%defattr(-,root,root,-)
+/usr/lib/python3*/*
 
 %files locales -f ibus10.lang
 %defattr(-,root,root,-)
