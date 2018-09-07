@@ -4,22 +4,24 @@
 #
 Name     : ibus
 Version  : 1.5.16
-Release  : 13
+Release  : 14
 URL      : https://github.com/ibus/ibus/releases/download/1.5.16/ibus-1.5.16.tar.gz
 Source0  : https://github.com/ibus/ibus/releases/download/1.5.16/ibus-1.5.16.tar.gz
 Summary  : IBus Library
 Group    : Development/Tools
 License  : ICU LGPL-2.1
 Requires: ibus-bin
+Requires: ibus-python3
 Requires: ibus-data
 Requires: ibus-lib
 Requires: ibus-license
 Requires: ibus-locales
 Requires: ibus-man
-Requires: ibus-python3
 Requires: ibus-python
+Requires: glibc-locale
 BuildRequires : docbook-xml
 BuildRequires : gettext
+BuildRequires : glibc-locale
 BuildRequires : gobject-introspection
 BuildRequires : gtk-doc
 BuildRequires : gtk-doc-dev
@@ -45,6 +47,7 @@ BuildRequires : pkgconfig(x11)
 BuildRequires : pkgconfig(xkbcommon)
 BuildRequires : pygobject-python
 BuildRequires : python-core
+BuildRequires : vala
 
 %description
 IBus - Input Bus
@@ -154,7 +157,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535065575
+export SOURCE_DATE_EPOCH=1536318867
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -174,7 +177,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1535065575
+export SOURCE_DATE_EPOCH=1536318867
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/ibus
 cp COPYING %{buildroot}/usr/share/doc/ibus/COPYING

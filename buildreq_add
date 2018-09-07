@@ -2,3 +2,5 @@
 # picked up automatically. One name per line, no whitespace.
 gobject-introspection
 gtk3-dev
+vala
+glibc-locale
