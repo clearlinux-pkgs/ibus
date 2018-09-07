@@ -4,7 +4,7 @@
 #
 Name     : ibus
 Version  : 1.5.16
-Release  : 14
+Release  : 15
 URL      : https://github.com/ibus/ibus/releases/download/1.5.16/ibus-1.5.16.tar.gz
 Source0  : https://github.com/ibus/ibus/releases/download/1.5.16/ibus-1.5.16.tar.gz
 Summary  : IBus Library
@@ -19,6 +19,8 @@ Requires: ibus-locales
 Requires: ibus-man
 Requires: ibus-python
 Requires: glibc-locale
+BuildRequires : buildreq-gnome
+BuildRequires : buildreq-kde
 BuildRequires : docbook-xml
 BuildRequires : gettext
 BuildRequires : glibc-locale
@@ -157,7 +159,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536318867
+export SOURCE_DATE_EPOCH=1536319189
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -166,7 +168,7 @@ export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sect
 export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
-%configure --disable-static --disable-python-library --disable-emoji-dict --disable-tests --sysconfdir=/usr/share/defaults
+%configure --disable-static --disable-python-library --disable-emoji-dict --disable-tests --sysconfdir=/usr/share/defaults --enable-wayland
 make  %{?_smp_mflags}
 
 %check
@@ -177,7 +179,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1536318867
+export SOURCE_DATE_EPOCH=1536319189
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/ibus
 cp COPYING %{buildroot}/usr/share/doc/ibus/COPYING
@@ -196,6 +198,7 @@ cp COPYING.unicode %{buildroot}/usr/share/doc/ibus/COPYING.unicode
 /usr/libexec/ibus-dconf
 /usr/libexec/ibus-engine-simple
 /usr/libexec/ibus-ui-gtk3
+/usr/libexec/ibus-wayland
 /usr/libexec/ibus-x11
 
 %files data

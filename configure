@@ -1,1 +1,1 @@
---disable-python-library --disable-emoji-dict --disable-tests --sysconfdir=/usr/share/defaults
+--disable-python-library --disable-emoji-dict --disable-tests --sysconfdir=/usr/share/defaults --enable-wayland

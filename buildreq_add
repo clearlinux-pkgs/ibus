@@ -4,3 +4,5 @@ gobject-introspection
 gtk3-dev
 vala
 glibc-locale
+buildreq-gnome
+buildreq-kde
