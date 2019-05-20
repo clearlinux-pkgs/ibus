@@ -1,1 +1,3 @@
 --disable-python-library --disable-emoji-dict --disable-tests --sysconfdir=/usr/share/defaults --enable-wayland
+--disable-python2
+--disable-unicode-dict

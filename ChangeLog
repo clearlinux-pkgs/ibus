@@ -1,3 +1,2043 @@
+commit 407756521617f8514b65ddfa35512183fd22d38d
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2019-03-01 17:54:39 +0900
+
+    Release 1.5.20
+
+M	configure.ac
+
+commit b1dd51c1935303dcf4f100f0a40d3d31177cfaa6
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2019-03-01 17:09:17 +0900
+
+    Update translations
+    
+    Update po/da.po po/fr.po po/hu.po po/ja.po po/nl.po po/pa.po po/pl.po
+           po/sv.po po/uk.po po/zh_CN.po po/zh_TW.po
+
+M	po/da.po
+M	po/fr.po
+M	po/hu.po
+M	po/ja.po
+M	po/nl.po
+M	po/pa.po
+M	po/pl.po
+M	po/sv.po
+M	po/uk.po
+M	po/zh_CN.po
+M	po/zh_TW.po
+
+commit 8375f391e1b9bfc048ff14fd458f689d853064ac
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2019-02-28 15:26:11 +0900
+
+    ui/gtk3: Do not add emojis in compose category to emoji variants
+    
+    Any emojis in compose category have variants and should be shown by default.
+
+M	bindings/vala/IBus-1.0-custom.vala
+M	ui/gtk3/emojier.vala
+
+commit f5b282e8d2c82156738599ce00e148f512692531
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2019-02-27 12:02:11 +0900
+
+    src/ibusemojigen.h: Updated translatable emoji categories
+
+M	src/ibusemojigen.h
+
+commit b30eb5de95413c3977899fdddd04de6872dae991
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2019-02-22 18:40:14 +0900
+
+    Delete underscore in _Name in *.desktop for gettext migration
+
+M	po/Makevars
+M	setup/Makefile.am
+M	setup/ibus-setup.desktop
+M	ui/gtk3/Makefile.am
+M	ui/gtk3/ibus-extension-gtk3.desktop.in
+M	ui/gtk3/ibus-ui-emojier.desktop.in
+
+commit 6aab10f2e5a8e10dac9b007eff19b26990461790
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2019-02-14 17:37:39 +0900
+
+    ui/gtk3: Fix assert with 16 candidates
+    
+    BUG=https://github.com/ibus/ibus/issues/2076
+
+M	ui/gtk3/candidatearea.vala
+
+commit 4d3a8ff3d0bf69508551e65ae2dae676919a728d
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2019-02-13 16:00:42 +0900
+
+    Delete Super-space notification
+    
+    I'd assume most IBus 1.5.2 users are migrated to the latest 1.5.z now
+    but the notification dialog gives much attention and could be deprecated.
+    
+    BUG=https://github.com/ibus/ibus/issues/2080
+
+M	configure.ac
+M	ui/gtk3/Makefile.am
+M	ui/gtk3/panel.vala
+
+commit 64f4e412d005d15a944ae92f78923371676a5be1
+Author: scootergrisen <scootergrisen@gmail.com>
+Date:   2019-02-04 16:15:28 +0900
+
+    client/x11: typo: sevrer to server
+    
+    BUG=https://github.com/ibus/ibus/pull/2078
+
+M	client/x11/main.c
+
+commit 7a38e4d18ea4023f01948c6ce2fe303dbe4b3bd9
+Author: Anton Mikhalev <compromisedbeacon+gh@gmail.com>
+Date:   2019-02-04 16:07:02 +0900
+
+    bus: Allow using non-abstract UNIX domain sockets
+    
+    Previously, it was not possible to access ibus daemon from a separate
+    network namespace because its socket resided in an abstract namespace,
+    which is not shareable between network namespaces.
+    
+    Passing --address=unix:path=/run/user/1000/ibus to ibus-daemon allows
+    clients running in containerized environment to communicate with daemon
+    as long as /run/user/1000 is mounted within container.
+    
+    BUG=https://github.com/ibus/ibus/pull/2077
+
+M	bus/server.c
+
+commit 4592ce512fd830e646beec0f7aa21add739bb6fa
+Author: bmansurov <45986298+bmansurov@users.noreply.github.com>
+Date:   2019-01-29 18:02:04 +0900
+
+    engine: Add Uzbek layouts
+    
+    BUG=https://github.com/ibus/ibus/pull/2069
+
+M	engine/simple.xml.in
+
+commit 4d7c1e00e15921a0448947961183c1c124b6b49f
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2019-01-29 17:57:16 +0900
+
+    Delete weak pointer in GList.SList for vala 0.43.4
+    
+    Vala 0.43.4 does not allow to convert a weak pointer to the full one in SList.
+    
+    emojier.vala:424.36-425.73: error: Assignment: Cannot convert from
+    `GLib.SList<weak IBus.EmojiData>' to `GLib.SList<IBus.EmojiData>?'
+    emojier.vala:636.9-637.69: error: Assignment: Cannot convert from
+    `GLib.SList<weak IBus.UnicodeBlock>' to `GLib.SList<IBus.UnicodeBlock>'
+    panel.vala:526.36-526.65: error: Assignment: Cannot convert from
+    `GLib.List<weak IBus.EngineDesc>' to `GLib.List<IBus.EngineDesc>?'
+
+M	src/ibusbus.h
+M	src/ibusemoji.h
+M	src/ibusunicode.h
+M	ui/gtk3/emojier.vala
+
+commit 0f5084e07c215d74adc4eeeda40b374855cce59a
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2019-01-11 12:56:42 +0900
+
+    src/ibuscomposetable: Replace assert with warning for .XCompose
+    
+    BUG=rhbz#1470673
+
+M	src/ibuscomposetable.c
+
+commit be7fb813e530442897a9f9130b8a26380e5a12a1
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2019-01-08 12:02:37 +0900
+
+    client/gtk2: Fix Atom and Slack for Flatpak
+    
+    Seems Atom, slack, com.visualstudio.code does not enable
+    gtk_key_snooper_install() and this issue causes to call
+    gtk_im_context_filter_keypress instead of calling ibus APIs.
+    
+    BUG=https://github.com/ibus/ibus/issues/1991
+
+M	client/gtk2/ibusimcontext.c
+
+commit 60e246ef1593f599e2103070f8fa02649d60ada1
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2019-01-08 12:02:35 +0900
+
+    test: Add flatpak-builder file for org.freedesktop.Platform
+
+M	test/org.test.IBus.json
+A	test/org.test2.IBus.json
+
+commit 0fd043c3b4c90855bfb4fceed4bf2f3c3635a041
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2019-01-08 12:02:32 +0900
+
+    portal: Update APIs for Hangul preedit in Flatpak
+    
+    BUG=https://github.com/ibus/ibus/issues/1980
+
+M	portal/org.freedesktop.IBus.Portal.xml
+M	portal/portal.c
+
+commit 4ef976a8b934bf76cfd855013b766f6492dc9e8a
+Author: Mathieu Bridon <bochecha@daitauha.fr>
+Date:   2019-01-07 21:15:35 +0900
+
+    introspection: Tell the GI scanner to include the C headers
+    
+    This adds the following line to the generated gir file:
+    
+        <c:include name="ibus.h"/>
+    
+    This is important, for example for Rust bindings generated from the
+    gtk-rs tooling.
+    
+    BUG=https://github.com/ibus/ibus/pull/2071
+
+M	configure.ac
+
+commit 9ae2d4658fff3d1e7262fb4fb7ca9ce1af0a27ec
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-12-20 16:40:31 +0900
+
+    client/gtk2: Use button-press-event only with IBUS_ENGINE_PREEDIT_COMMIT
+    
+    BUG=https://github.com/ibus/ibus/issues/1980
+
+M	client/gtk2/ibusimcontext.c
+
+commit 7b9c034f570bb1bf89569a01b98d6771b1596722
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-12-17 20:26:32 +0900
+
+    m4: Add ibuslocale.m4 to Makefile.am
+
+M	m4/Makefile.am
+
+commit 1cd5254811259befe50c8bd81584d1bfe2c63ed0
+Author: glasseyes <dglassey@gmail.com>
+Date:   2018-12-17 20:20:11 +0900
+
+    src: use iso 639-3 to have names for more languages
+    
+    Keyman and others support them so they shouldn't be in "Other"
+    
+    BUG=https://github.com/ibus/ibus/issues/2064
+
+M	ibus/lang.py
+M	src/ibusutil.c
+
+commit a78e7f8deb51f01125325da868c8fc75f0436b3e
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-12-17 20:10:34 +0900
+
+    configure: Generate ibus_localedir variable
+
+M	configure.ac
+A	m4/ibuslocale.m4
+
+commit c7d8771cb9fc652cb638aa7cb8e10ea6b889509e
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-12-11 19:16:10 +0900
+
+    client/gtk2: Fix SEGV on mouse clicks when ibus-daemon not running
+
+M	client/gtk2/ibusimcontext.c
+
+commit 28b0744ad141bd76281025e9d0857d2182bc2a65
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-12-10 13:21:42 +0900
+
+    src: Clear preedit in IBusEngineSimple with focus changes
+    
+    BUG=https://github.com/ibus/ibus/issues/2063
+
+M	src/ibusenginesimple.c
+
+commit ba41173c45a4ba6e047f94ac53474433c7643591
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-12-07 17:38:09 +0900
+
+    src: Show compose preedit with custom compose file
+    
+    IBusEngineSimple is fixed for custom compose files
+     - Show preeedit with custom compose file
+     - Tentative compose preedit can be deleted by Backspace
+    
+    BUG=https://github.com/ibus/ibus/issues/2058
+
+M	src/ibusenginesimple.c
+
+commit 4c40afba9c862b4f6651b1b971553e5e89e83343
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-12-06 16:53:57 +0900
+
+    client/gtk2: Always reset and clear preedit on mouse click
+    
+    Thinking about the reset signal again, now I think it's good to emit
+    the reset signal and clear the preedit on mouse click for any engines
+    besides Hangul because the behavior could be handled by each engine
+    with the reset signal.
+    
+    BUG=https://github.com/ibus/ibus/issues/1980
+
+M	client/gtk2/ibusimcontext.c
+
+commit 639960a827811200caaccb5afaee7d7b133e4876
+Author: ZhaoQiang <zhaoqiang@gnome.org>
+Date:   2018-12-03 18:11:32 +0900
+
+    src: Fix typos in comment lines
+    
+    BUG=https://github.com/ibus/ibus/pull/2059
+
+M	src/ibusbus.c
+M	src/ibushotkey.c
+M	src/ibusserializable.c
+M	src/ibusservice.c
+M	src/tests/ibus-bus.c
+
+commit 7b3b8c8b0c6a41ab524e0be9474825da9cba96ac
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-11-13 14:27:52 +0900
+
+    client/gtk2: Do not delete IBUS_CAP_SURROUNDING_TEXT
+    
+    retrieve-surrounding signal could be failed with the first typing
+    on firefox. It could be a bug in firefox but now IBusIMContext does not
+    delete IBUS_CAP_SURROUNDING_TEXT in the capabilities as a workaround
+    when retrieve-surrounding signal is failed.
+    Also added retrieve-surrounding signal after some committing text.
+    
+    BUG=https://github.com/ibus/ibus/issues/2054
+
+M	client/gtk2/ibusimcontext.c
+
+commit a40631e166137c9042a68c2d76844e7afc53d388
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-11-09 14:49:44 +0900
+
+    Detect mouse click to commit Hangul preedit
+    
+    If preedit text is not committed with the mouse click, preedit text
+    is moved to the new cursor position in Hangul typing.
+    Since set_cursor_location() is received before the reset() signal is
+    sent to ibus-daemon and commit_text() signal is received from
+    ibus-daemon, UpdatePreeditTextWithMode D-Bus method is newly added
+    and now ibus clients commit the preedit.
+    
+    BUG=https://github.com/ibus/ibus/issues/1980
+
+M	bus/ibusimpl.c
+M	bus/inputcontext.c
+M	bus/inputcontext.h
+M	client/gtk2/ibusimcontext.c
+M	src/ibusinputcontext.c
+M	src/ibusinputcontext.h
+
+commit 3172c3b23faefe76b3b7adfc75f9be34a0fb2e02
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-10-31 17:42:38 +0900
+
+    RHEL code reviews
+
+M	src/ibuskeymap.c
+M	src/ibuspanelservice.c
+M	src/tests/ibus-keypress.c
+M	util/IMdkit/FrameMgr.c
+
+commit b6086665bcf12914e6e1ac99b606dc6dee363f26
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-10-30 11:57:19 +0900
+
+    data/dconf: Fix a typo
+
+M	data/dconf/org.freedesktop.ibus.gschema.xml
+
+commit 3914d3a2b1aeda8779b2d8a9d91088802530b3a9
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-10-30 11:54:52 +0900
+
+    data/dconf: Add comments in org.freedesktop.ibus.gschema.xml
+
+M	data/dconf/org.freedesktop.ibus.gschema.xml
+
+commit aa24a526dd7dec9a719e063fb35da90afb5dc5bf
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-10-26 19:01:19 +0900
+
+    src/tests: Fix the location of org.freedesktop.ibus.gschema.xml
+    
+    The location has been changed since xgettext migration.
+
+M	src/tests/runtest
+
+commit c1b55431c076dfa3fc26a3a998bfcf729e9ba602
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-10-26 18:44:35 +0900
+
+    src/tests: Fix make check in Fedora 29
+    
+    ibus-bus and ibus-compose failed in Fedora 29.
+    
+    1. In ibus-bus with runtest, ibus-daemon failed to restart in
+    start_exit_async() because it seems to have conflicting IO with runtest
+    and ibus-daemon failed to close a file descriptor in _restart_server().
+    The solution is to add a sleep in start_exit_async().
+    Also added ibus_get_address() in test_async_apis_finish() to check
+    if ibus-daemon finished to restart.
+    
+    2. In ibus-compose, the GTK application could not get the ibus module.
+    The solution is to export GTK_IM_MODULE=ibus.
+    
+    3. Added DISABLE_DAEMONIZE_IN_TESTS to get error messages in ibus-daemon.
+    % make DISABLE_DAEMONIZE_IN_TESTS=1 check
+
+M	bus/Makefile.am
+M	src/tests/Makefile.am
+M	src/tests/ibus-bus.c
+M	src/tests/runtest
+
+commit a6710817b3d29d6a522f108f96ffe64d2f5367fe
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-10-16 19:46:01 +0900
+
+    Gettext migration for gschema.xml file
+    
+    https://wiki.gnome.org/Initiatives/GnomeGoals/GettextMigration
+
+M	bindings/vala/config.vapi
+M	configure.ac
+M	data/dconf/org.freedesktop.ibus.gschema.xml
+M	po/Makevars
+M	po/POTFILES.in
+M	setup/Makefile.am
+R100	setup/ibus-setup.desktop.in	setup/ibus-setup.desktop
+M	src/ibusutil.c
+M	src/keyname-table.h
+M	tools/main.vala
+M	ui/gtk3/Makefile.am
+M	ui/gtk3/application.vala
+M	ui/gtk3/emojierapp.vala
+M	ui/gtk3/extension.vala
+R100	ui/gtk3/ibus-extension-gtk3.desktop.in.in	ui/gtk3/ibus-extension-gtk3.desktop.in
+R100	ui/gtk3/ibus-ui-emojier.desktop.in.in	ui/gtk3/ibus-ui-emojier.desktop.in
+
+commit 74a00cc93ba99367e175ad3d3415e585d453d17f
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-10-16 18:17:41 +0900
+
+    data/dconf: Rename org.freedesktop.ibus.gschema.xml[.in]
+
+M	data/dconf/Makefile.am
+R100	data/dconf/org.freedesktop.ibus.gschema.xml.in	data/dconf/org.freedesktop.ibus.gschema.xml
+
+commit a8e8b694dcb52e4beb367dff1e8ecaaca4f63c00
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-10-03 17:01:59 +0900
+
+    data/dconf: Delete dconf dependencies
+    
+    gsettings-schema-convert has not worked with python3 since GConf
+    has been deprecated since 2011 so we cannot disable python2
+    in canse GConf is enabled.
+    I don't wish to maintain both ibus.schemas.in and
+    org.freedesktop.ibus.gschema.xml.in and now decide to delete
+    whole the GConf builds.
+    gsettings is now stable and can be used instead.
+    ibus-dconf will be deperecated in the near future.
+    
+    BUG=https://bugzilla.gnome.org/show_bug.cgi?id=759334
+
+M	conf/Makefile.am
+M	configure.ac
+M	data/Makefile.am
+M	data/dconf/Makefile.am
+A	data/dconf/org.freedesktop.ibus.gschema.xml.in
+
+commit 41c866868a25ec00482a000a18ac1ff3af1c494c
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-10-03 16:30:26 +0900
+
+    src: Update translatable strings in ibusunicodegen.h
+
+M	src/ibusunicodegen.h
+
+commit 6e315973f48574f7dcede1f1e8ca116e6a953ade
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-09-25 15:42:20 +0900
+
+    ui/gtk3: Fix g_return_val_if_fail in ibus_emojier_clamp_page
+    
+    BUG=https://github.com/ibus/ibus/issues/2042
+
+M	ui/gtk3/emojier.vala
+
+commit 1c6565e205528a45e88a84ba2a328f9035875c8d
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-09-14 16:15:41 +0900
+
+    ui/gtk3: Fix SEGV when commit an emoji on Emojier in Wayland
+    
+    Just pressing Space key without emoji annotations can launch Emojier
+    popup and the popup takes a focus in Wayland and the chosen emoji is
+    output when the original text application gets the focus after Emojier
+    popup release the focus. Emojier disabled Ctrl-Shift-e after got the focus.
+    But currently GNOME Wayland has a bug not to send focus-in until a
+    key press or mouse click happens [1] and Emojier causes a SEGV.
+    Now Emojier disables Ctrl-Shift-e immediately when an emoji is chosen
+    whether focus-in comes or not and fixes the SEGV.
+    
+    [1] https://gitlab.gnome.org/GNOME/gnome-shell/issues/573
+    
+    BUG=rhbz#1625187
+
+M	ui/gtk3/emojier.vala
+M	ui/gtk3/emojierapp.vala
+M	ui/gtk3/panelbinding.vala
+
+commit 809d880337e75b7cee429292a238bf53899bef6a
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-08-30 12:58:57 +0900
+
+    ui/gtk3: Do not move Emojier popup with the active candidate in Xorg
+    
+    Probably I think it's not useful to change the popup position frequently.
+    The popup size is always slightly changed with the emoji annotation length.
+
+M	ui/gtk3/emojier.vala
+
+commit e6badb494e0a31b7aca3a5078a5dc5b27b83390d
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-08-30 12:57:46 +0900
+
+    ui/gtk3: Support Shift-Space to insert a Space on Emojier preedit
+    
+    Implemented Shift-Space on preedit since Shift-Space had worked on
+    Emojier's GtkEntry in the previous release.
+
+M	ui/gtk3/panelbinding.vala
+
+commit 28d22176aee6be97d88dd6c60fa5395c79563ec0
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-08-30 12:57:33 +0900
+
+    ui/gtk3: Fix SEGV when type ASCII on emojier
+    
+    Emojier still included Gtk.Entry, accepted key events in Wayland,
+    reset the lookup table and it caused SEGV because IBus.Text
+    is NULL in the lookup table in Emojier.get_current_candidate().
+    Now Gtk.Entry is deleted completely.
+    
+    BUG=rhbz#1618682
+
+M	ui/gtk3/emojier.vala
+
+commit 7edaefdc1d80aefdbbc2dc52526c20715759da83
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-08-22 17:20:53 +0900
+
+    ui/gtk3: Do not clear unicode data when emoji annotation lang is changed
+
+M	ui/gtk3/emojier.vala
+
+commit aa0f4252ff965729b871c91b4ed089bf98963c0b
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-08-10 15:43:58 +0900
+
+    ui/gtk3: Check if gdk-wayland is installed
+    
+    BUG=https://github.com/ibus/ibus/issues/2035
+
+M	configure.ac
+M	ui/gtk3/Makefile.am
+M	ui/gtk3/panelbinding.vala
+
+commit fd9d4a927d91eb0c1349f001a4a773900357cbc7
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-08-08 15:41:41 +0900
+
+    Release 1.5.19
+
+M	configure.ac
+
+commit 999aee3f4bd99fb01f21f5e99d92d02e06a927d2
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-08-08 15:39:13 +0900
+
+    po: Update translations
+    
+    Update po/hu.po po/nl.po
+
+M	po/hu.po
+M	po/nl.po
+
+commit b94e8f2d993f2f24e9e977227eaae7d335fc478f
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-08-07 20:33:32 +0900
+
+    src: Replace deprecated BOOL with BOOLEAN for glib-genmarshal
+
+M	bus/ibusimpl.c
+M	bus/inputcontext.c
+M	bus/marshalers.list
+M	src/ibusemojigen.h
+M	src/ibusengine.c
+M	src/ibusmarshalers.list
+M	src/ibuspanelservice.c
+
+commit 5db6e7b40e7937a306411b152a1e39525351d988
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-08-07 20:33:26 +0900
+
+    src/tests: Ask --enable-memconf in make check instead of build order
+
+M	Makefile.am
+M	src/tests/Makefile.am
+M	src/tests/runtest
+
+commit 269570867793df64aaefcac1963f2e973c1fb8ef
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-08-07 16:34:18 +0900
+
+    src/tests: Fix make check to link src/libibus.so
+
+M	bus/Makefile.am
+M	bus/panelproxy.c
+M	src/tests/Makefile.am
+M	src/tests/runtest
+
+commit 428e64eac8f7dc3ff60234435fe5f34d50126432
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-08-06 15:59:06 +0900
+
+    src: Describe "default" layout in ibus_engine_desc_new()
+    
+    BUG=https://github.com/ibus/ibus/issues/2011
+
+M	src/ibusenginedesc.h
+
+commit dc5e7eeba30d0bc2327ffa562cdf6ca0ae23aecc
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-08-06 15:26:42 +0900
+
+    ui/gtk3: Show previous emojis with "history" annotation
+
+M	ui/gtk3/emojier.vala
+
+commit f328fd67f479faa46ca87bf3c85eed7080ec5ec0
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-08-06 12:33:44 +0900
+
+    client/gtk2: Add IBUS_DISCARD_PASSWORD for firefox and chrome
+    
+    popup window in firefox is closed in Xorg GNOME when password entry
+    is focus on. It's caused by gnome-shell [1].
+    Now IBUS_DISCARD_PASSWORD and IBUS_DISCARD_PASSWORD_APPS enviroment
+    variables are implemented in IBus GTK clients as a workaround.
+    
+    env IBUS_DISCARD_PASSWORD=1 firefox
+    or
+    export IBUS_DISCARD_PASSWORD_APPS='firefox,.*chrome.*'
+    
+    can discard typing characters on the password entries.
+    
+    [1] https://gitlab.gnome.org/GNOME/gnome-shell/issues/391
+    
+    BUG=https://github.com/ibus/ibus/issues/2002
+
+M	client/gtk2/ibusimcontext.c
+
+commit 5f44e7307771685c70202f996e39e9aa68d48d2e
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-08-03 14:58:10 +0900
+
+    data/dconf: Add man pages of 00-upstream-settings(5) and ibus(5)
+    
+    Also delete --mem-profile option in ibus-daemon(1)
+
+M	bus/ibus-daemon.1.in
+A	data/dconf/00-upstream-settings.5.in
+M	data/dconf/Makefile.am
+A	data/dconf/ibus.5.in
+M	ui/gtk3/ibus-emoji.7.in
+
+commit be7554cea294aa13a65895b66b26e5f1fa4a1897
+Author: Ryutaroh Matsumoto <36657667+ryutaroh-matsumoto@users.noreply.github.com>
+Date:   2018-08-02 08:10:04 +0900
+
+    option --monitor-timeout should be removed
+    
+    ibus-daemon(1) has explanation of --monitor-timeout, but main.c does not accept it and make an error.
+
+M	bus/ibus-daemon.1.in
+
+commit 8d302c853f4e88f81652e0aeeca86ff1b5779ecb
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-07-24 16:04:31 +0900
+
+    RHEL code reviews
+
+M	client/x11/main.c
+M	setup/enginetreeview.py
+M	setup/ibus-setup.in
+M	src/emoji-parser.c
+M	src/ibusbus.c
+M	src/ibuscomposetable.c
+M	src/ibusenginesimple.c
+M	src/ibushotkey.c
+M	src/ibuskeymap.c
+M	src/ibuskeynames.c
+M	src/ibusregistry.c
+M	src/ibusservice.c
+M	src/ibusxml.c
+M	src/unicode-parser.c
+M	util/IMdkit/FrameMgr.c
+M	util/IMdkit/IMConn.c
+M	util/IMdkit/i18nClbk.c
+M	util/IMdkit/i18nIc.c
+M	util/IMdkit/i18nMethod.c
+M	util/IMdkit/i18nOffsetCache.c
+M	util/IMdkit/i18nPtHdr.c
+M	util/IMdkit/i18nUtil.c
+M	util/IMdkit/i18nX.c
+
+commit 0dde239a3c786dcc479e3103ccd49938fcb47191
+Author: Kentaro Hayashi <hayashi@clear-code.com>
+Date:   2018-07-24 15:20:51 +0900
+
+    bus: warn deprecated --mem-profile option
+    
+    Since GLib 2.46, memory profiling feature does not work anymore.
+    
+    GLib 2.46 or later means that Ubuntu 16.04 or later. Ubuntu
+    14.04 (trusty) are still supported as LTS phase, but it seems that
+    GLib is old enough (2.40) to drop support.
+    
+    As a result:
+    
+      * older than GLib 2.46: Just drop support
+      * GLib 2.46 or later: Show a warning message if --mem-profile is
+        used.
+
+M	bus/main.c
+M	configure.ac
+
+commit 6b47e41d66497dd35752a89ea80e4bac55b64e45
+Author: Takuro Ashie <ashie@clear-code.com>
+Date:   2018-07-20 12:30:09 +0900
+
+    Remove a misleading "const" modifier of a return value
+    
+    ibus_key_event_to_string() uses g_string_free(str, FALSE) to return
+    a string so that users must free it. To clarify it, the const
+    modifier should be removed.
+
+M	src/ibuskeynames.c
+M	src/ibusshare.h
+
+commit caffeaeee5be121713104fba331b9cf30726aa91
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-06-29 16:06:52 +0900
+
+    panelbinding: Fix SEGV in panel_binding_parse_accelerator
+    
+    panel_binding_parse_accelerator() could return NULL of the unowned
+    IBus.ProcessKeyEventData with gcc optimization.
+    Since Vala does not provice a static local variable, the variable is
+    moved to the class member to fix this SEGV.
+    Also fixed an infinite loop to show a compose preedit in xterm.
+    Also a NULL preedit is fixed in the first emoji candidate from the
+    emoji category window.
+
+M	bus/inputcontext.c
+M	bus/panelproxy.c
+M	ui/gtk3/panelbinding.vala
+
+commit 3a68ded197b3ad2e45ac08fe52c0514aff987367
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-06-29 16:02:32 +0900
+
+    ibusenginesimple: Do not show combined character on compose preedit
+    
+    Some applications could combine their committed string with compose
+    character on preedit. E.g. dead_grave after 'e' on firefox
+    
+    BUG=https://github.com/ibus/ibus/issues/1935
+
+M	src/ibusenginesimple.c
+
+commit f9e30359d328054793e1e225dcf2fe537e6c8c48
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-06-27 12:11:41 +0900
+
+    ibusenginesimple: Enable preedit for compose keys
+    
+    BUG=https://github.com/ibus/ibus/issues/1935
+
+M	src/ibusenginesimple.c
+
+commit c8a99943caa1adace0affc78ed5dbde3896f39c7
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-06-27 12:04:40 +0900
+
+    Update translations
+    
+    Update po/ca.po po/da.po po/es.po po/fr.po po/hu.po po/ja.po po/nl.po
+           po/pl.po po/sv.po po/uk.po po/vi.po po/zh_TW.po
+
+M	po/ca.po
+M	po/da.po
+M	po/es.po
+M	po/fr.po
+M	po/hu.po
+M	po/ja.po
+M	po/nl.po
+M	po/pl.po
+M	po/sv.po
+M	po/uk.po
+M	po/vi.po
+M	po/zh_TW.po
+
+commit 7cef5bf572596361bc502e8fa917569676a80372
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-06-20 19:01:59 +0900
+
+    setup: Replace emoji font with Unicode font
+    
+    Now the font settings of emoji is configurable in the session base
+    but not the application base and the current font setting on ibus-setup
+    effects on Unicode characters.
+    Also fixed the progress bar on Unicode candidate table.
+
+M	setup/setup.ui
+M	src/tests/runtest
+M	ui/gtk3/emojier.vala
+
+commit 5ee3f48049ecf128391da6448ae7e74786bd171b
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-06-18 12:46:11 +0900
+
+    Move input focus on Emojier to engines' preedit
+
+M	bindings/vala/IBus-1.0-custom.vala
+M	bindings/vala/Makefile.am
+A	bindings/vala/gdk-wayland.vapi
+M	bus/engineproxy.c
+M	bus/engineproxy.h
+M	bus/ibusimpl.c
+M	bus/inputcontext.c
+M	bus/inputcontext.h
+M	bus/panelproxy.c
+M	bus/panelproxy.h
+M	data/ibus.schemas.in
+M	setup/main.py
+M	setup/setup.ui
+M	src/ibusengine.c
+M	src/ibuspanelservice.c
+M	src/ibuspanelservice.h
+M	src/ibusshare.h
+M	src/ibusxevent.c
+M	src/ibusxevent.h
+M	ui/gtk3/Makefile.am
+M	ui/gtk3/emojier.vala
+M	ui/gtk3/emojierapp.vala
+M	ui/gtk3/extension.vala
+M	ui/gtk3/panel.vala
+M	ui/gtk3/panelbinding.vala
+
+commit 37aa95f1adcdde82ef473936cadc0fa3fe8a4e44
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-06-15 19:23:27 +0900
+
+    setup: Replace GtkTable /w GtkGrid
+
+M	setup/setup.ui
+
+commit ddc2284200971141947a37057356b4bbd84be7ce
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-06-14 18:30:46 +0900
+
+    tools: Add ibus read-config --engine-id option for engine schemas
+    
+    Fixed ibus read-config and reset-config options and also added --engine-id
+    sub option for engine schemas.
+    E.g.
+    % ibus read-config --engine-id anthy
+    % ibus read-config --engine-id com.github.libpinyin.ibus-libpinyin.libpinyin
+
+M	tools/main.vala
+
+commit cf4e2f1d815b700b0470380e0ff428ff266cc18a
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-06-14 17:29:06 +0900
+
+    bus: Rename panel-extension to emoji-extension for CLI
+
+M	bus/main.c
+
+commit a1f91b27145b046a112bb5eba2561880dae5d6a2
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-06-04 17:44:17 +0900
+
+    ui/gtk3: Get PangoAttrList of auxiliary text from IBusText
+    
+    Since IBus auxiliary text would be one line, it's better to show the
+    character attributes likes color, italic, bold, on the auxiliary text.
+    
+    Also deleted the cursor width from the X position of CandidatePanel
+    because IBus preedit overrides the original cursor of the applications.
+
+M	ui/gtk3/candidatepanel.vala
+
+commit 8ab0b603ba1cd8701583aee46c712898d52005f1
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-05-23 19:20:10 +0900
+
+    bus: Fix a SEGV in bus_input_context_emit_signal
+    
+    IBus engines can call 'RequireSurroundingText' for a fake input context
+    if there is no input focus.
+
+M	bus/inputcontext.c
+
+commit 196216a89a9167425dd9b41f4f1d8a494d370249
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-05-11 19:13:03 +0900
+
+    src: Add ibus-keypress
+
+M	configure.ac
+M	src/tests/Makefile.am
+A	src/tests/ibus-keypress.c
+M	src/tests/runtest
+
+commit 886ad3651d16dd821e2526e8601c69738533a7e8
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-05-07 12:35:03 +0900
+
+    src: Fix SEGV in IBusEngine if no emoji shortcut keys
+    
+    BUG=https://github.com/ibus/ibus/issues/2005
+
+M	src/ibusengine.c
+
+commit d8f901f856ddd75baba5826038d1346c5a43d048
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-04-20 15:58:06 +0900
+
+    Replace OnlyShowIn= with NoDisplay=true
+    
+    BUG=rhbz#1567689
+
+M	ui/gtk3/ibus-extension-gtk3.desktop.in.in
+M	ui/gtk3/ibus-ui-emojier.desktop.in.in
+
+commit 3280848b42b07afbac3d59066474c5f429de9182
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-04-17 14:43:02 +0900
+
+    bus: Enable sub package of gtkextension.xml and ibus-extension-gtk3
+    
+    GNOME destkop asked not to install ibus-extension-gtk3 by default
+    since the UI is not called by gnome-shell.
+    
+    BUG=rhbz#1567689
+
+M	bus/main.c
+
+commit 10cc30eac200d10b581d9d2122d5a732f4880943
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-04-17 14:00:20 +0900
+
+    src/tests: Enable GSettings in runtest
+
+M	src/tests/runtest
+
+commit 7bc160f2139799b853678264c6b01277f0721336
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-04-13 19:39:09 +0900
+
+    bus: Add DISABLE_GUI_TESTS for test-stress
+
+M	bus/Makefile.am
+
+commit 8d4c4738d07b6850e56ae74d46b7b13b7382f865
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-04-13 17:33:50 +0900
+
+    configure: Add --disable-python2 option
+
+M	bindings/pygobject/Makefile.am
+M	configure.ac
+
+commit 68bd2695c4cc6a06cb8a55a55fed2054d29f0995
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-04-13 16:31:29 +0900
+
+    src/tests: Fix a typo
+
+M	src/tests/Makefile.am
+
+commit c360cbd830943a4bfb0ece9cc07b99a426dc2121
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-04-09 11:57:09 +0900
+
+    src/tests: Add ibus-compose.env
+
+A	src/tests/ibus-compose.env
+
+commit 68e162a59c7943ee6207ff7d21f9a75d1e6f2f79
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-04-06 20:35:50 +0900
+
+    src/tests: Fix a typo in runtest
+
+M	src/tests/runtest
+
+commit 32f2f2bab149ad766674e7421f7044ebe98bb0b6
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-04-06 20:24:08 +0900
+
+    tests: Added an automation testing on console
+    
+    test-console.sh runs /usr/bin/ibus-daemon on console after install ibus.
+    
+    Login as root
+      --builddir /root/ibus/src/tests --srcdir /root/ibus/src/tests
+    
+    Also added DISABLE_GUI_TESTS parameters for make check.
+
+M	bus/Makefile.am
+M	src/tests/Makefile.am
+M	src/tests/runtest
+A	test/test-console.sh
+
+commit 28d0c1d4bc47beb38995d84cc4bb1d539c08a070
+Author: Olivier Tilloy <olivier.tilloy@canonical.com>
+Date:   2018-04-06 16:02:11 +0900
+
+    src: Make the call to chmod in ibus_bus_init conditional
+    
+    BUG=https://github.com/ibus/ibus/issues/1996
+
+M	src/ibusbus.c
+
+commit 75a6667b6ad8c8cb801cb160b7b04625334f9094
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-04-05 16:54:41 +0900
+
+    src/tests: Fix ibus-compose for the latest GTK
+
+M	src/tests/ibus-compose.c
+
+commit 5788be80685f397c3db3bdf4e672d67cfb9b3433
+Author: Jeremy Bicha <jbicha@ubuntu.com>
+Date:   2018-03-30 12:37:27 +0900
+
+    Fix ucd directory override
+    
+    BUG=https://github.com/ibus/ibus/pull/1995
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/339450043
+    
+    Patch from Jeremy Bicha <jbicha@ubuntu.com>.
+
+M	configure.ac
+
+commit b184861396279d903e62bf6aad271a2205a79832
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-03-30 12:33:59 +0900
+
+    ui/gtk3: Sort Unicode candidates
+    
+    BUG=rhbz#1554714
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/339430043
+
+M	ui/gtk3/emojier.vala
+
+commit c6439d74d5472c95de4d5c2cdc6487bfd508e3d8
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-03-15 16:57:02 +0900
+
+    ui/gtk3: Add num pad Enter, Down, Up, Left, Right on Emojier
+    
+    BUG=rhbz#1554813
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/337690043
+
+M	ui/gtk3/emojier.vala
+
+commit 86963f2f94d1e4fc213b01c2bc2ba9dcf4b22219
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-03-02 15:31:12 +0900
+
+    Release 1.5.18
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/336630043
+
+M	configure.ac
+
+commit 73b420f49ba54b6eac74fb59cb3af948f3a592d6
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-03-01 15:51:00 +0900
+
+    Updated translations
+    
+    Updated po/ca.po po/da.po po/hu.po po/ja.po po/ko.po
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/340720043
+
+M	po/as.po
+M	po/bn_IN.po
+M	po/ca.po
+M	po/cs.po
+M	po/da.po
+M	po/de.po
+M	po/es.po
+M	po/fr.po
+M	po/gu.po
+M	po/hu.po
+M	po/it.po
+M	po/ja.po
+M	po/kn.po
+M	po/ko.po
+M	po/mr.po
+M	po/nl.po
+M	po/pl.po
+M	po/pt_BR.po
+M	po/sv.po
+M	po/ta.po
+M	po/te.po
+M	po/uk.po
+M	po/zh_CN.po
+M	po/zh_HK.po
+M	po/zh_TW.po
+
+commit ece320bda762024541b23178a1b65c3ec968416f
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-03-01 15:48:03 +0900
+
+    bus: Add liveuser to disabled panel extension
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/335610043
+
+M	bus/main.c
+
+commit afe60c12a0e5bf70344930c6769675a439dc82d2
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-03-01 15:42:03 +0900
+
+    ui/gtk3: Implement Page_Down, Page_Up on Unicode name list
+    
+    Page_Down and Page_Up are useful on Unicode name list since the
+    names are many. Also add Ctrl-Shift-[n|p] for the same purpose.
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/340800043
+
+M	ui/gtk3/emojier.vala
+M	ui/gtk3/ibus-emoji.7.in
+
+commit 56c67b1362344e2ab4a061bcc913c455b190ef20
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-03-01 15:37:15 +0900
+
+    ui/gtk3: Set title string in gnome-shell
+    
+    gnome-shell uses .desktop files to get the application title names.
+    Probably the reason is to manage any windows and Xorg and Wayland.
+    
+    BUG=https://mail.gnome.org/archives/gtk-app-devel-list/2018-February/msg00027.html
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/338520043
+
+M	po/POTFILES.in
+M	ui/gtk3/Makefile.am
+M	ui/gtk3/emojierapp.vala
+M	ui/gtk3/extension.vala
+A	ui/gtk3/ibus-extension-gtk3.desktop.in.in
+A	ui/gtk3/ibus-ui-emojier.desktop.in.in
+M	ui/gtk3/panelbinding.vala
+
+commit c57b7c34d75871db172e023b0094b979000f62fc
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-02-27 14:10:29 +0900
+
+    Enable emoji keybinding in Wayland
+    
+    XI2 keybinding does not work for the root window in Wayland because
+    of a security issue maybe. Now I think to move the keybinding in
+    ibus-extension-gtk3 to each IBusEngine.
+    
+    FIXME: Unfortunatelly gtk_get_current_event_time() cannot get time
+    for the delayed DBus events and gtk_window_move() does not work for
+    GtkDialog without a parent window in Wayland.
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/333700043
+
+M	bus/engineproxy.c
+M	bus/ibusimpl.c
+M	bus/inputcontext.c
+M	src/Makefile.am
+M	src/ibus.h
+A	src/ibusaccelgroup.c
+A	src/ibusaccelgroup.h
+M	src/ibusengine.c
+M	ui/gtk3/emojier.vala
+M	ui/gtk3/extension.vala
+M	ui/gtk3/panelbinding.vala
+
+commit 7ccbd21ca7d163cdd71dc6c0405d8a32d63d324d
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-02-27 14:06:30 +0900
+
+    Disable panel extension for gdm user
+    
+    The gdm user's process is also running while the login user's process
+    is running so the double panel extensions are better to be avoided for
+    the memory usage.
+    
+    Review URL: https://codereview.appspot.com/340330044
+
+M	bus/main.c
+
+commit fc54b0c051c2eb4a2c1f836b1415def00314cfc1
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-02-21 12:17:31 +0900
+
+    ui/gtk3: Load Unicode data when open the dialog by default
+    
+    The emoji data requires about 10MB and the Unicode data requires about 15MB.
+    Now the emoji data is loaded at the time of startup and the Unicode data
+    is loaded if users open the dialog at the beginning.
+    The settings can be customized with gsettings command and the keys
+    of 'load-emoji-at-startup' and 'load-unicode-at-startup' in
+    'org.freedesktop.ibus.panel.emoji' schema.
+    
+    Review URL: https://codereview.appspot.com/340780043
+
+M	data/ibus.schemas.in
+M	ui/gtk3/panelbinding.vala
+
+commit d1ebb3d77ebfe8f58188261c383d8122e2125fe6
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-02-21 12:12:11 +0900
+
+    ui/gtk3: Show code points on Unicode name list dialog
+    
+    The code points are useful since the list has many names.
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/340770043
+
+M	ui/gtk3/emojier.vala
+
+commit 366963d57d1468914611c71929cc64c83be9affd
+Author: Piotr Drąg <piotrdrag@gmail.com>
+Date:   2018-02-20 18:57:32 +0900
+
+    Fix typos in translatable strings
+    
+    BUG=https://github.com/ibus/ibus/pull/1983
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/333670043
+    
+    Patch from Piotr Drąg <piotrdrag@gmail.com>.
+
+M	data/ibus.schemas.in
+M	ui/gtk3/emojierapp.vala
+
+commit fb07f64764f18f702221ff5574b2fd2193f051f0
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-02-20 17:25:07 +0900
+
+    Implement ibus-extension-gtk3 for the global keybinding
+    
+    Currently IBus panel (ibus-ui-gtk3) is not available in GNOME and Plasma
+    so the emoji and unicode point typings are not available in GNOME and Plasma.
+    The workaround `ibus emoji` command is available but it put the selected
+    character into the copy buffer and users have to paste the character.
+    
+    Originaly the emoji feature was implemented in IBus GtkIMModule but
+    it had several problems; the first is the keybinding is hard-coded
+    and IBus GtkIMModule does not use GSettings for the customized settings.
+    The second is the feature was available for GTK applications.
+    The third is that XKB input sources uses gtk-im-context-simple
+    but not ibus in GNOME desktop so users have to add an IM input sources
+    to enable IBus for the XKB input sources. The fourth is the feature
+    was available for IBusEngineSimple only and other IBus IMEs need to
+    inherit that class to get the emoji feature. The fifth is that
+    emoji typing is available for English only since IBusEngineSimple
+    had the feature. The sixth is that the default one dimension lookup
+    window was not useful to choose an emoji and needed two dimensions
+    lookup window.
+    
+    And the implementation was moved from IBus GtkIMModule to IBus panel
+    to fix above problems.
+    But users have to use `ibus emoji` at present if ibus-ui-gtk3
+    is not available.
+    
+    Now I think to move the emoji feature from ibus-ui-gtk3 to another
+    IBus component; ibus-extension-gtk3 which manages the Ctrl-Shift-e.
+    GNOME and Plasma desktops still do not show the GUI menu but
+    the shortcut key is available in this implementation.
+    
+    BUG=RHBZ#1430501
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/339300043
+
+M	bindings/vala/IBus-1.0-custom.vala
+M	bus/Makefile.am
+M	bus/ibusimpl.c
+M	bus/main.c
+M	bus/marshalers.list
+M	bus/panelproxy.c
+M	bus/panelproxy.h
+M	src/Makefile.am
+M	src/ibus.h
+M	src/ibusmarshalers.list
+M	src/ibuspanelservice.c
+M	src/ibuspanelservice.h
+M	src/ibusserializable.c
+M	src/ibusserializable.h
+M	src/ibusshare.c
+M	src/ibusshare.h
+A	src/ibusxevent.c
+A	src/ibusxevent.h
+M	src/tests/runtest
+M	ui/gtk3/Makefile.am
+A	ui/gtk3/bindingcommon.vala
+M	ui/gtk3/candidatearea.vala
+A	ui/gtk3/extension.vala
+A	ui/gtk3/gtkextension.xml.in
+M	ui/gtk3/iconwidget.vala
+M	ui/gtk3/panel.vala
+A	ui/gtk3/panelbinding.vala
+
+commit 9f2699c6023e37bd096484d36b2a83b1e680f1b3
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-02-08 11:59:59 +0900
+
+    Fix typo in ISSUE_TEMPLATE
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/340240043
+
+M	.github/ISSUE_TEMPLATE.md
+
+commit ff611a4bf2f74fcb7c3df3f57ba3bff4e50a16ff
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-02-06 11:05:10 +0900
+
+    Add ISSUE_TEMPLATE
+    
+    BUG=https://github.com/blog/2111-issue-and-pull-request-templates
+    
+    Review URL: https://codereview.appspot.com/336540043
+
+A	.github/ISSUE_TEMPLATE.md
+
+commit 4cfd5ad7c6d071cfef6c7d678cc027ea480b8fc9
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-02-06 11:02:09 +0900
+
+    Fix typo in ibusunicode.c
+    
+    Review URL: https://codereview.appspot.com/340740043
+
+M	src/ibusunicode.c
+M	ui/gtk3/emojier.vala
+
+commit e17c99859d06ab75326730e45072e1061f7d87c7
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-01-29 16:50:07 +0900
+
+    Implement Unicode choice on Emojier
+    
+    BUG=https://github.com/ibus/ibus/issues/1922
+    
+    Review URL: https://codereview.appspot.com/340190043
+
+M	configure.ac
+M	po/POTFILES.in
+M	src/Makefile.am
+M	src/emoji-parser.c
+M	src/ibus.h
+A	src/ibusunicode.c
+A	src/ibusunicode.h
+A	src/ibusunicodegen.h
+A	src/unicode-parser.c
+M	ui/gtk3/emojier.vala
+M	ui/gtk3/emojierapp.vala
+M	ui/gtk3/ibusemojidialog.h
+M	ui/gtk3/panel.vala
+
+commit bfe57d20e9d39d52428e95e493d9af0bd034a82f
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2018-01-15 14:44:07 +0900
+
+    Added DBus filtering against malware
+    
+    The proposal prevents non-ower of the GDBusConnection from accessing
+    DBus methods against malicious usages.
+    
+    BUG=https://github.com/ibus/ibus/issues/1955
+    
+    Review URL: https://codereview.appspot.com/335380043
+
+M	bus/inputcontext.c
+M	src/ibusengine.c
+M	src/ibuspanelservice.c
+
+commit 0ab0dd3149cbcf0a914a711ecf421ba32b1300c3
+Author: Peng Wu <alexepico@gmail.com>
+Date:   2018-01-12 12:00:00 +0900
+
+    ui/gtk3: Translate input method name in ibus
+    
+    Translate input method name in ibus menu and switcher
+    
+    BUG=
+    R=takao.fujiwara1@gmail.com
+    
+    Review URL: https://codereview.appspot.com/339170043
+    
+    Patch from Peng Wu <alexepico@gmail.com>.
+
+M	ui/gtk3/panel.vala
+M	ui/gtk3/switcher.vala
+
+commit 88b9a93d61824ba8b18cc9fc943527937db5e40b
+Author: Aaron Muir Hamilton <aaron@correspondwith.me>
+Date:   2017-11-17 12:27:30 +0900
+
+    src: Reintroduce the hex mode keybind with an environment variable
+    
+      This was removed by "Move emoji implementation from
+      IBusEngineSimple to IBusPanel". Reintroduced here
+      behind an environment variable.
+    
+    BUG=https://github.com/ibus/ibus/issues/1961
+    
+    Review URL: https://codereview.appspot.com/335030043
+    
+    Patch from Aaron Muir Hamilton <aaron@correspondwith.me>.
+
+M	src/ibusenginesimple.c
+
+commit a28fa740bfc64bfb65eab9c5fad8bb2086a1e45a
+Author: Danny <lesarde@gmail.com>
+Date:   2017-11-16 12:32:52 +0900
+
+    src: Add libgobject.so to LDADD for Debian libtool
+    
+    Debian libtool ignores dependency_libs in libibus.la for dlopen modules
+    so need to add libraries in LDADD explicitly.
+    https://www.mail-archive.com/libtool@gnu.org/msg11616.html
+    
+    BUG=https://github.com/ibus/ibus/issues/1952
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/334070043
+    
+    Patch from Danny <lesarde@gmail.com>.
+
+M	src/Makefile.am
+
+commit f5e0752fe345db2033a2b49de206dc62acd00a2b
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-11-09 12:14:08 +0900
+
+    src: Added some error handlings from a code review
+    
+    Review URL: https://codereview.appspot.com/337900043
+
+M	src/ibuscomposetable.c
+M	src/ibusenginesimple.c
+
+commit 1cbe86726d99b79201cf3735610524e9a49aa08b
+Author: Carlos Garnacho <carlosg@gnome.org>
+Date:   2017-10-31 13:17:16 +0900
+
+    src: Fix GVariant leaks
+    
+    g_task_propagate_pointer() gives ownership of the data to the caller, so
+    the GVariants handed this way must be unref'ed after the contents have
+    been extracted/copied.
+    
+    BUG=https://github.com/ibus/ibus/pull/1956
+    
+    Review URL: https://codereview.appspot.com/330710043
+    
+    Patch from Carlos Garnacho <carlosg@gnome.org>.
+
+M	src/ibusbus.c
+
+commit c36081898d93c6256ee78fa94dccd769fffff41f
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-10-26 11:03:18 +0900
+
+    tools: Do not change keymaps with 'use-system-keyboard-layout'
+    
+    BUG=https://github.com/ibus/ibus/issues/1951
+    
+    Review URL: https://codereview.appspot.com/334890043
+
+M	tools/main.vala
+
+commit 4f9fa092924b75084b3b9e3fc368d0744db8ad2a
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-10-22 19:25:55 +0900
+
+    Release 1.5.17
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/332030043
+
+M	configure.ac
+
+commit 8cb149bfed9938967af1e823c3a09284a9f2501c
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-10-22 19:16:52 +0900
+
+    Update translations
+    
+    Update cs.po da.po es.po fr.po hu.po ja.po nl.po pl.po sv.po
+           uk.po zh_TW.po
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/331040043
+
+M	po/cs.po
+M	po/da.po
+M	po/es.po
+M	po/fr.po
+M	po/hu.po
+M	po/ja.po
+M	po/nl.po
+M	po/pl.po
+M	po/sv.po
+M	po/uk.po
+M	po/zh_TW.po
+
+commit 53d1f9e92666c77ec13efaeb5f330d05332a8360
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-10-20 11:34:55 +0900
+
+    ui/gtk3: Increase timeout of window filter in PropertyPanel
+    
+    The latest Plasma desktop takes more time to generate _NET_WORKAREA
+    atom and this patch increases the timeout from 1 minute to 5 minutes
+    so that PropertyPanel locate within the workarea.
+    
+    Review URL: https://codereview.appspot.com/336840043
+
+M	ui/gtk3/propertypanel.vala
+
+commit dfe21a2729f13107ef28c4cd075ac81d501384ea
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-10-19 10:53:27 +0900
+
+    ui/gtk3: Unref Panel and Indicator when double panels run
+    
+    If unref is not called properly, Panel.finalize() is not called
+    and Gtk.StatusIcon won't be hidden with double panels.
+    
+    Review URL: https://codereview.appspot.com/329510043
+
+M	ui/gtk3/application.vala
+M	ui/gtk3/indicator.vala
+M	ui/gtk3/panel.vala
+
+commit 98f70ee5966cfe182a75c6cc6466032bf414c640
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-10-11 12:54:10 +0900
+
+    ui/gtk3: Do not activate emoji cells on mouse until mouse moves
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/324660043
+
+M	ui/gtk3/emojier.vala
+M	ui/gtk3/emojierapp.vala
+M	ui/gtk3/panel.vala
+
+commit d37c8bbdf9164ca76fb5ca513891e48273556881
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-09-26 11:42:23 +0900
+
+    ui/gtk3: Unset GDK_CORE_DEVICE_EVENTS
+    
+    Plasma deskop sets this variable and prevents Super-space
+    and Ctrl-Shift-e when ibus-ui-gtk3 runs after the
+    desktop is launched.
+    Also fixed a SEGV in display.get_monitor_at_window()
+    Regression from rhbz#226465
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/321710043
+
+M	ui/gtk3/application.vala
+M	ui/gtk3/switcher.vala
+
+commit 4a541639f50f05bf01b1b84792a7f4039b88c296
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-09-15 17:49:57 +0900
+
+    ui/gtk3: Fix to enable menu button on PropertyPanel
+    
+    Review URL: https://codereview.appspot.com/330720043
+
+M	ui/gtk3/propertypanel.vala
+
+commit 0632cbbbb573749bbca96a416fde1490810e52d2
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-09-13 18:15:06 +0900
+
+    ui/gtk3: Fix PropertyPanel position in workarea
+    
+    gdk_screen_get_monitor_workarea() no longer return the correct area
+    from "_NET_WORKAREA" atom in GTK 3.22 and now use
+    gdk_monitor_get_workarea() instead.
+    
+    Use gdk_seat_grab() instead of deprecated gdk_device_grab().
+    
+    Use gtk_menu_popup_at_rect() instead of deprecated gtk_menu_popup() and
+    generate a new foreign GdkWindow with mouse cursor for the Qt Window.
+    
+    Also fixed some deprecated APIs.
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/330190043
+
+M	ui/gtk3/candidatepanel.vala
+M	ui/gtk3/emojier.vala
+M	ui/gtk3/handle.vala
+M	ui/gtk3/indicator.vala
+M	ui/gtk3/keybindingmanager.vala
+M	ui/gtk3/panel.vala
+M	ui/gtk3/propertypanel.vala
+M	ui/gtk3/switcher.vala
+
+commit 79aebc5553adeb2beff924135ee3b7e4e6c7eb94
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-09-11 12:32:35 +0900
+
+    Remove debian directory upon the Debian's request
+    
+    Makefile.am is also modified to get rid of debian words.
+    
+    BUG=https://github.com/ibus/ibus/issues/1945
+    R=Shawn.P.Huang@gmail.com, osamu.aoki@gmail.com, shawn.p.huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/322670043
+
+M	Makefile.am
+D	debian/README.source
+D	debian/changelog.in
+D	debian/clean
+D	debian/compat
+D	debian/control
+D	debian/copyright
+D	debian/docs
+D	debian/ibus-daemon.1
+D	debian/ibus-gconf.1
+D	debian/ibus-gtk2.install
+D	debian/ibus-gtk3.install
+D	debian/ibus-setup.1
+D	debian/ibus-ui-gtk.1
+D	debian/ibus-x11.1
+D	debian/ibus.1
+D	debian/ibus.install
+D	debian/ibus.manpages
+D	debian/ibus.postinst
+D	debian/ibus.prerm
+D	debian/libibus-1.0-0.install
+D	debian/libibus-1.0-0.symbols
+D	debian/libibus-dev.install
+D	debian/patches/00list
+D	debian/python-ibus.install
+D	debian/pyversions
+D	debian/rules
+D	debian/source/format
+D	debian/watch
+D	debian/xinput/ibus
+
+commit d784e04c38eeb069f9a8da8b30743f4463fa34c3
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-09-07 10:57:14 +0900
+
+    client/gtk2: Fix a build failure with GDK_MODIFIER_INTENT_NO_TEXT_INPUT
+    
+    BUG=https://github.com/ibus/ibus/issues/1942
+    
+    Review URL: https://codereview.appspot.com/327300043
+
+M	client/gtk2/ibusimcontext.c
+
+commit bbfb3d738b9d61d1eb0658a9ce56e3cd8c111ac4
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-09-06 14:08:40 +0900
+
+    client/gtk2: Do not send key events to GtkIMContextSimple
+    
+    GtkIMContextSimple binds Ctrl-Shift-u but IBus clients do not now.
+    
+    BUG=https://github.com/ibus/ibus/issues/1889
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/327290043
+
+M	client/gtk2/ibusimcontext.c
+M	src/ibusenginesimple.c
+M	src/ibusenginesimple.h
+
+commit d788918b635275d0247e68f26f9c840100bca366
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-09-06 12:17:30 +0900
+
+    ui/gtk3: Switcher should ignore mouse until it moves
+    
+    BUG=https://github.com/ibus/ibus/issues/1929
+    
+    Review URL: https://codereview.appspot.com/329100043
+
+M	ui/gtk3/switcher.vala
+
+commit 21bac4733684ca6a74ddb02f457c0fe19eb9180d
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-09-06 12:11:01 +0900
+
+    ui/gtk3: Move ibus-emoji-dialog.vapi from ui/gtk3 to bindings/vala
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/322590043
+
+R100	ui/gtk3/IBusEmojiDialog-1.0.metadata	bindings/vala/IBusEmojiDialog-1.0.metadata
+M	bindings/vala/Makefile.am
+R100	ui/gtk3/ibus-emoji-dialog-1.0.deps	bindings/vala/ibus-emoji-dialog-1.0.deps
+M	po/POTFILES.skip
+M	ui/gtk3/Makefile.am
+M	ui/gtk3/emojier.vala
+M	ui/gtk3/ibusemojidialog.h
+
+commit 3e01bab972ad12b92c55a9dde554a0359c217290
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-09-06 12:04:52 +0900
+
+    portal: Add org.freedesktop.IBus.Portal.xml in EXTRA_DIST
+    
+    Review URL: https://codereview.appspot.com/325370043
+
+M	portal/Makefile.am
+
+commit 9937a0e4501ccf0cfd238ce7c97733c3099db3f7
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-09-04 12:19:07 +0900
+
+    bus: ibus-daemon activates ibus-portal
+    
+    When ibus-daemon restarts, ibus-portal exits with on_name_lost() and
+    the clients wait for portal_name_appeared() until ibus-poral restarts.
+    Now the clients can connect to ibus-daemon with this way and also
+    they don't have to activate ibus-portal.
+    
+    BUG=https://github.com/flatpak/flatpak/issues/675
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/321530043
+
+M	bus/server.c
+M	portal/portal.c
+
+commit 9772e800f3e6937510f2609c5ce9a6860c59cb81
+Author: Alexander Larsson <alexl@redhat.com>
+Date:   2017-09-04 12:02:17 +0900
+
+    test: Testing in flatpak
+    
+    Test with:
+    flatpak-builder --force-clean app org.test.IBus.json
+    flatpak-builder --run --nofilesystem=host app org.test.IBus.json zenity --entry
+    
+    BUG=https://github.com/flatpak/flatpak/issues/675
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/329090043
+    
+    Patch from Alexander Larsson <alexl@redhat.com>.
+
+A	test/org.test.IBus.json
+
+commit 35ce62474fa97a5460d72c360943700a413a07ae
+Author: Alexander Larsson <alexl@redhat.com>
+Date:   2017-08-31 12:03:37 +0900
+
+    Support the portal in the gtk im modules
+    
+    This adds a new way to create an IbusBus, ibus_bus_new_async_client().
+    This returns an object that is not guarantee to handle any calls
+    that are not needed by a client, meaning CreateInputContext and
+    handling the input context.
+    
+    If you are running in a flatpak, or if IBUS_USE_PORTAL is set, then
+    instead of talking to the regular ibus bus we connect to
+    org.freedesktop.portal.IBus on the session bus and use the
+    limited org.freedesktop.IBus.Portal interface instead of the
+    org.freedesktop.IBus interface.
+    
+    This allows flatpaks (or other sandbox systems) to safely use
+    dbus clients (apps).
+    
+    BUG=https://github.com/flatpak/flatpak/issues/675
+    
+    Review URL: https://codereview.appspot.com/328410043
+    
+    Patch from Alexander Larsson <alexl@redhat.com>.
+
+M	client/gtk2/ibusimcontext.c
+M	src/ibusbus.c
+M	src/ibusbus.h
+M	src/ibusinputcontext.c
+
+commit 203a3df5a239d644cf42b7bac03a268eb5babfc7
+Author: Alexander Larsson <alexl@redhat.com>
+Date:   2017-08-30 11:38:09 +0900
+
+    Initial version of ibus portal
+    
+    This adds a dbus service called org.freedesktop.portal.IBus on the
+    session bus. It is a very limited service that only implements
+    CreateInputContext and the InputContext interface (and Service.Destroy
+    for lifetime access).
+    
+    It uses gdbus code generation for demarshalling the method calls which
+    means it will verify that all arguments have the right type.
+    
+    Additionally all method calls to the input context object have to be
+    from the client that created it, so each client is isolated.
+    
+    BUG=https://github.com/flatpak/flatpak/issues/675
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/326350043
+    
+    Patch from Alexander Larsson <alexl@redhat.com>.
+
+M	Makefile.am
+M	configure.ac
+A	portal/Makefile.am
+A	portal/org.freedesktop.IBus.Portal.xml
+A	portal/org.freedesktop.portal.IBus.service.in
+A	portal/portal.c
+M	src/ibusshare.h
+
+commit c1b93f933f5cbd74f3e06575d26ed7432a5420fd
+Author: Mario Bodemann <mario.bodemann@gmail.com>
+Date:   2017-08-15 12:10:56 +0900
+
+    Typo fix
+    
+    BUG=https://github.com/ibus/ibus/pull/1939
+    
+    Review URL: https://codereview.appspot.com/327080043
+    
+    Patch from Mario Bodemann <mario.bodemann@gmail.com>.
+
+M	ui/gtk3/ibus-emoji.7.in
+
+commit 6a3301db85e77e0652f7e00894cce493b6a942f6
+Author: Xiang Fan <sfanxiang@gmail.com>
+Date:   2017-08-10 11:24:39 +0900
+
+    client/gtk2: include the scaling factor
+    
+    Scaling factor, which exists for HiDPI displays, needs to be included in
+    the calculation of cursor location. This does not affect devices without
+    a HiDPI display.
+    
+    Candidate windows would be misplaced to smaller coordinates without this
+    patch.
+    
+    BUG=https://github.com/ibus/ibus/issues/1806
+    
+    Review URL: https://codereview.appspot.com/328250043
+    
+    Patch from Xiang Fan <sfanxiang@gmail.com>.
+
+M	client/gtk2/ibusimcontext.c
+
+commit 91bebf01e41116d71e60876e793284cf9d8dc186
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-07-28 11:45:28 +0900
+
+    ui/gtk3: Fix SEGV of XKeysymToKeycode() on Wayland
+    
+    BUG=rhbz#1368593
+    BUG=rhbz#1446816
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/325120043
+
+M	ui/gtk3/application.vala
+
+commit bc0f91342c6f3a6e554493af9430d634d906ee19
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-07-25 12:00:14 +0900
+
+    ui/gtk3: Fix SEGV of IBusEmojier on de_DE.UTF-8
+    
+    de's decimal_point is ',' instead of '.' and failed to load the
+    CSS data in Gtk.CssProvider.load_from_data(), launched null
+    window of emojis and finally caused a SEGV due to the null window.
+    This also fixes some memory leaks.
+    
+    BUG=rhbz#1471079
+    
+    Review URL: https://codereview.appspot.com/323310043
+
+M	src/ibusemoji.c
+M	ui/gtk3/emojier.vala
+
+commit 56b5126f09887b41c2cc6cb97bfd72593b60732f
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-07-25 11:55:08 +0900
+
+    po: Replace s/annotaions/annotations/
+    
+    BUG=https://github.com/ibus/ibus/issues/1933
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/323330043
+
+M	data/ibus.schemas.in
+M	po/cs.po
+M	po/da.po
+M	po/de.po
+M	po/es.po
+M	po/fr.po
+M	po/hu.po
+M	po/ja.po
+M	po/nl.po
+M	po/pl.po
+M	po/pt_BR.po
+M	po/sv.po
+M	po/uk.po
+M	po/zh_TW.po
+M	ui/gtk3/emojierapp.vala
+
+commit ad80999f5a10faee1a665a2232e1cf60be901cc8
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-05-29 12:03:41 +0900
+
+    Make all emoji dicts for fully qualified
+    
+    Currently only emoji-en.dict enables fully qualified since it imports
+    emoji-test.txt and it causes to hardly compare emojis between
+    emoji-en.dict and emoji-$lang.dict when m_show_emoji_variant
+    is enabled. E.g. U+1F3CC-FE0F-200D-2642-FE0F
+    Now emoji-$lang.dict also import emoji-test.txt and enables
+    fully qualified.
+    
+    R=penghuang@google.com
+    
+    Review URL: https://codereview.appspot.com/323860043
+
+M	src/Makefile.am
+M	src/emoji-parser.c
+M	src/ibusemoji.c
+M	ui/gtk3/emojier.vala
+
+commit 081d09f1a927f459dacda3bcc59a1678ca2f9a95
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-05-29 11:54:31 +0900
+
+    ui/gtk3: Emojier supports Ctrl-c,v,x and Ctrl-Shift-c
+    
+    Ctrl-[c|v|x] copy, paste, or cut the emoji annotatons.
+    Ctrl-Shift-c copies the selected emoji.
+    Also Ctrl-Backspace is implemented to delete an annotation word.
+    Also updated ibus-emoji.7.in man page.
+    
+    R=penghuang@google.com
+    
+    Review URL: https://codereview.appspot.com/316650043
+
+M	ui/gtk3/emojier.vala
+M	ui/gtk3/ibus-emoji.7.in
+
+commit 44d053577a6ac115f3fd3b7beb7bdd65da81aa64
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-05-24 11:52:19 +0900
+
+    engine: Add Malay and Mongolian keymaps
+    
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/325790043
+
+M	engine/simple.xml.in
+
+commit 4fe3050efa7335f82870fb1d5a1d170d20afc160
+Author: fujiwarat <takao.fujiwara1@gmail.com>
+Date:   2017-05-22 12:04:28 +0900
+
+    configure: Change relative paths to absolute ones
+    
+    BUG=https://github.com/ibus/ibus/issues/1926
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/322990043
+
+M	configure.ac
+
+commit e6bab7ab78c69d238a70a64e60963dd5a6711ffe
+Author: Felix Yan <felixonmars@archlinux.org>
+Date:   2017-05-19 12:13:04 +0900
+
+    Fix a typo in configure.ac
+    
+    BUG=https://github.com/ibus/ibus/pull/1927
+    R=Shawn.P.Huang@gmail.com
+    
+    Review URL: https://codereview.appspot.com/317640043
+    
+    Patch from Felix Yan <felixonmars@archlinux.org>.
+
+M	configure.ac
+
 commit ccc602d626b29fae805fae2d0995126afac6d9e6
 Author: fujiwarat <takao.fujiwara1@gmail.com>
 Date:   2017-05-15 16:03:34 +0900

@@ -1,34 +1,45 @@
-Changes in IBus 1.5.16
+Changes in IBus 1.5.20
 
-bus: Add error messages for g_dbus_server_new_sync (fujiwarat) 4e02857c
-tools: Fix `ibus emoji` SEGV when language is changed. (fujiwarat) 7e477d5e
-ui/gtk3: Get emoji colors from the theme (fujiwarat) 9dbea347
-src: Fix ibus_emoji_dict_load() (fujiwarat) 31ed31e5
-ui/gtk3: Fix emoji text entry cusor position (fujiwarat) c5808451
-src: Update emoji-parser to treat tts as emoji description (fujiwarat) fbe3de17
-client/x11: Add XSetIOErrorHandler() for GNOME3 desktop (fujiwarat) ab6c38c1
-ui/gtk3: Implement shortcut keys on emoji dialog (fujiwarat) 58f6140f
-ui/gtk3: Enable strcasecmp to match emoji annotation (fujiwarat) 50e344af
-Make more readable error messages if emoji xml files are missed (fujiwarat) bd7e0ba2
-Move language setting from IBusEmojier to ibus-setup (fujiwarat) 0efb1c50
-data: Fix a typo (fujiwarat) 16430075
-Fix IBusEmojiDialog_1_0_gir_LIBS for --as-needed LDFLAGS (fujiwarat) c3168d47
-ui/gtk3: Enable to type multiple code points on Emojier (fujiwarat) 8b6f9fa5
-src: Enable unicode_alt in EmojiOne json file (fujiwarat) cb0a36c2
-Make ibus emojier dialog as an unique application (Peng Wu) 648f58a3
-Make ibus emojier dialog as an unique application (Peng Wu) 2f8982a0
-tools: spawn the process of ibus-ui-emojier (Peng Wu) da33672b
-ui/gtk3: Fix build failures (fujiwarat) 290f786b
-ui/gtk3: Mark LANG and FONT as translatable strings (fujiwarat) 4b8d7baf
-ui/gtk3: Change modal dialog to focused dialog (fujiwarat) c6cdf21c
-ui/gtk3: Fix build failures (fujiwarat) aba81ace
-ui/gtk3: Get emoji font size from gsettings (fujiwarat) 61fa8eab
-Change to use Unicode Emoji files instead of EmojiOne files (fujiwarat) 2f73064d
-Support to match emoji annotations with partial string (fujiwarat) 0836c3ff
-ui/gtk3: Hide emoji variants by default (fujiwarat) edcb4a02
-ui/gtk3: Add ibus-emoji man mapge (fujiwarat) 5f653d31
-Update favorites category automatically by selecting emoji (fujiwarat) 1159093d
-ui/gtk3: Rename ibus-emoji.1.in to ibus-emoji.7.in (fujiwarat) f6c2e2dd
-ui/gtk3: Fix to focus Emojier when type Control-Shift-e twice (fujiwarat) 086fc542
-Update translations (fujiwarat) 21e6c003
-Release 1.5.16 (fujiwarat) ccc602d6
+ui/gtk3: Check if gdk-wayland is installed (fujiwarat) aa0f4252
+ui/gtk3: Do not clear unicode data when emoji annotation lang is changed (fujiwarat) 7edaefdc
+ui/gtk3: Fix SEGV when type ASCII on emojier (fujiwarat) 28d22176
+ui/gtk3: Support Shift-Space to insert a Space on Emojier preedit (fujiwarat) e6badb49
+ui/gtk3: Do not move Emojier popup with the active candidate in Xorg (fujiwarat) 809d8803
+ui/gtk3: Fix SEGV when commit an emoji on Emojier in Wayland (fujiwarat) 1c6565e2
+ui/gtk3: Fix g_return_val_if_fail in ibus_emojier_clamp_page (fujiwarat) 6e315973
+src: Update translatable strings in ibusunicodegen.h (fujiwarat) 41c86686
+data/dconf: Delete dconf dependencies (fujiwarat) a8e8b694
+data/dconf: Rename org.freedesktop.ibus.gschema.xml[.in] (fujiwarat) 74a00cc9
+Gettext migration for gschema.xml file (fujiwarat) a6710817
+src/tests: Fix make check in Fedora 29 (fujiwarat) c1b55431
+src/tests: Fix the location of org.freedesktop.ibus.gschema.xml (fujiwarat) aa24a526
+data/dconf: Add comments in org.freedesktop.ibus.gschema.xml (fujiwarat) 3914d3a2
+data/dconf: Fix a typo (fujiwarat) b6086665
+RHEL code reviews (fujiwarat) 3172c3b2
+Detect mouse click to commit Hangul preedit (fujiwarat) a40631e1
+client/gtk2: Do not delete IBUS_CAP_SURROUNDING_TEXT (fujiwarat) 7b3b8c8b
+src: Fix typos in comment lines (ZhaoQiang) 639960a8
+client/gtk2: Always reset and clear preedit on mouse click (fujiwarat) 4c40afba
+src: Show compose preedit with custom compose file (fujiwarat) ba41173c
+src: Clear preedit in IBusEngineSimple with focus changes (fujiwarat) 28b0744a
+client/gtk2: Fix SEGV on mouse clicks when ibus-daemon not running (fujiwarat) c7d8771c
+configure: Generate ibus_localedir variable (fujiwarat) a78e7f8d
+src: use iso 639-3 to have names for more languages (glasseyes) 1cd52548
+m4: Add ibuslocale.m4 to Makefile.am (fujiwarat) 7b9c034f
+client/gtk2: Use button-press-event only with IBUS_ENGINE_PREEDIT_COMMIT (fujiwarat) 9ae2d465
+introspection: Tell the GI scanner to include the C headers (Mathieu Bridon) 4ef976a8
+portal: Update APIs for Hangul preedit in Flatpak (fujiwarat) 0fd043c3
+test: Add flatpak-builder file for org.freedesktop.Platform (fujiwarat) 60e246ef
+client/gtk2: Fix Atom and Slack for Flatpak (fujiwarat) be7fb813
+src/ibuscomposetable: Replace assert with warning for .XCompose (fujiwarat) 0f5084e0
+Delete weak pointer in GList.SList for vala 0.43.4 (fujiwarat) 4d7c1e00
+engine: Add Uzbek layouts (bmansurov) 4592ce51
+bus: Allow using non-abstract UNIX domain sockets (Anton Mikhalev) 7a38e4d1
+client/x11: typo: sevrer to server (scootergrisen) 64f4e412
+Delete Super-space notification (fujiwarat) 4d3a8ff3
+ui/gtk3: Fix assert with 16 candidates (fujiwarat) 6aab10f2
+Delete underscore in _Name in *.desktop for gettext migration (fujiwarat) b30eb5de
+src/ibusemojigen.h: Updated translatable emoji categories (fujiwarat) f5b282e8
+ui/gtk3: Do not add emojis in compose category to emoji variants (fujiwarat) 8375f391
+Update translations (fujiwarat) b1dd51c1
+Release 1.5.20 (fujiwarat) 40775652
