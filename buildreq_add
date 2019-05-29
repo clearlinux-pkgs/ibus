@@ -7,3 +7,4 @@ glibc-locale
 buildreq-gnome
 buildreq-kde
 python3-core
+UCD

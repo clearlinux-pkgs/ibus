@@ -1,3 +1,13 @@
---disable-python-library --disable-emoji-dict --disable-tests --sysconfdir=/usr/share/defaults --enable-wayland
+--disable-python-library 
+--disable-tests 
+--sysconfdir=/usr/share/defaults 
+--enable-wayland
 --disable-python2
---disable-unicode-dict
+--enable-gtk2
+--enable-gtk3
+--enable-xim
+--enable-surrounding-text
+--with-python=/usr/bin/python3
+--enable-wayland
+--enable-introspection
+--disable-emoji-dict

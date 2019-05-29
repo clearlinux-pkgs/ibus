@@ -4,7 +4,7 @@
 #
 Name     : ibus
 Version  : 1.5.20
-Release  : 18
+Release  : 19
 URL      : https://github.com/ibus/ibus/releases/download/1.5.20/ibus-1.5.20.tar.gz
 Source0  : https://github.com/ibus/ibus/releases/download/1.5.20/ibus-1.5.20.tar.gz
 Summary  : Next Generation Input Bus for Linux
@@ -19,7 +19,9 @@ Requires: ibus-locales = %{version}-%{release}
 Requires: ibus-man = %{version}-%{release}
 Requires: ibus-python = %{version}-%{release}
 Requires: ibus-python3 = %{version}-%{release}
+Requires: UCD
 Requires: glibc-locale
+BuildRequires : UCD
 BuildRequires : buildreq-gnome
 BuildRequires : buildreq-kde
 BuildRequires : docbook-xml
@@ -175,7 +177,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1558339836
+export SOURCE_DATE_EPOCH=1559115839
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -184,9 +186,19 @@ export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sect
 export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
-%configure --disable-static --disable-python-library --disable-emoji-dict --disable-tests --sysconfdir=/usr/share/defaults --enable-wayland \
+%configure --disable-static --disable-python-library \
+--disable-tests \
+--sysconfdir=/usr/share/defaults \
+--enable-wayland \
 --disable-python2 \
---disable-unicode-dict
+--enable-gtk2 \
+--enable-gtk3 \
+--enable-xim \
+--enable-surrounding-text \
+--with-python=/usr/bin/python3 \
+--enable-wayland \
+--enable-introspection \
+--disable-emoji-dict
 make  %{?_smp_mflags}
 
 %check
@@ -197,7 +209,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1558339836
+export SOURCE_DATE_EPOCH=1559115839
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ibus
 cp COPYING %{buildroot}/usr/share/package-licenses/ibus/COPYING
@@ -229,6 +241,8 @@ cp COPYING.unicode %{buildroot}/usr/share/package-licenses/ibus/COPYING.unicode
 /usr/share/ibus/component/dconf.xml
 /usr/share/ibus/component/gtkpanel.xml
 /usr/share/ibus/component/simple.xml
+/usr/share/ibus/dicts/unicode-blocks.dict
+/usr/share/ibus/dicts/unicode-names.dict
 /usr/share/ibus/keymaps/common
 /usr/share/ibus/keymaps/in
 /usr/share/ibus/keymaps/jp
