@@ -4,7 +4,7 @@
 #
 Name     : ibus
 Version  : 1.5.20
-Release  : 19
+Release  : 20
 URL      : https://github.com/ibus/ibus/releases/download/1.5.20/ibus-1.5.20.tar.gz
 Source0  : https://github.com/ibus/ibus/releases/download/1.5.20/ibus-1.5.20.tar.gz
 Summary  : Next Generation Input Bus for Linux
@@ -56,6 +56,9 @@ BuildRequires : pygobject
 BuildRequires : pygobject-python
 BuildRequires : python3-core
 BuildRequires : vala
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 IBus - Input Bus
@@ -177,7 +180,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1559115839
+export SOURCE_DATE_EPOCH=1559829711
 unset LD_AS_NEEDED
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -209,7 +212,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1559115839
+export SOURCE_DATE_EPOCH=1559829711
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ibus
 cp COPYING %{buildroot}/usr/share/package-licenses/ibus/COPYING
