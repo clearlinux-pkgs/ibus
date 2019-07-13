@@ -4,7 +4,7 @@
 #
 Name     : ibus
 Version  : 1.5.20
-Release  : 20
+Release  : 21
 URL      : https://github.com/ibus/ibus/releases/download/1.5.20/ibus-1.5.20.tar.gz
 Source0  : https://github.com/ibus/ibus/releases/download/1.5.20/ibus-1.5.20.tar.gz
 Summary  : Next Generation Input Bus for Linux
