@@ -1,45 +1,87 @@
-Changes in IBus 1.5.20
+Changes in IBus 1.5.21
 
-ui/gtk3: Check if gdk-wayland is installed (fujiwarat) aa0f4252
-ui/gtk3: Do not clear unicode data when emoji annotation lang is changed (fujiwarat) 7edaefdc
-ui/gtk3: Fix SEGV when type ASCII on emojier (fujiwarat) 28d22176
-ui/gtk3: Support Shift-Space to insert a Space on Emojier preedit (fujiwarat) e6badb49
-ui/gtk3: Do not move Emojier popup with the active candidate in Xorg (fujiwarat) 809d8803
-ui/gtk3: Fix SEGV when commit an emoji on Emojier in Wayland (fujiwarat) 1c6565e2
-ui/gtk3: Fix g_return_val_if_fail in ibus_emojier_clamp_page (fujiwarat) 6e315973
-src: Update translatable strings in ibusunicodegen.h (fujiwarat) 41c86686
-data/dconf: Delete dconf dependencies (fujiwarat) a8e8b694
-data/dconf: Rename org.freedesktop.ibus.gschema.xml[.in] (fujiwarat) 74a00cc9
-Gettext migration for gschema.xml file (fujiwarat) a6710817
-src/tests: Fix make check in Fedora 29 (fujiwarat) c1b55431
-src/tests: Fix the location of org.freedesktop.ibus.gschema.xml (fujiwarat) aa24a526
-data/dconf: Add comments in org.freedesktop.ibus.gschema.xml (fujiwarat) 3914d3a2
-data/dconf: Fix a typo (fujiwarat) b6086665
-RHEL code reviews (fujiwarat) 3172c3b2
-Detect mouse click to commit Hangul preedit (fujiwarat) a40631e1
-client/gtk2: Do not delete IBUS_CAP_SURROUNDING_TEXT (fujiwarat) 7b3b8c8b
-src: Fix typos in comment lines (ZhaoQiang) 639960a8
-client/gtk2: Always reset and clear preedit on mouse click (fujiwarat) 4c40afba
-src: Show compose preedit with custom compose file (fujiwarat) ba41173c
-src: Clear preedit in IBusEngineSimple with focus changes (fujiwarat) 28b0744a
-client/gtk2: Fix SEGV on mouse clicks when ibus-daemon not running (fujiwarat) c7d8771c
-configure: Generate ibus_localedir variable (fujiwarat) a78e7f8d
-src: use iso 639-3 to have names for more languages (glasseyes) 1cd52548
-m4: Add ibuslocale.m4 to Makefile.am (fujiwarat) 7b9c034f
-client/gtk2: Use button-press-event only with IBUS_ENGINE_PREEDIT_COMMIT (fujiwarat) 9ae2d465
-introspection: Tell the GI scanner to include the C headers (Mathieu Bridon) 4ef976a8
-portal: Update APIs for Hangul preedit in Flatpak (fujiwarat) 0fd043c3
-test: Add flatpak-builder file for org.freedesktop.Platform (fujiwarat) 60e246ef
-client/gtk2: Fix Atom and Slack for Flatpak (fujiwarat) be7fb813
-src/ibuscomposetable: Replace assert with warning for .XCompose (fujiwarat) 0f5084e0
-Delete weak pointer in GList.SList for vala 0.43.4 (fujiwarat) 4d7c1e00
-engine: Add Uzbek layouts (bmansurov) 4592ce51
-bus: Allow using non-abstract UNIX domain sockets (Anton Mikhalev) 7a38e4d1
-client/x11: typo: sevrer to server (scootergrisen) 64f4e412
-Delete Super-space notification (fujiwarat) 4d3a8ff3
-ui/gtk3: Fix assert with 16 candidates (fujiwarat) 6aab10f2
-Delete underscore in _Name in *.desktop for gettext migration (fujiwarat) b30eb5de
-src/ibusemojigen.h: Updated translatable emoji categories (fujiwarat) f5b282e8
-ui/gtk3: Do not add emojis in compose category to emoji variants (fujiwarat) 8375f391
-Update translations (fujiwarat) b1dd51c1
-Release 1.5.20 (fujiwarat) 40775652
+Changwoo Ryu (1):
+      Fix typos
+
+Gunnar Hjalmarsson (1):
+      bus: Indistinguishable address of ibus-daemon
+
+Hodong Kim (1):
+      client/x11: Update LOCALES_STRING
+
+fujiwarat (35):
+      setup: Enable to run ibus-setup with a different python
+      src: Update ibusunicodegen.h for Unicode UCD 12.0
+      build: Delete built sources with MAINTAINERCLEANFILES
+      test: Set GTK_IM_MODULE in test-console.sh
+      configure: Move ibus-setup from configure.ac to Makefile.am
+      NEWS: Add shortlog
+      data/its: Add ibus.its for IME's component files
+      src: Make ISO 639 language names with title
+      client/gtk2: Keep preedit cursor_pos and visible in clearing preedit text
+      src: Copy compose-parse.py from gtk
+      src: s/GDK_KEY/IBUS_KEY/ in compose-parse.py
+      src: Support 32bit and multiple output characters in compose-parse.py
+      src: Support 32bit and multiple compose outputs
+      src: Enable multiple compose output and long key sequences in user comopse
+      src: Change a fixed compose buffer to a variable one
+      src: s/iso_639-3/iso_639_3/ in ibus_get_language_name()
+      bus: Disable panel extension for gnome-initial-setup user
+      src/tests: Fix ibus-compose for IBusComposeTableEx
+      src/tests: Use GTest for ibus-compose
+      src: Support common_name in ISO 639
+      src/tests: Install IBus tests into gnome-desktop-testing
+      src/tests: Rename test-console.sh to ibus-desktop-testing-runner
+      src/tests: Use gnome-desktop-testing-runner
+      src/tests: Fix IBus test cases for gnome-desktop-testing
+      Update translations
+      src/tests: Fix a fatal error with g_warning
+      src/tests: Fix wrong echo with direct runner in ibus-desktop-testing-runner
+      bus: Exit ibus-daemon with parent's death
+      src/tests: Set XDG_SESSION_TYPE in ibus-desktop-testing-runner
+      client/wayland: Update Wayland input-method protocol to unstable v1
+      client/wayland: Connect to "disconnected" signal
+      Update Translations
+      Fix some build errors with make dist
+      Release 1.5.21
+      build: Fix build errors with '-include' directive
+
+
+setup: Enable to run ibus-setup with a different python (fujiwarat) 026b19ef
+src: Update ibusunicodegen.h for Unicode UCD 12.0 (fujiwarat) 2825bfc1
+build: Delete built sources with MAINTAINERCLEANFILES (fujiwarat) 6099a45f
+test: Set GTK_IM_MODULE in test-console.sh (fujiwarat) b497de5b
+configure: Move ibus-setup from configure.ac to Makefile.am (fujiwarat) 1cb5032e
+NEWS: Add shortlog (fujiwarat) cc849c20
+data/its: Add ibus.its for IME's component files (fujiwarat) 1c54fea6
+bus: Indistinguishable address of ibus-daemon (Gunnar Hjalmarsson) 91a25616
+src: Make ISO 639 language names with title (fujiwarat) 05a10950
+client/gtk2: Keep preedit cursor_pos and visible in clearing preedit text (fujiwarat) cebe7a95
+src: Copy compose-parse.py from gtk (fujiwarat) d25489ae
+src: s/GDK_KEY/IBUS_KEY/ in compose-parse.py (fujiwarat) 22471657
+src: Support 32bit and multiple output characters in compose-parse.py (fujiwarat) 651c997a
+src: Support 32bit and multiple compose outputs (fujiwarat) b59f7f82
+src: Enable multiple compose output and long key sequences in user comopse (fujiwarat) 5b6ad433
+src: Change a fixed compose buffer to a variable one (fujiwarat) 82a728de
+src: s/iso_639-3/iso_639_3/ in ibus_get_language_name() (fujiwarat) 80254484
+bus: Disable panel extension for gnome-initial-setup user (fujiwarat) 69e443c0
+src/tests: Fix ibus-compose for IBusComposeTableEx (fujiwarat) ac492f31
+src/tests: Use GTest for ibus-compose (fujiwarat) 76dec798
+src: Support common_name in ISO 639 (fujiwarat) 6bdc692e
+src/tests: Install IBus tests into gnome-desktop-testing (fujiwarat) af00f415
+src/tests: Rename test-console.sh to ibus-desktop-testing-runner (fujiwarat) 2a4f9518
+src/tests: Use gnome-desktop-testing-runner (fujiwarat) fa081ac8
+src/tests: Fix IBus test cases for gnome-desktop-testing (fujiwarat) 85b647a1
+Update translations (fujiwarat) 05d03b9c
+client/x11: Update LOCALES_STRING (Hodong Kim) 0c89a7ee
+src/tests: Fix a fatal error with g_warning (fujiwarat) f4463c04
+src/tests: Fix wrong echo with direct runner in ibus-desktop-testing-runner (fujiwarat) 7dde9960
+bus: Exit ibus-daemon with parent's death (fujiwarat) 32572618
+Fix typos (Changwoo Ryu) 32645ca8
+src/tests: Set XDG_SESSION_TYPE in ibus-desktop-testing-runner (fujiwarat) 28c10d64
+client/wayland: Update Wayland input-method protocol to unstable v1 (fujiwarat) b7584783
+client/wayland: Connect to "disconnected" signal (fujiwarat) ab56a273
+Update Translations (fujiwarat) b07b6b77
+Fix some build errors with make dist (fujiwarat) 7fc8943e
+Release 1.5.21 (fujiwarat) 5744073a
+build: Fix build errors with '-include' directive (fujiwarat) ae0040c7
