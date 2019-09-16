@@ -4,10 +4,10 @@
 #
 Name     : ibus
 Version  : 1.5.21
-Release  : 22
+Release  : 23
 URL      : https://github.com/ibus/ibus/releases/download/1.5.21/ibus-1.5.21.tar.gz
 Source0  : https://github.com/ibus/ibus/releases/download/1.5.21/ibus-1.5.21.tar.gz
-Summary  : Next Generation Input Bus for Linux
+Summary  : IBus Library
 Group    : Development/Tools
 License  : ICU LGPL-2.1
 Requires: ibus-bin = %{version}-%{release}
@@ -57,6 +57,7 @@ BuildRequires : vala
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
+Patch1: CVE-2019-14822.patch
 
 %description
 IBus - Input Bus
@@ -92,7 +93,6 @@ Requires: ibus-lib = %{version}-%{release}
 Requires: ibus-bin = %{version}-%{release}
 Requires: ibus-data = %{version}-%{release}
 Provides: ibus-devel = %{version}-%{release}
-Requires: ibus = %{version}-%{release}
 Requires: ibus = %{version}-%{release}
 
 %description dev
@@ -172,23 +172,23 @@ python3 components for the ibus package.
 
 %prep
 %setup -q -n ibus-1.5.21
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1566662107
+export SOURCE_DATE_EPOCH=1568656699
 unset LD_AS_NEEDED
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
+export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong -mzero-caller-saved-regs=used "
 %configure --disable-static --disable-python-library \
 --disable-tests \
 --sysconfdir=/usr/share/defaults \
@@ -212,7 +212,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1566662107
+export SOURCE_DATE_EPOCH=1568656699
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ibus
 cp COPYING %{buildroot}/usr/share/package-licenses/ibus/COPYING
