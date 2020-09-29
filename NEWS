@@ -1,131 +1,177 @@
-Changes in IBus 1.5.22
+Changes in IBus 1.5.23
 
-Ahmad Haghighi (1):
-      po: Update translation (Persian)
+Aaron Muir Hamilton (1):
+      ui/gtk3: Tell Pango about the engine language in the candidate panel
 
-Alex Henrie (1):
-      Handle small final sigma in ibus_keyval_convert_case
+Allan Nordhøy (2):
+      po: Update translation (Norwegian Bokmål)
+      po: Update translation (Swedish)
 
-Antoni Bella Pérez (1):
-      po: Update translation (Catalan)
+Ankit Behera (1):
+      po: Update translation (Odia)
 
 Balázs Meskó (1):
-      Translated using Weblate (Hungarian)
+      po: Update translation (Hungarian)
 
-Changwoo Ryu (2):
-      Update translations
-      setup: Add NotShowIn and Keywords keys to the desktop entry
+Boyuan Yang (1):
+      po: Update translation (Chinese (Simplified))
 
-Frédéric Mangano-Tarumi (1):
-      engine-simple: Add the French bepo_afnor layout
+Carlos Garnacho (1):
+      src: Use WAYLAND_DISPLAY on Wayland sessions to make up IBus socket name
 
-Jason (3):
-      Make session file header comment more clear
-      src: Save address file in XDG_RUNTIME_DIR
-      Amend typos
+Changwoo Ryu (3):
+      client/gtk2: Remove glib_check_version() in gtk immodule
+      src: Build the Emoji dictionaries in parallel
+      po: Update translation (Korean)
+
+Emilio Herrera (1):
+      po: Update translation (Spanish)
+
+Göran Uddeborg (1):
+      po: Update translation (Swedish)
 
 Jean-Baptiste Holcroft (1):
-      Translated using Weblate (French)
-
-Julien Humbert (2):
-      Translated using Weblate (French)
       po: Update translation (French)
 
-Luigi Toscano (1):
-      po: Update translation (Italian)
+Jiri Grönroos (1):
+      po: Update translation (Finnish)
 
-Mike FABIAN (2):
-      Translated using Weblate (German)
+Mike FABIAN (1):
       po: Update translation (German)
 
-Oğuz Ersen (1):
-      Translated using Weblate (Turkish)
+Neil Shepperd (1):
+      src: Skip parsing of compose sequence with invalid keysyms
+
+Oğuz Ersen (2):
+      po: Update translation (Turkish)
+      po: Update translation (Turkish)
 
 Piotr Drąg (1):
-      Translated using Weblate (Polish)
+      po: Update translation (Polish)
 
-Rafael Fontenelle (1):
-      Translated using Weblate (Portuguese (Brazil))
+Shehroz Kaleem (1):
+      po: Update translation (Urdu)
 
-Robert Hoffmann (1):
-      bus: Fix restart crash with inotify read()
+Tian Shixiong (2):
+      po: Update translation (Chinese (Simplified))
+      po: Update translation (Chinese (Simplified))
 
-Yaron Shahrabani (1):
-      Translated using Weblate (Hebrew)
+Whired Planck (1):
+      po: Update translation (Chinese (Simplified))
 
-Yuri Chornoivan (2):
-      Translated using Weblate (Ukrainian)
+Yaron Shahrabani (2):
+      po: Update translation (Hebrew)
+      po: Update translation (Hebrew)
+
+Yi-Jyun Pan (1):
+      po: Update translation (Chinese (Traditional))
+
+Yuri Chornoivan (1):
       po: Update translation (Ukrainian)
 
-fujiwarat (21):
-      ui/gtk3: Fix manpage-section-mismatch in ibus-emoji.7
-      src/tests: Replace push with cd for Posix SH
-      Delete deprecated g_type_class_add_private since glib 2.58
-      bus: Implement GDBusAuthObserver callback
-      bus: Use XDG_RUNTIME_DIR for Unix socket directory
-      src: Fix to allocate compose output buffer with more than two chars
-      Revert XDG_RUNTIME_DIR to XDG_CONFIG_HOME
-      src: Replace g_abort with abort in unicode-parser.c
-      Revert the commit 982c40fb819878a8131d2d4a4573d0073ef4d6cc
-      Fix deprecated APIs
-      ui/gtk3: Fix to exit `ibus emoji` with Escape key
-      src/tests: RHEL codereview for ibus-desktop-testing-runner
-      src/tests: RHEL codereview #2 for ibus-desktop-testing-runner
-      client/gtk2: Fix to set use_button_press_event after signals are connected
-      client/gtk2: Fix to connect button-press-event signal
-      po: Add ibus10.pot
-      client/gtk2: Fix some format sentences
-      src/tests: Increase sleep to 3 waiting for IBusConfig
-      src: Fix SEGV to access NULL GError when compose length is zero
-      bus: Fix recursive mkdir is failed in /var/lib/gdm/.cache/ibus
-      Release 1.5.22
-
-pan93412 (1):
+fujiwarat (31):
+      src/tests: Delete graves in substitution in ibus-desktop-testing-runner
+      src/tests: Fix to get focus events with su in ibus-desktop-testing-runner
+      client/gtk2: Fix typo
+      bus: Fix SEGV in bus_panel_proxy_focus_in()
+      bus: Fix SEGV in bus_dbus_impl_name_owner_changed()
+      setup: Delete autostart setting
+      setup: Add use-glyph-from-engine-lang
+      engine: Delete gensimple.py and update autogen.sh
+      engine: Generate simple.xml with denylist
+      engine: Add simple.xml
+      src/tests: Fix runtest with simple.xml
+      src: Add file list in registry file
+      engine: Add layout_variant in gensimple.py
+      engine: Update simple.xml with layout_variant
+      data/dconf: Fix rm $TMPDIR in make-dconf-override-db.sh
+      engine: Update simple.xml with xkeyboard-config 2.30
+      src: Update ibusunicodegen.h with unicode-ucd 13.0.0
+      po: Update translation (Japanese)
+      data/dconf: Fix regression in make-dconf-override-db.sh
+      engine: Move simple.xml to simple.xml.in
+      engine: Genarate simple.xml at build time
+      Fix string formats in translatable strings
       Update translations
+      ui/gtk3: Accept xdigits only for Unicode typing
+      engine: Fix to pull the correct language with no iso639 variants
+      engine: Update simple.xml.in with latest gensimple.py
+      Update POT file
+      ui/gtk3: Delete deprecated ENABLE_APPINDICATOR_ENGINE_ICON check
+      src: Update emoji-parser with CLDR emoji annotation release-31-0-1
+      engine: Delete xkb:in:tel-kagapa:tel in simple.xml.in
+      Release 1.5.23
+
+ntfs.hard (1):
+      Fix for several error spotted by static analyzer
+
+scootergrisen (4):
+      po: Update translation (Danish)
+      po: Update translation (Danish)
+      po: Update translation (Danish)
+      po: Update translation (Danish)
 
 
-ui/gtk3: Fix manpage-section-mismatch in ibus-emoji.7 (fujiwarat) 71ee904f
-src/tests: Replace push with cd for Posix SH (fujiwarat) fcb2187d
-Make session file header comment more clear (Jason) bb638201
-Delete deprecated g_type_class_add_private since glib 2.58 (fujiwarat) 48a8d7ed
-bus: Implement GDBusAuthObserver callback (fujiwarat) 3d442dbf
-bus: Use XDG_RUNTIME_DIR for Unix socket directory (fujiwarat) a141a141
-src: Save address file in XDG_RUNTIME_DIR (Jason) 982c40fb
-src: Fix to allocate compose output buffer with more than two chars (fujiwarat) 773420fa
-Revert XDG_RUNTIME_DIR to XDG_CONFIG_HOME (fujiwarat) 5742e1b3
-src: Replace g_abort with abort in unicode-parser.c (fujiwarat) 745ffb80
-Revert the commit 982c40fb819878a8131d2d4a4573d0073ef4d6cc (fujiwarat) d53401ef
-Update translations (Changwoo Ryu) 17f8a86a
-Fix deprecated APIs (fujiwarat) 35863d81
-bus: Fix restart crash with inotify read() (Robert Hoffmann) efeb7b96
-ui/gtk3: Fix to exit `ibus emoji` with Escape key (fujiwarat) 26a8105b
-engine-simple: Add the French bepo_afnor layout (Frédéric Mangano-Tarumi) 76b1773c
-Update translations (pan93412) 052994d1
-Amend typos (Jason) 2a08af4c
-src/tests: RHEL codereview for ibus-desktop-testing-runner (fujiwarat) bccf94d5
-src/tests: RHEL codereview #2 for ibus-desktop-testing-runner (fujiwarat) d50627f0
-setup: Add NotShowIn and Keywords keys to the desktop entry (Changwoo Ryu) 66141bbc
-client/gtk2: Fix to set use_button_press_event after signals are connected (fujiwarat) 25d11f5c
-client/gtk2: Fix to connect button-press-event signal (fujiwarat) c662a02b
-Translated using Weblate (Turkish) (Oğuz Ersen) 6f0fec0f
-Translated using Weblate (German) (Mike FABIAN) fc2328e7
-Translated using Weblate (French) (Julien Humbert) 2e41b2a6
-Translated using Weblate (French) (Jean-Baptiste Holcroft) 7be96178
-Translated using Weblate (Polish) (Piotr Drąg) d31e55e4
-Translated using Weblate (Portuguese (Brazil)) (Rafael Fontenelle) 22b4a08e
-Translated using Weblate (Hebrew) (Yaron Shahrabani) 4a3aa879
-Translated using Weblate (Hungarian) (Balázs Meskó) 6f7aceb4
-Translated using Weblate (Ukrainian) (Yuri Chornoivan) 9a9e5db8
-po: Add ibus10.pot (fujiwarat) 687d026c
-client/gtk2: Fix some format sentences (fujiwarat) ecc3465a
-Handle small final sigma in ibus_keyval_convert_case (Alex Henrie) afc0a89c
-src/tests: Increase sleep to 3 waiting for IBusConfig (fujiwarat) 74863851
-src: Fix SEGV to access NULL GError when compose length is zero (fujiwarat) cd4fef5a
-bus: Fix recursive mkdir is failed in /var/lib/gdm/.cache/ibus (fujiwarat) a1705ad7
-po: Update translation (Persian) (Ahmad Haghighi) ac3f5b7c
-po: Update translation (Ukrainian) (Yuri Chornoivan) 40f4a717
-po: Update translation (Catalan) (Antoni Bella Pérez) 5f4f1a8a
-po: Update translation (French) (Julien Humbert) 16562d4c
-po: Update translation (German) (Mike FABIAN) 9e238a87
-po: Update translation (Italian) (Luigi Toscano) 21f7b230
-Release 1.5.22 (fujiwarat) e3262f08
+src/tests: Delete graves in substitution in ibus-desktop-testing-runner (fujiwarat) 7b0d0918
+src: Use WAYLAND_DISPLAY on Wayland sessions to make up IBus socket name (Carlos Garnacho) 8ce25208
+client/gtk2: Remove glib_check_version() in gtk immodule (Changwoo Ryu) 5765bfd6
+src/tests: Fix to get focus events with su in ibus-desktop-testing-runner (fujiwarat) 8da01676
+client/gtk2: Fix typo (fujiwarat) 0b9d9365
+src: Build the Emoji dictionaries in parallel (Changwoo Ryu) 59d0de47
+bus: Fix SEGV in bus_panel_proxy_focus_in() (fujiwarat) 02105c4d
+bus: Fix SEGV in bus_dbus_impl_name_owner_changed() (fujiwarat) f591381e
+src: Skip parsing of compose sequence with invalid keysyms (Neil Shepperd) 0da3cece
+setup: Delete autostart setting (fujiwarat) 0ad5e9a6
+ui/gtk3: Tell Pango about the engine language in the candidate panel (Aaron Muir Hamilton) 3f098dc5
+setup: Add use-glyph-from-engine-lang (fujiwarat) 79a09f1e
+engine: Delete gensimple.py and update autogen.sh (fujiwarat) 60429741
+engine: Generate simple.xml with denylist (fujiwarat) 508527da
+engine: Add simple.xml (fujiwarat) 37db75bf
+src/tests: Fix runtest with simple.xml (fujiwarat) 68798790
+src: Add file list in registry file (fujiwarat) 59b902a8
+engine: Add layout_variant in gensimple.py (fujiwarat) 568d58df
+engine: Update simple.xml with layout_variant (fujiwarat) 6ed34f3b
+po: Update translation (Finnish) (Jiri Grönroos) e933cc95
+po: Update translation (Turkish) (Oğuz Ersen) c17b51b2
+po: Update translation (Odia) (Ankit Behera) 39f67610
+po: Update translation (Norwegian Bokmål) (Allan Nordhøy) 372bc3b5
+po: Update translation (Swedish) (Allan Nordhøy) 79f05578
+po: Update translation (Chinese (Traditional)) (Yi-Jyun Pan) 80f50a73
+po: Update translation (Chinese (Simplified)) (Tian Shixiong) 5671a28d
+po: Update translation (Chinese (Simplified)) (Boyuan Yang) c1a8204e
+po: Update translation (Hebrew) (Yaron Shahrabani) 61feeedf
+po: Update translation (Urdu) (Shehroz Kaleem) 55795f46
+po: Update translation (French) (Jean-Baptiste Holcroft) 3b089a47
+po: Update translation (Danish) (scootergrisen) 2858c2b6
+po: Update translation (Hungarian) (Balázs Meskó) 3d636acb
+data/dconf: Fix rm $TMPDIR in make-dconf-override-db.sh (fujiwarat) 5959d6f1
+engine: Update simple.xml with xkeyboard-config 2.30 (fujiwarat) 5d67a28b
+src: Update ibusunicodegen.h with unicode-ucd 13.0.0 (fujiwarat) e10fc89c
+po: Update translation (Japanese) (fujiwarat) e5b014bb
+data/dconf: Fix regression in make-dconf-override-db.sh (fujiwarat) 394d9a83
+engine: Move simple.xml to simple.xml.in (fujiwarat) ed7bc8dc
+engine: Genarate simple.xml at build time (fujiwarat) e938846b
+Fix for several error spotted by static analyzer (ntfs.hard) 00adea6d
+Fix string formats in translatable strings (fujiwarat) 7caead10
+Update translations (fujiwarat) f8c468ab
+ui/gtk3: Accept xdigits only for Unicode typing (fujiwarat) a440942a
+engine: Fix to pull the correct language with no iso639 variants (fujiwarat) 3aa670e9
+engine: Update simple.xml.in with latest gensimple.py (fujiwarat) 0d90da4c
+Update POT file (fujiwarat) ce865f67
+po: Update translation (Chinese (Simplified)) (Tian Shixiong) 3b64d4ad
+po: Update translation (Chinese (Simplified)) (Whired Planck) ea27a8be
+po: Update translation (Ukrainian) (Yuri Chornoivan) 700ef87e
+po: Update translation (Polish) (Piotr Drąg) 7e469b59
+po: Update translation (German) (Mike FABIAN) 6662b8e0
+po: Update translation (Spanish) (Emilio Herrera) e491e20f
+po: Update translation (Hebrew) (Yaron Shahrabani) 9f455b48
+po: Update translation (Turkish) (Oğuz Ersen) 8a40f5c9
+po: Update translation (Swedish) (Göran Uddeborg) cd063958
+po: Update translation (Danish) (scootergrisen) 38a72958
+po: Update translation (Korean) (Changwoo Ryu) 920fa490
+po: Update translation (Danish) (scootergrisen) cbc956bb
+ui/gtk3: Delete deprecated ENABLE_APPINDICATOR_ENGINE_ICON check (fujiwarat) aa3a9f05
+src: Update emoji-parser with CLDR emoji annotation release-31-0-1 (fujiwarat) 9a9f8284
+engine: Delete xkb:in:tel-kagapa:tel in simple.xml.in (fujiwarat) e4dd6d14
+po: Update translation (Danish) (scootergrisen) 9d386d93
+Release 1.5.23 (fujiwarat) 44790870
