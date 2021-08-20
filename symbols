@@ -95,7 +95,6 @@ libibus-1.0.so.5:ibus_bus_set_watch_ibus_signal
 libibus-1.0.so.5:ibus_bus_start_service_by_name_reply_get_type
 libibus-1.0.so.5:ibus_capabilite_get_type
 libibus-1.0.so.5:ibus_check_algorithmically
-libibus-1.0.so.5:ibus_check_compact_table
 libibus-1.0.so.5:ibus_component_add_engine
 libibus-1.0.so.5:ibus_component_add_observed_path
 libibus-1.0.so.5:ibus_component_check_modification
@@ -116,6 +115,8 @@ libibus-1.0.so.5:ibus_component_new_from_xml_node
 libibus-1.0.so.5:ibus_component_new_varargs
 libibus-1.0.so.5:ibus_component_output
 libibus-1.0.so.5:ibus_component_output_engines
+libibus-1.0.so.5:ibus_compose_table_check
+libibus-1.0.so.5:ibus_compose_table_compact_check
 libibus-1.0.so.5:ibus_compose_table_list_add_array
 libibus-1.0.so.5:ibus_compose_table_list_add_file
 libibus-1.0.so.5:ibus_compose_table_load_cache
@@ -276,6 +277,7 @@ libibus-1.0.so.5:ibus_keymap_get
 libibus-1.0.so.5:ibus_keymap_get_type
 libibus-1.0.so.5:ibus_keymap_lookup_keysym
 libibus-1.0.so.5:ibus_keymap_new
+libibus-1.0.so.5:ibus_keysym_to_unicode
 libibus-1.0.so.5:ibus_keyval_convert_case
 libibus-1.0.so.5:ibus_keyval_from_name
 libibus-1.0.so.5:ibus_keyval_name

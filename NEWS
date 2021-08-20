@@ -1,97 +1,97 @@
-Changes in IBus 1.5.24
+Changes in IBus 1.5.25
 
-Adolfo Jayme Barrientos (1):
-      po: Update translation (Spanish)
+Abu Huraira (1):
+      po: Update translation (Bengali)
 
-Dingzhong Chen (1):
-      po: Update translation (Chinese (Simplified) (zh_CN))
+Alexey Rubtsov (1):
+      po: Update translation (Russian)
 
 Emilio Herrera (1):
       po: Update translation (Spanish)
 
-Gunnar Hjalmarsson (2):
-      ui/gtk3: Warning dialog for any deprecated IBus XKB engine
-      setup: Hide IBus Preferences from AppStream
-
-Henrique Roberto Gattermann Mittelstaedt (1):
-      po: Update translation (Portuguese (Brazil))
+Gunnar Hjalmarsson (1):
+      setup: Start ibus-daemon with the --daemonize option
 
 Jan Kuparinen (1):
       po: Update translation (Finnish)
 
-Julien Humbert (1):
-      po: Update translation (French)
+JungHee Lee (1):
+      po: Update translation (Korean)
 
-Mike FABIAN (1):
-      po: Update translation (German)
+Liu Tao (1):
+      po: Update translation (Chinese (Simplified) (zh_CN))
 
-Oğuz Ersen (1):
-      po: Update translation (Turkish)
+Olivier Fourdan (1):
+      client/x11: Add support for XFixes ClientDisconnectMode
 
-Piotr Drąg (1):
-      po: Update translation (Polish)
+Quentin PAGÈS (1):
+      po: Update translation (Occitan)
 
-Ricky Tigg (1):
-      po: Update translation (Finnish)
+Seong-ho Cho (1):
+      po: Update translation (Korean)
 
-Sebastian Rasmussen (1):
-      po: Update translation (Swedish)
+fujiwarat (19):
+      src/tests: Run gnome-session with no-overview mode
+      client/gtk2: Implement ibus_im_context_set_surrounding_with_selection()
+      Fix code reviews
+      src/tests: Fix ibus-desktop-testing-runner to get gsettings result
+      src/ibuscomposetable: Do not include the same compose file
+      src/tests: Delete G_MESSAGES_DEBUG in desktop-testing for gsettings
+      Change default Emoji shortcut key
+      setup: Enhance engine search function
+      src/ibuscomposetable: Move ibus_compose_table_check
+      src/ibusenginesimple: Multi_key to 0xB7
+      src: Update ibuskeysyms.h for latest dead keys
+      src/ibusenginesimple: Change gint to int
+      src/ibusenginesimple: Make Compose preedit less intrusive
+      Code reviews
+      client/gtk2/ibusimcontext: Enable sync process in GTK4
+      autogen: Check xkeyboard-config-devel for XKBCONFIG_BASE variable
+      engine: Update simple.xml with xkeyboard-config 2.33
+      src/ibuscomposetable: Do not output incompleted compose dead keys
+      Release 1.5.25
 
-Takao Fujiwara (1):
-      po: Update translation (Japanese)
+lf- (2):
+      src/ibuscomposetable: Add support for the include directive
+      src/ibuscomposetable: Fix a buffer overflow in compose handling
 
-Tawsif Hossain Shafi (1):
-      po: Update translation (Bengali)
+simmon (1):
+      po: Update translation (Japanese) (Korean)
 
-Yuri Chornoivan (1):
-      po: Update translation (Ukrainian)
-
-fujiwarat (13):
-      ui/gtk3: Fix arguments in GLib.DBusSignalCallback for Vala 0.50
-      docs: Fix make dist
-      src: Fix to build emoji-*.dict in CLDR 38
-      src: Update IBusInputPurpose and IBusInputHints in ibustypes.h
-      ui/gtk3: Warn deprecated IBus XKB engines /w dialog
-      engine: Fix iso-path in gensimple.py
-      engine: Fix input in gensimple.py
-      travis: Add CI
-      Add GTK4 IM module
-      client/gtk2: Add XTranslateCoordinates for GTK4 X11 coordinate
-      setup: Search engine name directly
-      engine: Update simple.xml
-      Release 1.5.24
-
-scootergrisen (1):
-      po: Update translation (Danish)
+user202729 (1):
+      src: Fix a typo in ibusenginesimple.h
 
 
-ui/gtk3: Fix arguments in GLib.DBusSignalCallback for Vala 0.50 (fujiwarat) dd4cc5b0
-docs: Fix make dist (fujiwarat) 02338ce7
-src: Fix to build emoji-*.dict in CLDR 38 (fujiwarat) aa558de8
-src: Update IBusInputPurpose and IBusInputHints in ibustypes.h (fujiwarat) b72efea4
-ui/gtk3: Warn deprecated IBus XKB engines /w dialog (fujiwarat) 5322c447
-ui/gtk3: Warning dialog for any deprecated IBus XKB engine (Gunnar Hjalmarsson) aec2ac75
-engine: Fix iso-path in gensimple.py (fujiwarat) 5d68b00e
-engine: Fix input in gensimple.py (fujiwarat) 29959e1d
-travis: Add CI (fujiwarat) 30a3641e
-Add GTK4 IM module (fujiwarat) c7928b15
-client/gtk2: Add XTranslateCoordinates for GTK4 X11 coordinate (fujiwarat) d0a47c3c
-setup: Search engine name directly (fujiwarat) ef4c5c7e
-po: Update translation (Danish) (scootergrisen) 2d492564
-po: Update translation (Bengali) (Tawsif Hossain Shafi) abca4649
-po: Update translation (Spanish) (Adolfo Jayme Barrientos) c62043f4
-po: Update translation (Spanish) (Emilio Herrera) 54224eee
-po: Update translation (Portuguese (Brazil)) (Henrique Roberto Gattermann Mittelstaedt) 54652f5d
-po: Update translation (Polish) (Piotr Drąg) fece06e2
-po: Update translation (Turkish) (Oğuz Ersen) ceea329a
-po: Update translation (Ukrainian) (Yuri Chornoivan) 3af102b3
-po: Update translation (Swedish) (Sebastian Rasmussen) e9cd26d9
-po: Update translation (German) (Mike FABIAN) 37ec7304
-po: Update translation (Chinese (Simplified) (zh_CN)) (Dingzhong Chen) ceea02ef
-po: Update translation (Finnish) (Jan Kuparinen) 1470078b
-po: Update translation (Finnish) (Ricky Tigg) ef497424
-po: Update translation (French) (Julien Humbert) 58342053
-po: Update translation (Japanese) (Takao Fujiwara) 27baf204
-setup: Hide IBus Preferences from AppStream (Gunnar Hjalmarsson) 72ca5c93
-engine: Update simple.xml (fujiwarat) 5012b69c
-Release 1.5.24 (fujiwarat) 4d51b73b
+src/tests: Run gnome-session with no-overview mode (fujiwarat) 214b60a3
+client/gtk2: Implement ibus_im_context_set_surrounding_with_selection() (fujiwarat) d105a394
+Fix code reviews (fujiwarat) e9e16428
+src/tests: Fix ibus-desktop-testing-runner to get gsettings result (fujiwarat) bc7811c6
+src/ibuscomposetable: Add support for the include directive (lf-) 9f9c88be
+src/ibuscomposetable: Do not include the same compose file (fujiwarat) a755d160
+src/ibuscomposetable: Fix a buffer overflow in compose handling (lf-) 7f09379b
+src/tests: Delete G_MESSAGES_DEBUG in desktop-testing for gsettings (fujiwarat) ab6b9587
+Change default Emoji shortcut key (fujiwarat) b952d30a
+setup: Enhance engine search function (fujiwarat) a4939f67
+src/ibuscomposetable: Move ibus_compose_table_check (fujiwarat) 7e12d589
+src/ibusenginesimple: Multi_key to 0xB7 (fujiwarat) 2fc1a028
+src: Update ibuskeysyms.h for latest dead keys (fujiwarat) 3e2609e6
+src/ibusenginesimple: Change gint to int (fujiwarat) df495660
+src/ibusenginesimple: Make Compose preedit less intrusive (fujiwarat) 4259f163
+Code reviews (fujiwarat) 17ae266c
+client/gtk2/ibusimcontext: Enable sync process in GTK4 (fujiwarat) a8231617
+client/x11: Add support for XFixes ClientDisconnectMode (Olivier Fourdan) 71ca4a98
+po: Update translation (Spanish) (Emilio Herrera) c0170aea
+po: Update translation (Bengali) (Abu Huraira) 1239c930
+po: Update translation (Finnish) (Jan Kuparinen) 3ceecf38
+po: Update translation (Occitan) (Quentin PAGÈS) 6e1588d0
+po: Update translation (Chinese (Simplified) (zh_CN)) (Liu Tao) 883f5172
+po: Update translation (Russian) (Alexey Rubtsov) a7ebfc94
+po: Update translation (Japanese) (Korean) (simmon) b85c399c
+po: Update translation (Korean) (Seong-ho Cho) 904f162e
+po: Update translation (Korean) (JungHee Lee) 32d54e0f
+setup: Start ibus-daemon with the --daemonize option (Gunnar Hjalmarsson) e465011b
+src: Fix a typo in ibusenginesimple.h (user202729) bc265fb6
+autogen: Check xkeyboard-config-devel for XKBCONFIG_BASE variable (fujiwarat) 934c456e
+engine: Update simple.xml with xkeyboard-config 2.33 (fujiwarat) 238eb612
+src/ibuscomposetable: Do not output incompleted compose dead keys (fujiwarat) 5bd2ecc5
+Release 1.5.25 (fujiwarat) cfb263f0
