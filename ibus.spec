@@ -4,7 +4,7 @@
 #
 Name     : ibus
 Version  : 1.5.25
-Release  : 40
+Release  : 41
 URL      : https://github.com/ibus/ibus/releases/download/1.5.25/ibus-1.5.25.tar.gz
 Source0  : https://github.com/ibus/ibus/releases/download/1.5.25/ibus-1.5.25.tar.gz
 Summary  : IBus Library
