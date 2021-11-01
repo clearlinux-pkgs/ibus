@@ -4,7 +4,7 @@
 #
 Name     : ibus
 Version  : 1.5.25
-Release  : 41
+Release  : 42
 URL      : https://github.com/ibus/ibus/releases/download/1.5.25/ibus-1.5.25.tar.gz
 Source0  : https://github.com/ibus/ibus/releases/download/1.5.25/ibus-1.5.25.tar.gz
 Summary  : IBus Library
@@ -17,6 +17,8 @@ Requires: ibus-libexec = %{version}-%{release}
 Requires: ibus-license = %{version}-%{release}
 Requires: ibus-locales = %{version}-%{release}
 Requires: ibus-man = %{version}-%{release}
+Requires: ibus-python = %{version}-%{release}
+Requires: ibus-python3 = %{version}-%{release}
 Requires: UCD
 Requires: glibc-locale
 BuildRequires : UCD
@@ -151,6 +153,24 @@ Group: Default
 man components for the ibus package.
 
 
+%package python
+Summary: python components for the ibus package.
+Group: Default
+Requires: ibus-python3 = %{version}-%{release}
+
+%description python
+python components for the ibus package.
+
+
+%package python3
+Summary: python3 components for the ibus package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the ibus package.
+
+
 %prep
 %setup -q -n ibus-1.5.25
 cd %{_builddir}/ibus-1.5.25
@@ -160,7 +180,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1635448013
+export SOURCE_DATE_EPOCH=1635740732
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -193,7 +213,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1635448013
+export SOURCE_DATE_EPOCH=1635740732
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ibus
 cp %{_builddir}/ibus-1.5.25/COPYING %{buildroot}/usr/share/package-licenses/ibus/caeb68c46fa36651acf592771d09de7937926bb3
@@ -385,6 +405,13 @@ cp %{_builddir}/ibus-1.5.25/COPYING.unicode %{buildroot}/usr/share/package-licen
 /usr/share/man/man1/ibus.1.gz
 /usr/share/man/man5/00-upstream-settings.5.gz
 /usr/share/man/man5/ibus.5.gz
+
+%files python
+%defattr(-,root,root,-)
+
+%files python3
+%defattr(-,root,root,-)
+/usr/lib/python3*/*
 
 %files locales -f ibus10.lang
 %defattr(-,root,root,-)
