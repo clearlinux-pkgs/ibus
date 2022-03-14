@@ -1,97 +1,113 @@
-Changes in IBus 1.5.25
+Changes in IBus 1.5.26
 
-Abu Huraira (1):
-      po: Update translation (Bengali)
+Abdullah Albaroty (1):
+      po: Update translation (Arabic)
 
-Alexey Rubtsov (1):
-      po: Update translation (Russian)
+Alynx Zhou (1):
+      client/gtk2/ibusimcontext: Fix wrong cursor location in gtk3 apps
 
-Emilio Herrera (1):
-      po: Update translation (Spanish)
+Carlos Garnacho (1):
+      src, client/x11: Add systemd unit file
 
-Gunnar Hjalmarsson (1):
-      setup: Start ibus-daemon with the --daemonize option
+Changwoo Ryu (1):
+      client/gtk2/ibusimcontext: Fix forward key keycode for GTK4
+
+Dingzhong Chen (1):
+      po: Update translation (Chinese (Simplified) (zh_CN))
+
+Eberhard Beilharz (2):
+      Update URLS
+      Fix unref problems with floating references
 
 Jan Kuparinen (1):
       po: Update translation (Finnish)
 
-JungHee Lee (1):
-      po: Update translation (Korean)
+Jordi Mas (1):
+      po: Update translation (Catalan)
 
-Liu Tao (1):
-      po: Update translation (Chinese (Simplified) (zh_CN))
+Naïm Favier (1):
+      src/ibuscomposetable: invalidate cache based on symlink mtime too
 
-Olivier Fourdan (1):
-      client/x11: Add support for XFixes ClientDisconnectMode
+Oğuz Ersen (1):
+      po: Update translation (Turkish)
 
-Quentin PAGÈS (1):
-      po: Update translation (Occitan)
+Sibo Dong (1):
+      ui/gtk3: Update man page for Emoji shortcut key
 
-Seong-ho Cho (1):
-      po: Update translation (Korean)
+Zayed Al-Saidi (1):
+      po: Update translation (Arabic)
 
-fujiwarat (19):
-      src/tests: Run gnome-session with no-overview mode
-      client/gtk2: Implement ibus_im_context_set_surrounding_with_selection()
-      Fix code reviews
-      src/tests: Fix ibus-desktop-testing-runner to get gsettings result
-      src/ibuscomposetable: Do not include the same compose file
-      src/tests: Delete G_MESSAGES_DEBUG in desktop-testing for gsettings
-      Change default Emoji shortcut key
-      setup: Enhance engine search function
-      src/ibuscomposetable: Move ibus_compose_table_check
-      src/ibusenginesimple: Multi_key to 0xB7
-      src: Update ibuskeysyms.h for latest dead keys
-      src/ibusenginesimple: Change gint to int
-      src/ibusenginesimple: Make Compose preedit less intrusive
-      Code reviews
-      client/gtk2/ibusimcontext: Enable sync process in GTK4
-      autogen: Check xkeyboard-config-devel for XKBCONFIG_BASE variable
-      engine: Update simple.xml with xkeyboard-config 2.33
-      src/ibuscomposetable: Do not output incompleted compose dead keys
-      Release 1.5.25
-
-lf- (2):
-      src/ibuscomposetable: Add support for the include directive
-      src/ibuscomposetable: Fix a buffer overflow in compose handling
+fujiwarat (27):
+      client/gtk2/ibusimcontext: Implement clear preedit for GTK4
+      client/gtk2/ibusimcontext: Calculate keycode from keysym in GTK3 forward-key-event
+      Fix build errors in Ubuntu focal
+      client/gtk2/ibusimcontext: Fix a key event loop with forwarding keys
+      src/tests: Add --screendump option in ibus-desktop-testing-runner
+      ui/gtk3: Erase Emojier preedit/lookup popup between applications
+      ui/gtk2: Deprecate gettext.bind_textdomain_codeset() since Python 3.8
+      travis: git config pull.rebase false
+      travis: Fix bindings/pygobject/test-override-ibus.py
+      autogen: Delete gnome-autogen dependency
+      src: Disable emoji shortcut key with no-emoji hint
+      travis: Add autopint dependency
+      ibusenginesimple: Fix to send char position at update_preedit_text
+      data/dconf: Change XKB layout string color in panel
+      data/dconf: Add Ctrl-semicolon to Emoji shortcut key
+      src: Add IBUS_INPUT_HINT_PRIVATE for browser private mode
+      bus: mkdir socket dirs instead of socket paths
+      bus: Do not mkdir abstract unix socket
+      src: Fix ibus_key_event_from_string for gobject-introspection
+      src/services: Add org.freedesktop.IBus.session.generic.service
+      src/tests: Fix typos
+      src/ibuscompose: Check algorithm dead key by 9 length
+      src/ibusenginesimple: Support GTK4 coompose file
+      ui/gtk3: Check XDG_SESSION_DESKTOP for Plasma desktop
+      engine: Update simple.xml with xkeyboard-config 2.35.1
+      src: Update ibusunicodegen.h with unicode-ucd 14.0.0
+      Release 1.5.26
 
 simmon (1):
-      po: Update translation (Japanese) (Korean)
-
-user202729 (1):
-      src: Fix a typo in ibusenginesimple.h
+      po: Update translation (Korean)
 
 
-src/tests: Run gnome-session with no-overview mode (fujiwarat) 214b60a3
-client/gtk2: Implement ibus_im_context_set_surrounding_with_selection() (fujiwarat) d105a394
-Fix code reviews (fujiwarat) e9e16428
-src/tests: Fix ibus-desktop-testing-runner to get gsettings result (fujiwarat) bc7811c6
-src/ibuscomposetable: Add support for the include directive (lf-) 9f9c88be
-src/ibuscomposetable: Do not include the same compose file (fujiwarat) a755d160
-src/ibuscomposetable: Fix a buffer overflow in compose handling (lf-) 7f09379b
-src/tests: Delete G_MESSAGES_DEBUG in desktop-testing for gsettings (fujiwarat) ab6b9587
-Change default Emoji shortcut key (fujiwarat) b952d30a
-setup: Enhance engine search function (fujiwarat) a4939f67
-src/ibuscomposetable: Move ibus_compose_table_check (fujiwarat) 7e12d589
-src/ibusenginesimple: Multi_key to 0xB7 (fujiwarat) 2fc1a028
-src: Update ibuskeysyms.h for latest dead keys (fujiwarat) 3e2609e6
-src/ibusenginesimple: Change gint to int (fujiwarat) df495660
-src/ibusenginesimple: Make Compose preedit less intrusive (fujiwarat) 4259f163
-Code reviews (fujiwarat) 17ae266c
-client/gtk2/ibusimcontext: Enable sync process in GTK4 (fujiwarat) a8231617
-client/x11: Add support for XFixes ClientDisconnectMode (Olivier Fourdan) 71ca4a98
-po: Update translation (Spanish) (Emilio Herrera) c0170aea
-po: Update translation (Bengali) (Abu Huraira) 1239c930
-po: Update translation (Finnish) (Jan Kuparinen) 3ceecf38
-po: Update translation (Occitan) (Quentin PAGÈS) 6e1588d0
-po: Update translation (Chinese (Simplified) (zh_CN)) (Liu Tao) 883f5172
-po: Update translation (Russian) (Alexey Rubtsov) a7ebfc94
-po: Update translation (Japanese) (Korean) (simmon) b85c399c
-po: Update translation (Korean) (Seong-ho Cho) 904f162e
-po: Update translation (Korean) (JungHee Lee) 32d54e0f
-setup: Start ibus-daemon with the --daemonize option (Gunnar Hjalmarsson) e465011b
-src: Fix a typo in ibusenginesimple.h (user202729) bc265fb6
-autogen: Check xkeyboard-config-devel for XKBCONFIG_BASE variable (fujiwarat) 934c456e
-engine: Update simple.xml with xkeyboard-config 2.33 (fujiwarat) 238eb612
-src/ibuscomposetable: Do not output incompleted compose dead keys (fujiwarat) 5bd2ecc5
-Release 1.5.25 (fujiwarat) cfb263f0
+client/gtk2/ibusimcontext: Fix wrong cursor location in gtk3 apps (Alynx Zhou) 936a0e76
+Update URLS (Eberhard Beilharz) ecca9db0
+client/gtk2/ibusimcontext: Implement clear preedit for GTK4 (fujiwarat) 5487a6ba
+client/gtk2/ibusimcontext: Calculate keycode from keysym in GTK3 forward-key-event (fujiwarat) 4957d146
+Fix build errors in Ubuntu focal (fujiwarat) fbea5441
+client/gtk2/ibusimcontext: Fix a key event loop with forwarding keys (fujiwarat) 6b979e78
+src/tests: Add --screendump option in ibus-desktop-testing-runner (fujiwarat) 51e32956
+ui/gtk3: Erase Emojier preedit/lookup popup between applications (fujiwarat) acc55705
+ui/gtk2: Deprecate gettext.bind_textdomain_codeset() since Python 3.8 (fujiwarat) 28acfd43
+travis: git config pull.rebase false (fujiwarat) d53d31d2
+src/ibuscomposetable: invalidate cache based on symlink mtime too (Naïm Favier) cfcc6f19
+travis: Fix bindings/pygobject/test-override-ibus.py (fujiwarat) be179342
+autogen: Delete gnome-autogen dependency (fujiwarat) 2bc47f09
+src: Disable emoji shortcut key with no-emoji hint (fujiwarat) 104148bc
+travis: Add autopint dependency (fujiwarat) 675b94f6
+ibusenginesimple: Fix to send char position at update_preedit_text (fujiwarat) f5757ada
+data/dconf: Change XKB layout string color in panel (fujiwarat) 0e118e7e
+data/dconf: Add Ctrl-semicolon to Emoji shortcut key (fujiwarat) d9ff2bb6
+Fix unref problems with floating references (Eberhard Beilharz) 5a455b1e
+ui/gtk3: Update man page for Emoji shortcut key (Sibo Dong) ad95015d
+src: Add IBUS_INPUT_HINT_PRIVATE for browser private mode (fujiwarat) 0f1485bf
+bus: mkdir socket dirs instead of socket paths (fujiwarat) 787b5649
+bus: Do not mkdir abstract unix socket (fujiwarat) dfd3fbf2
+src: Fix ibus_key_event_from_string for gobject-introspection (fujiwarat) c69b61aa
+src, client/x11: Add systemd unit file (Carlos Garnacho) a076b388
+src/services: Add org.freedesktop.IBus.session.generic.service (fujiwarat) b5423f0c
+client/gtk2/ibusimcontext: Fix forward key keycode for GTK4 (Changwoo Ryu) 5cfe8387
+src/tests: Fix typos (fujiwarat) a82bda58
+src/ibuscompose: Check algorithm dead key by 9 length (fujiwarat) 19377ad2
+src/ibusenginesimple: Support GTK4 coompose file (fujiwarat) df664b1f
+ui/gtk3: Check XDG_SESSION_DESKTOP for Plasma desktop (fujiwarat) 1f275214
+engine: Update simple.xml with xkeyboard-config 2.35.1 (fujiwarat) a3c07241
+src: Update ibusunicodegen.h with unicode-ucd 14.0.0 (fujiwarat) 9bf9ef01
+po: Update translation (Finnish) (Jan Kuparinen) e77f80cf
+po: Update translation (Korean) (simmon) 6df55eb2
+po: Update translation (Chinese (Simplified) (zh_CN)) (Dingzhong Chen) 0199dde0
+po: Update translation (Turkish) (Oğuz Ersen) 58fe1e56
+po: Update translation (Catalan) (Jordi Mas) a1528a0a
+po: Update translation (Arabic) (Abdullah Albaroty) 0e522c40
+po: Update translation (Arabic) (Zayed Al-Saidi) 20c5dc9c
+Release 1.5.26 (fujiwarat) 6a70ab03
