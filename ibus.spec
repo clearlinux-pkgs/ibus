@@ -4,7 +4,7 @@
 #
 Name     : ibus
 Version  : 1.5.27
-Release  : 45
+Release  : 46
 URL      : https://github.com/ibus/ibus/releases/download/1.5.27/ibus-1.5.27.tar.gz
 Source0  : https://github.com/ibus/ibus/releases/download/1.5.27/ibus-1.5.27.tar.gz
 Summary  : IBus Library
@@ -191,16 +191,16 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1661209529
+export SOURCE_DATE_EPOCH=1664938077
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used "
-export FCFLAGS="$FFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used "
-export FFLAGS="$FFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used "
-export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used "
+export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition "
 %configure --disable-static --disable-python-library \
 --disable-tests \
 --sysconfdir=/usr/share/defaults \
@@ -224,11 +224,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1661209529
+export SOURCE_DATE_EPOCH=1664938077
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ibus
-cp %{_builddir}/ibus-%{version}/COPYING %{buildroot}/usr/share/package-licenses/ibus/caeb68c46fa36651acf592771d09de7937926bb3
-cp %{_builddir}/ibus-%{version}/COPYING.unicode %{buildroot}/usr/share/package-licenses/ibus/8f3995295bed2abde3107e544c985096cb9c745a
+cp %{_builddir}/ibus-%{version}/COPYING %{buildroot}/usr/share/package-licenses/ibus/caeb68c46fa36651acf592771d09de7937926bb3 || :
+cp %{_builddir}/ibus-%{version}/COPYING.unicode %{buildroot}/usr/share/package-licenses/ibus/8f3995295bed2abde3107e544c985096cb9c745a || :
 %make_install
 %find_lang ibus10
 
