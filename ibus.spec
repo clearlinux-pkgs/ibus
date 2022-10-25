@@ -4,7 +4,7 @@
 #
 Name     : ibus
 Version  : 1.5.27
-Release  : 47
+Release  : 48
 URL      : https://github.com/ibus/ibus/releases/download/1.5.27/ibus-1.5.27.tar.gz
 Source0  : https://github.com/ibus/ibus/releases/download/1.5.27/ibus-1.5.27.tar.gz
 Summary  : IBus Library
