@@ -8,3 +8,6 @@ buildreq-gnome
 buildreq-kde
 python3-core
 UCD
+xkeyboard-config
+libX11
+libX11-dev

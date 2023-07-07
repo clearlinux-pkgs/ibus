@@ -5,6 +5,7 @@
 --disable-python2
 --enable-gtk2
 --enable-gtk3
+--enable-gtk4
 --enable-xim
 --enable-surrounding-text
 --with-python=/usr/bin/python3

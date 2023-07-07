@@ -1,109 +1,81 @@
-Changes in IBus 1.5.27
+Changes in IBus 1.5.28
 
-A S Alam (1):
-      po: Update translation (Punjabi)
+Alexey Rubtsov (1):
+      po: Update translation (Russian)
 
-Carlos Garnacho (1):
-      src: Fix refcounting issues
+Eberhard Beilharz (1):
+      configure: Fix texts for surrounding text
 
-H A (1):
-      po: Update translation (Estonian)
+Emilio Herrera (1):
+      po: Update translation (Spanish)
 
-Hollow Man (3):
-      Add functionality to change IBus panel themes with available GTK themes
-      Revert support for choosing GTK themes dark variant
-      Add tooltip text for use custom icon and theme
+Izumi Tsutsui (1):
+      tools: Check libdl for dlclose() properly in configure
 
-Mike FABIAN (2):
-      data/dconf: Update xkb-latin-layouts in gschema
-      po: Update translation (German)
+Julien Humbert (1):
+      po: Update translation (French)
 
-Mitsuya Shibata (1):
-      bus/services: Fix bashisms in org.freedesktop.IBus.session.GNOME.service
-
-Nathan (1):
+Luis Pixeltux (1):
       po: Update translation (Italian)
-
-Naïm Favier (1):
-      configure: Use our own prefix to look up systemd user services dir
 
 Oğuz Ersen (1):
       po: Update translation (Turkish)
 
-Piotr Drąg (1):
-      po: Update translation (Polish)
+Philippe Rouquier (1):
+      Add active-surrounding-text property to IBusEngine
 
-Yuri Chornoivan (2):
-      po: Update translation (Ukrainian)
-      po: Update translation (Ukrainian)
+Temuri Doghonadze (1):
+      po: Update translation (Georgian)
 
-fujiwarat (23):
-      ui/gtk3: Disable XKB engines in Plasma Wayland
-      po: Update POT file with unicode-ucd 14.0.0
-      travis: Add libnotify-dev
-      po: Update translation (Japanese)
-      src/tests: Run ibus-daemon from CI even if GNOME desktop
-      client/gtk2/ibusimcontext: keycode - 8 for gtk3 keycode generation
-      client/gtk2: Revert CCedilla change for pt-BR
-      src/tests: Add xkb-latin-layouts case
-      ui/gtk3: Hide XKB engine but enable it in Plasma Wayland
-      src: Add IBUS_CAP_OSK to IBusCapabilite
-      travis: Move git master to main branch
-      tools: Enable ibus restart in GNOME desktop
-      tools: Add ibus im-module command
-      client/gtk2: Implement new process_key_event for GTK4
-      src/ibusengine: Add focus_in_id()/focus_out_id() class methods
-      tools: Fix to add -ldl LDADD
-      engine: Delete xkb:latam:*:* in denylist.txt
-      tools: Revise ibus im-module help message
-      po: Update translation (Japanese)
-      client/x11: Enhance Xutf8TextListToTextProperty
-      data/dconf: Revert Emoji shoftcut key to Super-space
-      engine: Update simple.xml with xkeyboard-config 2.36
-      Release 1.5.27
+fujiwarat (18):
+      client/gtk2: Stop many warnings of surrounding text
+      client/gtk2: Update capabilities if "retrieve-surrounding" is failed
+      client/gtk2: Update surrounding text properties by focus in
+      ui/gtk3/switcher: Avoid to unref m_engines with double run
+      client/x11: Implement new process_key_event for ibus-x11
+      src/tests: Fallback gtk-query-immodules-3.0 for Ubuntu 22.04
+      src/tests: Fix Connection refused in ibus-bus
+      Add action file for CI
+      github/workflows: Fix CI on PR
+      src: Convert gtk_compose_seqs_compact to GResource
+      src/compose: Add en-US compose table with libX11 1.7.3.1
+      Refactor surrounding text warning & free focus-id tables
+      Return error if D-Bus set/get property method is failed
+      src: Update ibusunicodegen.h with Unicode 15.0.0
+      engine: Update simple.xml with xkeyboard-config 2.38-1
+      src/compose: Update en-US compose with libX11 1.8.4
+      data/dconf: Update org.freedesktop.ibus.gschema.xml
+      Release 1.5.28
 
-김인수 (2):
-      po: Update translation (Korean)
+김인수 (1):
       po: Update translation (Korean)
 
 
-src: Fix refcounting issues (Carlos Garnacho) 17648f05
-bus/services: Fix bashisms in org.freedesktop.IBus.session.GNOME.service (Mitsuya Shibata) f1c456d2
-ui/gtk3: Disable XKB engines in Plasma Wayland (fujiwarat) 230fb226
-po: Update POT file with unicode-ucd 14.0.0 (fujiwarat) 9d0f3c53
-travis: Add libnotify-dev (fujiwarat) b4723eb1
-po: Update translation (Korean) (김인수) f7c045ec
-po: Update translation (Punjabi) (A S Alam) 5f85888d
-po: Update translation (Italian) (Nathan) 8ec7eff5
-po: Update translation (Ukrainian) (Yuri Chornoivan) 2c262cbd
-po: Update translation (Japanese) (fujiwarat) f3d7aa96
-src/tests: Run ibus-daemon from CI even if GNOME desktop (fujiwarat) 47303a6f
-client/gtk2/ibusimcontext: keycode - 8 for gtk3 keycode generation (fujiwarat) 8711dc83
-client/gtk2: Revert CCedilla change for pt-BR (fujiwarat) 3e5fab49
-data/dconf: Update xkb-latin-layouts in gschema (Mike FABIAN) bca7bf0f
-src/tests: Add xkb-latin-layouts case (fujiwarat) 16df64ed
-configure: Use our own prefix to look up systemd user services dir (Naïm Favier) 9f62a40b
-Add functionality to change IBus panel themes with available GTK themes (Hollow Man) 233a3f4d
-Revert support for choosing GTK themes dark variant (Hollow Man) addab9fd
-Add tooltip text for use custom icon and theme (Hollow Man) ff99828c
-ui/gtk3: Hide XKB engine but enable it in Plasma Wayland (fujiwarat) 9ad06374
-src: Add IBUS_CAP_OSK to IBusCapabilite (fujiwarat) b94f0c1c
-travis: Move git master to main branch (fujiwarat) 79e446ec
-tools: Enable ibus restart in GNOME desktop (fujiwarat) ab0d1764
-tools: Add ibus im-module command (fujiwarat) 965567d7
-client/gtk2: Implement new process_key_event for GTK4 (fujiwarat) c957c5f6
-src/ibusengine: Add focus_in_id()/focus_out_id() class methods (fujiwarat) 92771d0e
-tools: Fix to add -ldl LDADD (fujiwarat) fee26c6b
-engine: Delete xkb:latam:*:* in denylist.txt (fujiwarat) 82e38d9e
-tools: Revise ibus im-module help message (fujiwarat) db2ef5d0
-po: Update translation (Estonian) (H A) e88651ef
-po: Update translation (Polish) (Piotr Drąg) e78c545e
-po: Update translation (German) (Mike FABIAN) 1f4fe9f8
-po: Update translation (Korean) (김인수) d8107131
-po: Update translation (Turkish) (Oğuz Ersen) ced5bfb0
-po: Update translation (Ukrainian) (Yuri Chornoivan) 742091bc
-po: Update translation (Japanese) (fujiwarat) 00a78d6d
-client/x11: Enhance Xutf8TextListToTextProperty (fujiwarat) d47dbfad
-data/dconf: Revert Emoji shoftcut key to Super-space (fujiwarat) 1520c39d
-engine: Update simple.xml with xkeyboard-config 2.36 (fujiwarat) ef9bd3b1
-Release 1.5.27 (fujiwarat) e144b12c
+tools: Check libdl for dlclose() properly in configure (Izumi Tsutsui) babad783
+client/gtk2: Stop many warnings of surrounding text (fujiwarat) 8d0abbcb
+client/gtk2: Update capabilities if "retrieve-surrounding" is failed (fujiwarat) 781119be
+client/gtk2: Update surrounding text properties by focus in (fujiwarat) ddead515
+ui/gtk3/switcher: Avoid to unref m_engines with double run (fujiwarat) cd621f8b
+client/x11: Implement new process_key_event for ibus-x11 (fujiwarat) 506ac999
+src/tests: Fallback gtk-query-immodules-3.0 for Ubuntu 22.04 (fujiwarat) 2719e936
+src/tests: Fix Connection refused in ibus-bus (fujiwarat) 2555fa97
+Add action file for CI (fujiwarat) a3a9bd30
+github/workflows: Fix CI on PR (fujiwarat) f3a7772e
+src: Convert gtk_compose_seqs_compact to GResource (fujiwarat) 19ca1065
+src/compose: Add en-US compose table with libX11 1.7.3.1 (fujiwarat) ae696351
+configure: Fix texts for surrounding text (Eberhard Beilharz) d190bc32
+Add active-surrounding-text property to IBusEngine (Philippe Rouquier) bd24be45
+Refactor surrounding text warning & free focus-id tables (fujiwarat) 2a235c8c
+Return error if D-Bus set/get property method is failed (fujiwarat) ecfae167
+po: Update translation (Georgian) (Temuri Doghonadze) 382c0349
+po: Update translation (Spanish) (Emilio Herrera) 8abf3ebd
+po: Update translation (Turkish) (Oğuz Ersen) f3a99839
+po: Update translation (Russian) (Alexey Rubtsov) 4b0e4c57
+po: Update translation (Korean) (김인수) 41e33c29
+po: Update translation (French) (Julien Humbert) 2f897b52
+po: Update translation (Italian) (Luis Pixeltux) f6eabce4
+src: Update ibusunicodegen.h with Unicode 15.0.0 (fujiwarat) 8f00d67b
+engine: Update simple.xml with xkeyboard-config 2.38-1 (fujiwarat) 594ec48c
+src/compose: Update en-US compose with libX11 1.8.4 (fujiwarat) bf8848eb
+data/dconf: Update org.freedesktop.ibus.gschema.xml (fujiwarat) 3c51582f
+Release 1.5.28 (fujiwarat) bc065f8c
