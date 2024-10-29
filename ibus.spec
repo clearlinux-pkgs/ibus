@@ -7,7 +7,7 @@
 #
 Name     : ibus
 Version  : 1.5.30
-Release  : 54
+Release  : 55
 URL      : https://github.com/ibus/ibus/releases/download/1.5.30/ibus-1.5.30.tar.gz
 Source0  : https://github.com/ibus/ibus/releases/download/1.5.30/ibus-1.5.30.tar.gz
 Summary  : IBus Library
