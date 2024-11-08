@@ -1,151 +1,145 @@
-Changes in IBus 1.5.30
+Changes in IBus 1.5.31
 
-A S Alam (2):
-      po: Update translation (Punjabi)
-      po: Update translation (Punjabi)
+Benjamin Schaaf (1):
+      src/ibusinputcontext: Fix memory leak of IBusText
 
-Alan01 (1):
-      po: Update translation (Danish)
+Christian Hergert (1):
+      bus: use va_marshaller to avoid GValue boxing
 
-Cheng-Chia Tseng (1):
-      po: Update translation (Chinese (Traditional) (zh_TW))
+Florian Müllner (1):
+      inputcontext: Fix typo
 
-Daniel Rusek (1):
-      po: Update translation (Czech)
+Giannis Antypas (1):
+      po: Update translation (Greek)
 
-Izumi Tsutsui (1):
-      configure: Fix bash '=' operator for BSD
-
-Jan Engelhardt (1):
-      src/ibusservice: Fix unused variable
-
-Krystof Cerny (1):
-      po: Update translation (Czech)
-
-Liu Tao (1):
-      po: Update translation (Chinese (Simplified) (zh_CN))
-
-Luna Jernberg (1):
+Göran Uddeborg (1):
       po: Update translation (Swedish)
 
-Mike FABIAN (2):
-      setup/enginedialog: Improve the search for engines
+Izumi Tsutsui (1):
+      src/ibuscomposetable: Replace obsolete index(3) with strchr(3)
+
+Julien Humbert (1):
+      po: Update translation (French)
+
+Manish Tiwari (1):
+      src/ibusunicode: Correct Parent Class Reference in ibus_unicode_block_destroy()
+
+Mike FABIAN (1):
       po: Update translation (German)
 
-Oğuz Ersen (2):
-      po: Update translation (Turkish)
+Oğuz Ersen (1):
       po: Update translation (Turkish)
 
 Piotr Drąg (1):
       po: Update translation (Polish)
 
-Rafael Fontenelle (2):
+Rafael Fontenelle (1):
       po: Update translation (Portuguese (Brazil))
-      github/workflows: Update action/checkout version
-
-Temuri Doghonadze (1):
-      po: Update translation (Georgian)
 
 Weblate Translation Memory (1):
-      po: Update translation (Georgian)
+      po: Update translation (French)
 
-Yaron Shahrabani (1):
-      po: Update translation (Hebrew)
+Wismill (1):
+      src/tests/ibus-compose: Add some Unicode boundary tests
 
-Yuri Chornoivan (1):
-      po: Update translation (Ukrainian)
-
-fujiwarat (30):
-      client/gtk2: Call strdup() after g_return_if_fail()
-      ui/gtk3: Error handling with display == null
-      client/wayland: Implement preedit color in Plasma Wayland
-      src: Complete preedit signals for PostProcessKeyEvent
-      Refactor object initialization
-      github/workflows: Add libgtk-4-dev to Ubuntu CI
-      ui/gtk3: Fix some warnings
-      src/ibusenginesimple.c: Don't commit any characters
-      tools: Implement `ibus start/restart` for Plasma Wayland
-      tools: Refactor ibus start/restart for Plasma Wayland
-      ui/gtk3: Show preferences menu item in activate menu
-      util/IMdkit: Fix typing freeze with barcode reader
-      Release 1.5.30-beta1
-      client/gtk2: Free IBusText in ibus_im_context_clear_preedit_text()
-      github/workflows: Replace Fedora 38 with Fedora 40
-      engine: Update simple.xml with xkeyboard-config 2.41
-      src: Update ibusunicodegen.h with Unicode 15.1.0
-      ui/gtk3: Fix Vala C format errors
+fujiwarat (40):
+      Makefile: Add check sum file
+      src/tests: Fix ibus-daemon in ibus-desktop-testing-runner
+      ui/gtk3: Configure initial keymaps with localectl in Wayland
+      src/ibusenginesimple: Ignore Super modifier for compose keys
+      src/ibusenginesimple: Do not update zero length preedit text
+      ui/gtk3: Fix to unref GdkDisplay in Wayland
+      ui/gtk3: Fix Super-space in Wayland
+      src/ibusengine: Hide preedit text with PanelExtensionReceived signal
+      bus: Reformat dbusimpl.c
+      bus: Change IBus unique name to :1.0 from IBUS_SERVICE_IBUS
+      portal: Let Flatpak application accept new IBus unique name
+      portal: Support new sync ibus_input_context_process_key_event()
+      test: Rename Flatpak build files
+      Fix Flatpak build for dnf and pyoverridesdir
+      test: Add Flatpak build for Fedoraproejct platform
+      src/ibuscomposetable: Fix UFDD5 key for compose seq with fr(bepo_afnor)
+      Fix musical symbol compose keys
+      Release 1.5.31-beta1
+      Fix memory leaks in error handlings
+      src: Ignore ISO level3/level5 keys in shortcut keys
+      util/IMdkit: Revert to fix typing freeze with barcode reader
+      src/tests: Enable CI in GNOME Wayland
+      Fix tests cases to be run in Wayland
+      src/tests: Enable GTK4
+      src/tests: Fix test cases in GNOME Xorg in ibus-compose
+      src/tests: Fix ibus-compose for GNOME Wayland
+      src/tests: Fix some CI issues with busy TMT virtual session
+      Release 1.5.31-beta2
+      ui/gtk3: Wait for hide-preedit-text signal for Emoji category
+      configure: Add --with-python-overrides-dir option
+      github/workflows: Replace Fedora 39 with Fedora 41
+      src: Update ibuskeysyms.h with xorgproto
+      src: Rename files to follow GTK
+      src: Update keynamesprivate.h with GTK 4.16.3
       po: Update translation (Japanese)
-      po: Update POT file
-      Release 1.5.30-rc1
-      src/ibusengine: Identify SUPER_MASK in GTK4 with MOD4_MASK
-      ui/gtk3: Fix SEGV with Super-space in Wayland
-      src/ibusengine: Free names in ibus_engine_filter_key_event()
-      tools: Fix ibus start/restart in Plasma Wayland
-      ui/gtk3: Fix ibus-daemon timeout in Plasma Wayland
-      ui/gtk3: Set Indicator status at launching time
-      Release 1.5.30-rc2
-      src/ibusengine: Identify SUPER_MASK in GTK4 with MOD4_MASK
-      Release 1.5.30-rc3
+      src/tests: Use dbus_try_get_local_machine_id() in ibus-share
+      engine: Update simple.xml with xkeyboard-config 2.42
+      src: Update ibusunicodegen.h with Unicode 16.0.0
+      src/compose: Update en-US compose with libX11 1.8.10
+      Release 1.5.31-rc1
 
-oreo639 (1):
-      configure: Don't do AC_CHECK_FILE when cross compiling
-
-김인수 (2):
-      po: Update translation (Korean)
+김인수 (1):
       po: Update translation (Korean)
 
 
-client/gtk2: Call strdup() after g_return_if_fail() (fujiwarat) 1be3e2f7
-ui/gtk3: Error handling with display == null (fujiwarat) 0a7a4d1d
-client/wayland: Implement preedit color in Plasma Wayland (fujiwarat) 59944ddb
-src: Complete preedit signals for PostProcessKeyEvent (fujiwarat) 719792d3
-Refactor object initialization (fujiwarat) ac46d154
-github/workflows: Add libgtk-4-dev to Ubuntu CI (fujiwarat) 2ede4a1f
-ui/gtk3: Fix some warnings (fujiwarat) 84708739
-src/ibusenginesimple.c: Don't commit any characters (fujiwarat) 4872c1fc
-tools: Implement `ibus start/restart` for Plasma Wayland (fujiwarat) 74712fab
-tools: Refactor ibus start/restart for Plasma Wayland (fujiwarat) e425bbf7
-ui/gtk3: Show preferences menu item in activate menu (fujiwarat) 3e7ee448
-util/IMdkit: Fix typing freeze with barcode reader (fujiwarat) b49f3a47
-Release 1.5.30-beta1 (fujiwarat) fe4958b7
-setup/enginedialog: Improve the search for engines (Mike FABIAN) d3d77627
-configure: Don't do AC_CHECK_FILE when cross compiling (oreo639) cc46e622
-client/gtk2: Free IBusText in ibus_im_context_clear_preedit_text() (fujiwarat) 43a6e38e
-github/workflows: Replace Fedora 38 with Fedora 40 (fujiwarat) a69a449b
-engine: Update simple.xml with xkeyboard-config 2.41 (fujiwarat) 1a17f88f
-src: Update ibusunicodegen.h with Unicode 15.1.0 (fujiwarat) 228f0a77
-ui/gtk3: Fix Vala C format errors (fujiwarat) 820fed38
-po: Update translation (Japanese) (fujiwarat) 7e2e8298
-po: Update translation (Georgian) (Temuri Doghonadze) 16ebd40a
-po: Update translation (Chinese (Traditional) (zh_TW)) (Cheng-Chia Tseng) 92769c37
-po: Update translation (Czech) (Krystof Cerny) 4620b333
-po: Update translation (Czech) (Daniel Rusek) e513e263
-po: Update translation (Hebrew) (Yaron Shahrabani) 68c1d6a0
-po: Update translation (Punjabi) (A S Alam) 82b56fd9
-po: Update translation (Turkish) (Oğuz Ersen) 8e310326
-po: Update translation (Chinese (Simplified) (zh_CN)) (Liu Tao) 847a80ec
-po: Update translation (Korean) (김인수) 11804709
-po: Update translation (Portuguese (Brazil)) (Rafael Fontenelle) dc27015c
-po: Update POT file (fujiwarat) 746efa23
-Release 1.5.30-rc1 (fujiwarat) 0f778adf
-src/ibusengine: Identify SUPER_MASK in GTK4 with MOD4_MASK (fujiwarat) e4eaeb74
-ui/gtk3: Fix SEGV with Super-space in Wayland (fujiwarat) c63cc678
-src/ibusengine: Free names in ibus_engine_filter_key_event() (fujiwarat) ca61d6e5
-tools: Fix ibus start/restart in Plasma Wayland (fujiwarat) 5696033b
-ui/gtk3: Fix ibus-daemon timeout in Plasma Wayland (fujiwarat) b4b9c2e4
-ui/gtk3: Set Indicator status at launching time (fujiwarat) b25643c8
-po: Update translation (German) (Mike FABIAN) 95bdbb27
-po: Update translation (Korean) (김인수) 633b3c0f
-po: Update translation (Swedish) (Luna Jernberg) 537d4d02
-po: Update translation (Turkish) (Oğuz Ersen) 841724a4
-po: Update translation (Ukrainian) (Yuri Chornoivan) 2a58178e
-po: Update translation (Polish) (Piotr Drąg) 01e39647
-po: Update translation (Georgian) (Weblate Translation Memory) dfbed6c6
-po: Update translation (Punjabi) (A S Alam) ca907904
-po: Update translation (Danish) (Alan01) 6df5e1e0
-Release 1.5.30-rc2 (fujiwarat) 5dad4687
-src/ibusengine: Identify SUPER_MASK in GTK4 with MOD4_MASK (fujiwarat) 7f3bde01
-configure: Fix bash '=' operator for BSD (Izumi Tsutsui) 70783295
-github/workflows: Update action/checkout version (Rafael Fontenelle) 68217a05
-src/ibusservice: Fix unused variable (Jan Engelhardt) cd2cde97
-Release 1.5.30-rc3 (fujiwarat) c61f425d
+Makefile: Add check sum file (fujiwarat) 4059b9f4
+src/tests: Fix ibus-daemon in ibus-desktop-testing-runner (fujiwarat) e39345af
+ui/gtk3: Configure initial keymaps with localectl in Wayland (fujiwarat) f190da19
+src/ibusenginesimple: Ignore Super modifier for compose keys (fujiwarat) 48c4a9c9
+src/ibusenginesimple: Do not update zero length preedit text (fujiwarat) a3a5a20a
+ui/gtk3: Fix to unref GdkDisplay in Wayland (fujiwarat) 627e7cc3
+ui/gtk3: Fix Super-space in Wayland (fujiwarat) 96a2d57f
+src/ibusengine: Hide preedit text with PanelExtensionReceived signal (fujiwarat) 9a134e8a
+bus: Reformat dbusimpl.c (fujiwarat) 927ce008
+bus: Change IBus unique name to :1.0 from IBUS_SERVICE_IBUS (fujiwarat) 2b146251
+portal: Let Flatpak application accept new IBus unique name (fujiwarat) 7f44459f
+portal: Support new sync ibus_input_context_process_key_event() (fujiwarat) 0b678100
+test: Rename Flatpak build files (fujiwarat) 9dd47e5a
+Fix Flatpak build for dnf and pyoverridesdir (fujiwarat) 20b29c14
+test: Add Flatpak build for Fedoraproejct platform (fujiwarat) 142744ff
+src/ibuscomposetable: Fix UFDD5 key for compose seq with fr(bepo_afnor) (fujiwarat) e7329cb1
+src/tests/ibus-compose: Add some Unicode boundary tests (Wismill) 1892b51a
+Fix musical symbol compose keys (fujiwarat) 9f50b46f
+Release 1.5.31-beta1 (fujiwarat) 7091f2ca
+inputcontext: Fix typo (Florian Müllner) af59cdf8
+Fix memory leaks in error handlings (fujiwarat) a1a2fe5d
+src: Ignore ISO level3/level5 keys in shortcut keys (fujiwarat) 47b8198b
+util/IMdkit: Revert to fix typing freeze with barcode reader (fujiwarat) 14dd943d
+src/tests: Enable CI in GNOME Wayland (fujiwarat) 92a55174
+Fix tests cases to be run in Wayland (fujiwarat) ee6b673f
+src/tests: Enable GTK4 (fujiwarat) 15a9751f
+src/tests: Fix test cases in GNOME Xorg in ibus-compose (fujiwarat) 58d581c5
+src/tests: Fix ibus-compose for GNOME Wayland (fujiwarat) 081dae04
+src/tests: Fix some CI issues with busy TMT virtual session (fujiwarat) c4a3b52b
+Release 1.5.31-beta2 (fujiwarat) 21a18b68
+src/ibuscomposetable: Replace obsolete index(3) with strchr(3) (Izumi Tsutsui) 7db9d986
+src/ibusinputcontext: Fix memory leak of IBusText (Benjamin Schaaf) fa10c116
+bus: use va_marshaller to avoid GValue boxing (Christian Hergert) c13c54ec
+ui/gtk3: Wait for hide-preedit-text signal for Emoji category (fujiwarat) 2bfa558f
+configure: Add --with-python-overrides-dir option (fujiwarat) 3ae59e8a
+src/ibusunicode: Correct Parent Class Reference in ibus_unicode_block_destroy() (Manish Tiwari) cae7f46f
+github/workflows: Replace Fedora 39 with Fedora 41 (fujiwarat) 8ac611cd
+src: Update ibuskeysyms.h with xorgproto (fujiwarat) e0120635
+src: Rename files to follow GTK (fujiwarat) 21effad9
+src: Update keynamesprivate.h with GTK 4.16.3 (fujiwarat) fb0f167f
+po: Update translation (Portuguese (Brazil)) (Rafael Fontenelle) b4c6f456
+po: Update translation (Turkish) (Oğuz Ersen) ba4fc078
+po: Update translation (Korean) (김인수) f161d785
+po: Update translation (Swedish) (Göran Uddeborg) 3efe8795
+po: Update translation (Greek) (Giannis Antypas) 9660b885
+po: Update translation (French) (Weblate Translation Memory) 753019f8
+po: Update translation (Polish) (Piotr Drąg) f5528bae
+po: Update translation (German) (Mike FABIAN) 9432d083
+po: Update translation (French) (Julien Humbert) 1f170a3f
+po: Update translation (Japanese) (fujiwarat) b2d42b3f
+src/tests: Use dbus_try_get_local_machine_id() in ibus-share (fujiwarat) e97d5a3d
+engine: Update simple.xml with xkeyboard-config 2.42 (fujiwarat) 645154e2
+src: Update ibusunicodegen.h with Unicode 16.0.0 (fujiwarat) 4043c4f2
+src/compose: Update en-US compose with libX11 1.8.10 (fujiwarat) 8b301cae
+Release 1.5.31-rc1 (fujiwarat) baeddb89
